@@ -12,6 +12,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import MenuMb from './MenuMb'
 import { useMediaQuery } from 'react-responsive'
+import useStore from '@/(store)/store'
 
 function Navbar({
   lang,
@@ -23,6 +24,7 @@ function Navbar({
   const [shadow, setShadow] = useState('')
   const [logoHome, setLogoHome] = useState(logoW)
   const [checkScroll, setCheckScroll] = useState(false)
+  const setSlug = useStore((state) => state.setSlug )
   const refMb = useRef()
   const isMobile = useMediaQuery({ query: '(max-width: 767.9px)' })
   const handleOpenModal = () => {

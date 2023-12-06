@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import layer_11 from '@/assets/imgs/Layer_11.svg'
 import layer_12 from '@/assets/imgs/Layer_12.svg'
 import layer_13 from '@/assets/imgs/Layer_13.svg'
@@ -11,6 +11,7 @@ import { Formik, Field, ErrorMessage, Form } from 'formik'
 import * as Yup from 'yup'
 import { TextareaAutosize } from '@mui/base/TextareaAutosize';
 import { gql, useMutation } from '@apollo/client'
+
 const SUBMIT_FORM = gql`
   mutation ($input: SubmitGfFormInput!) {
     submitGfForm(input: $input) {
@@ -23,7 +24,7 @@ const SUBMIT_FORM = gql`
     }
   }
 `
-function FormContact({ dataForm }) {
+function FormContact({ dataForm ,listSlug}) {
     const [active, setActive] = useState(0)
     const [mutate, { loading }] = useMutation(SUBMIT_FORM)
     const INITAL_FORM_STATE = {
@@ -33,6 +34,7 @@ function FormContact({ dataForm }) {
         message: '',
         address: ''
     }
+
     const FORM_VALIDATION = Yup.object().shape({
         fullName: Yup.string().required('Required'),
         email: Yup.string().email('Invalid email.').required('Required'),
@@ -70,11 +72,8 @@ function FormContact({ dataForm }) {
     }
     return (
         <section className='contactForm md:pt-[4.7rem] pt-[5.07rem]  max-md:flex-col md:pl-[4.17rem] md:pr-[9.43rem]  md:pb-[6.56rem] flex justify-between'>
-            {/* content-left */}
-            {/* content-right */}
-
+            
             <div className='max-md:mb-[10rem] max-md:px-[4.27rem] w-full'>
-
                 <Formik
                     initialValues={{ ...INITAL_FORM_STATE }}
                     validationSchema={FORM_VALIDATION}
