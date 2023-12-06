@@ -1,6 +1,7 @@
 const GET_DATA_RECRUIMENT_DETAIL = `query getDataRecruitmentDetail($slug:ID!,$language:LanguageCodeEnum!){
   jobOpportunity(id: $slug, idType: SLUG) {
     translation(language:$language){
+      id
       slug
       recruimentDetail {
       banner {
@@ -35,6 +36,7 @@ const GET_DATA_RECRUIMENT_DETAIL = `query getDataRecruitmentDetail($slug:ID!,$la
 const GET_DATA_RECRUIMENT_PAGE = `query ($language: LanguageCodeEnum!) {
   page(id:"cG9zdDo2NjU="){
     translation(language: $language){
+      id
       recruiment{
         banner{
           background{
@@ -153,11 +155,41 @@ const META_RECRUITMENT_DETAIL_QUERY = `query($slug:ID!, $language:LanguageCodeEn
     }
   }
 }`
+const SLUG_RECRUITMENT_QUERY =(id)=> `{
+  page(id:"${id}"){
+    language{
+      code
+    }
+    slug
+    translations{
+      language{
+        code
+      }
+      slug
+    }
+  }
+}`
+const SLUG_RECRUITMENT_DETAIL_QUERY =(id)=> `{
+  jobOpportunity(id: "${id}", idType: ID) {
+    language {
+      code
+    }
+    slug
+    translations {
+      language {
+        code
+      }
+      slug
+    }
+  }
+}`
 export {
   GET_DATA_RECRUIMENT_DETAIL,
   GET_DATA_NEW_JOBS,
   GET_DATA_RECRUIMENT_PAGE,
   GET_ALL_SEARCH_BY_SERVER,
   META_RECRUITMENT_QUERY,
-  META_RECRUITMENT_DETAIL_QUERY
+  META_RECRUITMENT_DETAIL_QUERY,
+  SLUG_RECRUITMENT_QUERY,
+  SLUG_RECRUITMENT_DETAIL_QUERY
 }

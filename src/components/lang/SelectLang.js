@@ -7,6 +7,7 @@ import useStore from '@/(store)/store'
 function SelectLang({ lang, checkHome, color }) {
   const pathName = usePathname()
   const slug = useStore((state) => state.slug);
+  console.log('slug',slug);
   const redirectedPathName = (locale) => {
     if (!pathName) return `/${currentLang}`
     const segments = pathName.split('/')

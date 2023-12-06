@@ -6,7 +6,8 @@ import InputAndPagination from './InputAndPagination'
 import Opportunity from './Opportunity'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useMediaQuery } from 'react-responsive'
-function Recruitment({ data, lang, dataFirstIn }) {
+import HandleChangeSlug from '../common/HandleChangeSlug'
+function Recruitment({ data, lang, dataFirstIn,listSlug }) {
     const [seeMore, setSeeMore] = useState(1)
     const searchParams = useSearchParams()
     const pathName = usePathname()
@@ -30,6 +31,7 @@ function Recruitment({ data, lang, dataFirstIn }) {
         <>
             <Banner dataBanner={data?.banner} />
             <main>
+                <HandleChangeSlug listSlug={listSlug}/>
                 <Culture dataCulture={data?.content} />
                 <div className='flex flex-col max-md:flex-col-reverse'>
                     {seeMore < Math.ceil(dataFirstIn?.pageInfo?.offsetPagination?.total / 4) &&

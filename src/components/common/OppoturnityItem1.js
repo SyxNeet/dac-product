@@ -33,7 +33,7 @@ function OpportunityItem1({ lang, data }) {
                 <Image src={data?.recruimentDetail?.infoJob?.icon?.sourceUrl || data?.translation?.recruimentDetail?.infoJob?.icon?.sourceUrl} width={200} height={200} alt={data?.recruimentDetail?.infoJob?.icon?.altText || 'icon'} quality={100} className='md:w-[3.74297rem] w-[12.90267rem] h-[12.41573rem] md:h-[3.85135rem] object-contain absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2' />
             </div>
             <div>
-                <Link href={`/${lang}/tuyen-dung/${data?.slug || data?.translation?.slug}`}>
+                <Link href={`/${lang}/${lang === 'vi' ? 'tuyen-dung' : 'recruitment'}/${data?.slug || data?.translation?.slug}`}>
                     <h3 className='jobText md:mb-[0.5rem] mb-[3rem]'>{data?.recruimentDetail?.infoJob?.nameJob || data?.translation?.recruimentDetail?.infoJob?.nameJob}</h3>
                 </Link>
                 <div className={`md:w-[21.04167rem] flex flex-col relative max-md:top-[-1.5rem]`}>
@@ -53,7 +53,7 @@ function OpportunityItem1({ lang, data }) {
                     {lang === 'vi' ? 'Đã hết hạn' : 'Expired'}
                 </p>) 
                 }
-                <Link href={`/${lang}/tuyen-dung/${data?.slug || data?.translation?.slug}`}>
+                <Link href={`/${lang}/${lang === 'vi' ? 'tuyen-dung' : 'recruitment'}/${data?.slug || data?.translation?.slug}`}>
                 <p className='md:w-[21.04167rem] md:mt-[1.3rem] mt-[3rem] cursor-pointer description !text-[#888] underline !font-normal'>{data?.recruimentDetail?.infoJob?.applyText || data?.translation?.recruimentDetail?.infoJob?.applyText}</p>
                 </Link>
             </div>
