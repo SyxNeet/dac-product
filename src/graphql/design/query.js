@@ -1,6 +1,7 @@
 const GET_DATA_DESIGN = `query getDataDesign($language:LanguageCodeEnum!){
     page(id:"cG9zdDozNzI=" idType:ID){
       translation(language:$language){
+        id
         design{
           banner{
             background{
@@ -66,7 +67,22 @@ query($language: LanguageCodeEnum!){
     }
   }
 }`
+const SLUG_DESIGN_QUERY =(id)=> `{
+  page(id:"${id}"){
+    language{
+      code
+    }
+    slug
+    translations{
+      language{
+        code
+      }
+      slug
+    }
+  }
+}`
 export {
   GET_DATA_DESIGN,
-  GET_META_DESIGN
+  GET_META_DESIGN,
+  SLUG_DESIGN_QUERY
 }
