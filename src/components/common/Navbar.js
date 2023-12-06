@@ -213,26 +213,31 @@ function Navbar({
       linkEn: 'NEWS',
       slug: 'tin-tuc-su-kien',
       slug2: 'tin-tuc-su-kien',
+      slug2En:'news',
       listContent: [
         {
           name: 'Con người APP',
           nameEn: 'APP-PEOPLE',
-          slug: 'con-nguoi-app'
+          slug: 'con-nguoi-app',
+          slugEn:'app-people'
         },
         {
           name: 'Dành cho nhà đầu tư',
           nameEn: 'investor',
-          slug: 'nha-dau-tu'
+          slug: 'nha-dau-tu',
+          slugEn:'investors'
         },
         {
           name: 'Dành cho doanh nghiệp',
           nameEn: 'customers',
-          slug: 'khach-hang'
+          slug: 'khach-hang',
+          slugEn:'customers'
         },
         {
           name: 'Tin tức khác',
           nameEn: 'others',
-          slug: 'khac'
+          slug: 'khac',
+          slugEn:'others'
         }
       ]
     },
@@ -286,7 +291,7 @@ function Navbar({
                                             return (
                                                 <Link
                                                     onClick={handleCloseModal}
-                                                    href={`/${lang}/${item?.slug2}/${mbItem?.slug}` || '/'}
+                                                    href={`/${lang}/${lang === 'vi' ? item?.slug2 : item?.slug2En || item?.slug2}/${lang === 'vi' ? mbItem?.slug : mbItem?.slugEn || mbItem?.slug}` || '/'}
                                                     key={index}
                                                     dangerouslySetInnerHTML={{ __html: `${mbItem?.nameEn ? (lang === 'vi' ? mbItem?.name : mbItem?.nameEn) : mbItem.name}` }}
                                                     className='text-[#888888] uppercase text_hover whitespace-nowrap text_product_item_nav text-[1.04167rem]  mb-[0.5rem]'>

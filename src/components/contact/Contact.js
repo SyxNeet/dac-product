@@ -6,7 +6,7 @@ import HandleChangeSlug from '../common/HandleChangeSlug'
 function Contact({ dataContact,lang,listSlug }) {
     return (
         <>
-        <HandleChangeSlug listSlug={listSlug}/>
+            <HandleChangeSlug listSlug={listSlug}/>
             <Banner dataBanner={dataContact?.banner} />
             <main>
                 <Branch 
