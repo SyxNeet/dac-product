@@ -2,15 +2,15 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { i18n } from '../../../i18n-config'
-import { useState } from 'react'
+import useStore from '@/(store)/store'
 
 function SelectLang({ lang, checkHome, color }) {
   const pathName = usePathname()
-  const [lng, setLng] = useState(lang)
+  const slug = useStore((state) => state.slug);
   const redirectedPathName = (locale) => {
     if (!pathName) return `/${currentLang}`
     const segments = pathName.split('/')
-    if (segments[1] !== 'it' && segments[1] !== 'en' && segments[1] !== 'fr') {
+    if (segments[1] !== 'en') {
       segments.splice(1, 0, locale)
       return segments.join('/')
     }
@@ -22,10 +22,10 @@ function SelectLang({ lang, checkHome, color }) {
     <div className='flex items-center select-lang max-md:hidden'>
       {i18n?.lo?.map((locale, index) => (
         <Link
-          onClick={() => setLng(locale.locale)}
           key={index}
-          href={redirectedPathName(locale.locale)}
-          className={`flex link items-center w-full border-r border-solid  last:border-none px-[0.6rem] ${checkHome ? 'border-black' : ''} border-[${color}] ${lng === locale.locale ? 'active' : ''}`}
+          // href={redirectedPathName(locale.locale)}
+          href={locale.locale==='vi'?slug?.slugVi||'/':slug?.slugEn||'/en'}
+          className={`flex link items-center w-full border-r border-solid  last:border-none px-[0.6rem] ${checkHome ? 'border-black' : ''} border-[${color}] ${lang==='vi'&&index===0?'active':''} ${lang==='en'&&index===1?'active':''}`}
         >
           <span className={`uppercase text-[1rem]  ${checkHome ? '!text-black' : 'text-white'} !text-[${color}]`}>{locale.locale}</span>
         </Link>

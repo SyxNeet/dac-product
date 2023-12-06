@@ -1,6 +1,7 @@
 const GET_DATA_CONTACT_PAGE = `query($language:LanguageCodeEnum!){
   page(id:"cG9zdDo2OTU="){
    translation(language:$language){
+      id
      contact{
       banner{
         background{
@@ -62,7 +63,23 @@ query($language: LanguageCodeEnum!){
     }
   }
 }`
+
+const SLUG_CONTACT_QUERY =(id)=> `{
+  page(id:"${id}"){
+    language{
+      code
+    }
+    slug
+    translations{
+      language{
+        code
+      }
+      slug
+    }
+  }
+}`
 export {
   GET_DATA_CONTACT_PAGE,
-  META_CONTACT_QUERY
+  META_CONTACT_QUERY,
+  SLUG_CONTACT_QUERY
 }
