@@ -1,0 +1,61 @@
+.recruitmentInfo,.contactForm{
+    & input::placeholder{
+        padding-left: 1.12rem;
+        color: #888;
+        font-size: 0.83333rem;
+        line-height: 116.662%;
+        @media screen and (max-width :767px) {
+        font-size: 3.2rem;
+        padding-left: 3rem;
+        }
+    }
+}
+
+.formSubmit{
+    input{
+        width: 25rem;
+        height: 2.81rem;
+        outline: none;
+        font-size: 1.2rem;
+        @media screen and (max-width :767px) {
+            width: 84.21253rem;
+            height: 9.5264rem;
+            font-size: 3.2rem;
+        }
+        @media screen and (min-width :768px) and (max-width :1023px) {
+           height: 3rem;
+        }
+    }
+    input::placeholder{
+        padding-left: 1.12rem;
+        color: #888;
+        font-size: 0.83333rem;
+        line-height: 116.662%;
+        @media screen and (max-width :767px) {
+        font-size: 3.2rem;
+        padding-left: 3rem;
+        }
+        @media screen and (min-width :768px) and (max-width :1023px) {
+            font-size: 1.4rem;
+        }
+    }
+}
+
+input[type="file"]{
+    width: auto;
+}
+
+.cv_content{
+    & > p:nth-child(3){
+        display: flex;
+        flex-direction: column;
+    }
+
+    ul {
+        li {
+            @media screen and (max-width:767px) {
+                margin-bottom: 2rem;
+            }
+        }
+    }
+}

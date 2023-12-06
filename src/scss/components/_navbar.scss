@@ -1,0 +1,26 @@
+.select-lang {
+  .link.active > span{
+    color: #00C65B !important;
+  }
+}
+
+.nav-mobile{
+  transform: translateX(-100%);
+  transition: all 0.2s ease-out;
+}
+.nav-mobile.active {
+  transform: translateX(0);
+}
+
+.menu_mobile_item {
+  transform-origin: top;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.3s;
+  padding-left: 5rem;
+}
+.text_product_item_nav{
+    & > br {
+      display: none;
+    }
+}

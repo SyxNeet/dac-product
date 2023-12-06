@@ -1,0 +1,9 @@
+.bg-overlay_banner {
+  background: linear-gradient(
+    180deg,
+    #444 11.98%,
+    rgba(255, 255, 255, 0) 89.06%
+  );
+  background-blend-mode: multiply;
+  z-index: 1 !important;
+}

@@ -1,0 +1,178 @@
+.slide-history {
+  .swiper-slide{
+    transition: all ;
+  }
+  .swiper-slide:nth-child(2n) {
+    .item-history {
+      margin-top: 18.16rem;
+      flex-direction: column-reverse;
+      .circle {
+        top: 5.1rem;
+      }
+      .image {
+        order: 1;
+        margin-top: 4.4rem;
+      }
+      .year {
+        order: 2;
+      }
+    }
+  }
+  .swiper-slide:nth-child(2n+1) {
+    .item-history {
+      .circle {
+        bottom: 2.6rem;
+      }
+      .year {
+        margin-top: 1.9rem;
+      }
+    }
+  }
+}
+.line {
+  border-bottom: 1.5px dashed #444;
+  width: 100%;
+}
+.line-sm {
+  width: 100%;
+  border-bottom: 1px dashed #444;
+}
+
+.popUpRef{
+  transform: translateX(-100%);
+  transition: all 0.3s;
+}
+
+#historyMobile {
+  .swiper-slide{
+    height: fit-content !important;
+  }
+}
+
+.text-content-journey{
+  @media screen and (min-width:768px) {
+    & > p:first-child{
+      margin-bottom: 1.25rem;
+    }
+  }
+}
+
+.image_prize{
+  // overflow: hidden;
+  // position: absolute;
+  // inset: 0;
+  transition: all 0.3s;
+  &:hover{
+    transform: scale(1.05);
+  }
+} 
+.image_prize.active:hover{
+  transform: scale(1);
+}
+.prize_item{
+  position: relative;
+  overflow: hidden;
+}
+
+.description_prize{
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  // right: 1.55rem;
+  padding: 2.08rem 3.44rem 2.14rem 2.13rem;
+  background: #444444b5;
+  transform: translateY(100%);
+  z-index: 10;
+  @media screen and (max-width: 767px) {
+    padding: 3.08rem 3.44rem 5.14rem 4.13rem;
+  }
+}
+.description_prize.active{
+  animation: upDes 1s forwards;
+  bottom: 2.25rem;
+}
+
+.card_image.active1{
+  @media screen and (min-width:768px) {
+    animation: transformPosition 1.4s;
+  }
+  // @media screen and (max-width:767px) {
+  //   animation: transformPositionMb 1.4s;
+  // }
+}
+
+
+.card_image.active2{
+  @media screen and (min-width:768px) {
+    animation: transformPosition2 1.4s;
+  }
+}
+
+.card_image.active3{
+  @media screen and (min-width:768px) {
+    animation: transformPosition3 1.4s;
+  }
+}
+
+
+@keyframes upDes{
+  from{
+  transform: translateY(100%);
+
+  }to{
+    transform: translateY(0);
+  }
+}
+
+@keyframes transformPosition {
+  from{
+    width: 15.05208rem;
+    height: 19.79167rem;
+  }
+  to{
+      width: 34.85rem;
+      height: 46.82rem;
+      position: absolute;
+      z-index: 10;
+  }
+}
+
+@keyframes transformPositionMb {
+  from{
+    width: 41.59867rem;
+    height: 54.93333rem;
+  }
+  to{
+      width: 100rem;
+      height: 130rem;
+      transform: translate(-50%,-50%);
+  }
+}
+//  4 5 6 7
+@keyframes transformPosition2 {
+  from{
+    width: 16.77083rem;
+    height: 12.70833rem;
+  }
+  to{
+      width: 35.07rem;
+      height: 26.875rem;
+      position: absolute;
+      z-index: 10;
+  }
+}
+
+// 8
+
+@keyframes transformPosition3 {
+  from{
+    width: 38.11422rem;
+    height: 28.125rem;
+  }
+  to{
+      width: 84.16667rem;
+      height: 50.8333rem;
+      position: absolute;
+      z-index: 10;
+  }
+}

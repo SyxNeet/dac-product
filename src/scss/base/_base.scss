@@ -1,0 +1,165 @@
+html {
+  font-size: 1vw;
+  // scroll-behavior: smooth;
+}
+
+.content {
+  width: 91.6%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heading {
+  color: #444;
+  font-size: 3.4375rem;
+  font-weight: 700;
+  line-height: 116.662%;
+  letter-spacing: -0.10313rem;
+  @media screen and (max-width:767px) {
+    font-size: 8.53333rem;
+    letter-spacing: -0.256rem;
+  }
+}
+.heading2 {
+  color: #444;
+  font-size: 3.4375rem;
+  font-weight: 700;
+  line-height: 116.662%;
+  letter-spacing: -0.10313rem;
+  @media screen and (max-width:767px) {
+    font-size: 6.93333rem;
+    letter-spacing: -0.34667rem;
+  }
+}
+
+.heading-primary{
+  color: #FFF;
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 116.662%;
+  letter-spacing: -0.25rem;
+}
+
+.description {
+  color: #444;
+  font-size: 1.35417rem;
+  font-weight: 700;
+  line-height: 116.662%;
+  letter-spacing: -0.04063rem;
+
+  @media screen and (max-width : 767px) {
+    font-size: 4.26667rem;
+  }
+  @media screen and (min-width :768px) and (max-width :1023px) {
+    font-size: 1.5rem;
+  }
+}
+.description2 {
+  color: #444;
+  font-size: 1.35417rem;
+  font-weight: 400;
+  line-height: 120%;
+  letter-spacing: -0.2rem;
+
+  @media screen and (max-width : 767px) {
+    font-size: 4rem;
+  }
+  @media screen and (min-width :768px) and (max-width :1023px) {
+    font-size: 1.5rem;
+  }
+}
+.subDescription {
+  color: #888;
+  font-size: 1.04167rem;
+  font-weight: 400;
+  line-height: 116.662%;
+  @media screen and (max-width : 767px) {
+    font-size: 4.26667rem;
+  }
+  @media screen and (min-width :768px) and (max-width :1023px) {
+    font-size: 1.35rem;
+  }
+}
+
+.priDesc {
+  color: #FFF;
+  text-align: justify;
+  font-size: 1.35417rem;
+  line-height: 120%;
+  @media screen and (max-width: 767px) {
+    font-size: 4.26667rem;
+  }
+  @media screen and (min-width :768px) and (max-width :1023px) {
+    font-size: 1.5rem;
+  }
+
+}
+
+.contentWrapper {
+  padding: 4.69rem 4.27rem 0;
+  @media screen and (max-width :767px) {
+    padding: 8.53rem 4.27rem 0;
+  }
+}
+
+.jobText {
+  color: #444;
+  text-align: justify;
+  font-size: 1.35417rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 116.662%; 
+  letter-spacing: -0.04063rem;
+  @media screen and (max-width:767px) {
+    font-size: 4.26667rem;    
+    letter-spacing: -0.128rem
+  }
+  @media screen and (min-width :768px) and (max-width :1023px) {
+    font-size: 1.5rem;
+  }
+}
+.job_Info {
+  color: #444;
+  text-align: justify;
+  font-size: 1.35417rem;
+  line-height: 116.662%; 
+  letter-spacing: -0.04063rem;
+  @media screen and (max-width:767px) {
+    font-size: 4.26667rem;    
+    letter-spacing: -0.128rem
+  }
+  @media screen and (min-width :768px) and (max-width :1023px) {
+    font-size: 1.5rem;
+  }
+  li {
+        list-style-type: disc;
+        &::marker{
+            font-size: 1rem;
+            @media screen and (max-width :767px) {
+                font-size: 3rem;
+            }
+        }
+    }
+    ul{
+        padding-left: 2rem;
+        @media screen and (max-width :767px) {
+            padding-left: 7rem;
+        }
+    }
+}
+
+
+.arrow_down{
+  position: relative;
+  animation: arrowDown 0.7s infinite alternate;
+}
+
+@keyframes arrowDown {
+  0% {
+    bottom: 0;
+  }
+
+  100% {
+    bottom: 10px;
+  }
+}
