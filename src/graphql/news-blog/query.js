@@ -192,6 +192,7 @@ const META_NEWS_DETAIL_QUERY = `query($slug:ID!, $language:LanguageCodeEnum!){
 const NEWS_QUERY = `query($language:LanguageCodeEnum!){
   page(id:"cG9zdDozNDI="){
     translation(language:$language){
+      id
       news_page{
         banner{
           background{
@@ -205,6 +206,21 @@ const NEWS_QUERY = `query($language:LanguageCodeEnum!){
     }
   }
 }`
+
+const SLUG_BLOG_QUERY =(id)=> `{
+  page(id:"${id}"){
+    language{
+      code
+    }
+    slug
+    translations{
+      language{
+        code
+      }
+      slug
+    }
+  }
+}`
 export {
   NEWS_QUERY,
   GET_DATA_NEWS_DETAIL,
@@ -213,5 +229,6 @@ export {
   GET_DATA_ALL_WITH_SEARCH,
   GET_META_NEWS,
   META_NEWS_DETAIL_QUERY,
-  DATA_NEWS_WITH_SEARCH_AND_CATEGORY
+  DATA_NEWS_WITH_SEARCH_AND_CATEGORY,
+  SLUG_BLOG_QUERY
 }

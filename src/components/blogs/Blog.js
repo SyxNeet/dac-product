@@ -8,7 +8,8 @@ import { useMediaQuery } from 'react-responsive'
 import useDebounce from '@/hooks/useDebounce'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
-function Blog({ lang, dataBlog,slug }) {
+import HandleChangeSlug from '../common/HandleChangeSlug'
+function Blog({ lang, dataBlog,slug,listSlug }) {
     let language = lang?.toUpperCase()
     const [activePage, setActivePage] = useState(0)
     const [text, setText] = useState("")
@@ -107,6 +108,7 @@ function Blog({ lang, dataBlog,slug }) {
     return (
         <>
             <Banner dataBanner={dataBlog} />
+            <HandleChangeSlug listSlug={listSlug}/>
             <section ref={eleRef} className='md:px-[4.17rem] blog_news md:pt-[3.13rem] md:pb-[2.97rem] max-md:flex flex-col-reverse'>
                 <span ref={seeMoreRef} onClick={handleClick} className='md:hidden text-[4.26667rem] text-[#00A84F] leading-[116.662%] underline text-center mb-[8.1rem] mt-[2rem]'>Xem thêm</span>
                     <div className='flex md:mb-[5.21rem]'>
