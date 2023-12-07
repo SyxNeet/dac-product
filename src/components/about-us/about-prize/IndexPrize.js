@@ -3,13 +3,14 @@ import Banner from '@/components/common/Banner'
 import HandleChangeSlug from '@/components/common/HandleChangeSlug'
 import TitlePage_About_Us from '@/components/common/TitlePage_About_Us'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 
 export const IndexPrize = ({ data, lang, slugPage, titlePage,listSlug }) => {
   const dataPrize = data?.data?.page?.translation
   const [active,setActive] = useState(-1)
   const [itemClick,setItemClick] = useState()
   const handleClick = (num,e) => {
+    console.log(e.target);
     if(num === active) {
       setActive(-1)
     }else{
@@ -29,7 +30,7 @@ export const IndexPrize = ({ data, lang, slugPage, titlePage,listSlug }) => {
     }
   },[active])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const desc_box = document.querySelector('.active.description_prize')
     if(desc_box){
       const desc_award = desc_box.querySelector('.desc_award');
@@ -49,6 +50,7 @@ export const IndexPrize = ({ data, lang, slugPage, titlePage,listSlug }) => {
         textAboutUs={dataPrize?.prize?.banner?.textbanner}
         check={true}
       />
+      <main>
       <HandleChangeSlug listSlug={listSlug} />
       <TitlePage_About_Us check={2} slugPage={slugPage} titlePage={titlePage} lang={lang} />
       <div className='md:px-[9.46rem] px-[4.27rem] mt-[4.32rem] pb-[15.4rem]'>
@@ -69,7 +71,7 @@ export const IndexPrize = ({ data, lang, slugPage, titlePage,listSlug }) => {
                   ? 'active3 md:w-[84.16667rem] md:h-[50.8333rem] bg-[#DCDCDC] md:absolute z-[10]  max-md:!w-[100rem] max-md:!h-[76rem] fixed max-md:top-[50%] max-md:left-[50%] max-md:-translate-y-1/2 max-md:-translate-x-1/2' 
                   : 'relative'}`}
                 >
-                  <Image src={item?.image?.sourceUrl} width={1800} height={1000} quality={100} alt={item?.image?.altText || 'prize'} className={`image_prize ${index === active ? 'active' : ''}  object-cover w-full h-full`} />
+                  <Image src={item?.image?.sourceUrl} width={1800} height={1000} quality={100} alt={item?.image?.altText || 'prize'} priority className={`image_prize ${index === active ? 'active' : ''}  object-cover w-full h-full`} />
                   <div 
                     className={`${active === index ? 'active' : ''} description_prize ${( active === index  && (index === 0 || index === 1 || index === 2 || index === 3) 
                     ? 'right-[4.5rem] md:right-[1.45rem] md:!bottom-[2.4rem] max-md:!bottom-[5.7rem]' 
@@ -90,6 +92,7 @@ export const IndexPrize = ({ data, lang, slugPage, titlePage,listSlug }) => {
           ))}
         </div>
       </div>
+      </main>
     </section>
   )
 }
