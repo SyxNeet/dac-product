@@ -3,10 +3,12 @@ import React from 'react'
 import Banner from './Banner'
 import Product from './Product'
 import ProductItem from './ProductItem'
+import HandleChangeSlug from '../common/HandleChangeSlug'
 
-function Service({ lang, data, dataCate }) {
+function Service({ lang, data, dataCate,listSlug }) {
     return (
         <>
+            <HandleChangeSlug listSlug={listSlug} />
             <Banner data={data?.product?.banner} />
             <main>
                 <Product lang={lang} data={data?.product?.content} dataCate={dataCate} />

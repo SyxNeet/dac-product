@@ -2,6 +2,7 @@ import { gql } from '@apollo/client'
 const GET_DATA_PRODUCT_PAGE = `query getDataProductPage($language: LanguageCodeEnum!){
   page(id:"cG9zdDo0ODU="){
     translation(language:$language){
+      id
       product{
         banner{
           background{
@@ -43,6 +44,7 @@ query getDataCategoryProduct($language: LanguageCodeFilterEnum!) {
 const GET_DATA_PRODUCT_DETAIL = `query getDataProduct_detail($language: LanguageCodeEnum!, $slug: ID!) {
   serviceProduct(id: $slug, idType: SLUG) {
     translation(language: $language) {
+      id
       categoryProducts{
         nodes{
           id
@@ -148,6 +150,35 @@ query($language: LanguageCodeEnum!){
     }
   }
 }`
+const SLUG_PRODUCT_QUERY =(id)=> `{
+  page(id:"${id}"){
+    language{
+      code
+    }
+    slug
+    translations{
+      language{
+        code
+      }
+      slug
+    }
+  }
+}`
+
+const SLUG_PRODUCT_DETAIL_QUERY =(id)=> `{
+  serviceProduct(id: "${id}", idType: ID) {
+    language {
+      code
+    }
+    slug
+    translations {
+      language {
+        code
+      }
+      slug
+    }
+  }
+}`
 export {
   GET_DATA_PRODUCT_PAGE,
   GET_DATA_CATEGORY_PRODUCT_SERVICE,
@@ -156,5 +187,7 @@ export {
   META_PRODUCT_DETAIL_QUERY,
   META_SERVICE_PRODUCT_QUERY,
   OTHER_PRODUCT_QUERY,
-  SUBTITLE_PRODUCT_QUERY
+  SUBTITLE_PRODUCT_QUERY,
+  SLUG_PRODUCT_QUERY,
+  SLUG_PRODUCT_DETAIL_QUERY
 }

@@ -3,8 +3,9 @@ import History from './History'
 import HistoryMobile from './HistoryMobile'
 import Banner from '@/components/common/Banner'
 import TitlePage_About_Us from '@/components/common/TitlePage_About_Us'
+import HandleChangeSlug from '@/components/common/HandleChangeSlug'
 
-function IndexJourney({ data, lang, slugPage, titlePage }) {
+function IndexJourney({ data, lang, slugPage, titlePage,listSlug }) {
   const dataJourney = data?.data?.page?.translation
   return (
     <>
@@ -15,6 +16,7 @@ function IndexJourney({ data, lang, slugPage, titlePage }) {
         textAboutUs={dataJourney?.journey?.banner?.textbanner}
         check={true}
       />
+      <HandleChangeSlug listSlug={listSlug} />
       <main>
         <TitlePage_About_Us check={1} lang={lang} slugPage={slugPage} titlePage={titlePage} />
         <div className='mt-[5.31rem]'>

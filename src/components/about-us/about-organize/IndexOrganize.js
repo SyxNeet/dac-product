@@ -3,8 +3,9 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import Banner from '@/components/common/Banner'
 import TitlePage_About_Us from '@/components/common/TitlePage_About_Us'
+import HandleChangeSlug from '@/components/common/HandleChangeSlug'
 
-export const IndexOrganize = ({ data, lang, slugPage, titlePage }) => {
+export const IndexOrganize = ({ data, lang, slugPage, titlePage, listSlug }) => {
   const [active,setActive] = useState(false)
   const dataOrganize = data?.data?.page?.translation
   return (
@@ -15,6 +16,7 @@ export const IndexOrganize = ({ data, lang, slugPage, titlePage }) => {
         textAboutUs={dataOrganize?.organize?.banner?.textBanner}
         check={true}
       />
+      <HandleChangeSlug listSlug={listSlug} />
       <main className='content pb-[2.31rem]'>
         <TitlePage_About_Us check={3} lang={lang} slugPage={slugPage} titlePage={titlePage} />
         <h1 className='heading pl-[5.47rem] mt-[4.32rem]'>{dataOrganize?.organize?.content?.heading}</h1>

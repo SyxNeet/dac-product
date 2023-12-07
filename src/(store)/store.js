@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
 const useStore = create((set, get) => ({
-  slug: [],
+  slug: {},
   setSlug: (data) => {
     set((state) => {
       return {
