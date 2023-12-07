@@ -1,9 +1,26 @@
-// 'use client'
+'use client'
 import Link from 'next/link'
-import React from 'react'
+import React, { use, useEffect, useState } from 'react'
 import SelectLangMb from '../lang/SelectLangMb'
-
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import RemoveCircleSharpIcon from '@mui/icons-material/RemoveCircleSharp';
 function MenuMb({ data, handleCloseModal, lang }) {
+    const [active,setActive] = useState(null)
+    const [active2,setActive2] = useState(null)
+    const [hiddenPlus,setHiddenPlus] = useState()
+    const [hiddenMinus,setHiddenMinus] = useState()
+    const [list,setList] = useState(null)
+    
+    useEffect(()=>{
+        const listMenus = document.querySelectorAll('.menu_mobile_item')
+        const plusIcons = document.querySelectorAll('.plus_icon')    
+        const minusIcons = document.querySelectorAll('.minus_icon') 
+        setList(listMenus)
+        setHiddenPlus(plusIcons)
+        setHiddenMinus(minusIcons)   
+        
+    },[active])
+    
     return (
         <section className='pt-[6.93rem] px-[4.27rem] pb-[8.53rem] relative'>
             <svg onClick={handleCloseModal} xmlns="http://www.w3.org/2000/svg" className='w-[10.4rem] h-[10.4rem] fixed top-[6.23rem] right-[4.27rem]' viewBox="0 0 39 39" fill="none">
@@ -26,12 +43,40 @@ function MenuMb({ data, handleCloseModal, lang }) {
                     return (
                         <div key={index} className='mb-[2.67rem]'>
                             {
-                                (item?.listContent && index !== 2) ?
+                                (item?.listContent) ?
                                     (
-                                        <span
+                                        <div className='flex gap-[2rem] items-center'>
+                                            <span
                                             className='text-[#444] text-[5.33333rem]  font-bold'
                                             key={index}>{lang === 'vi' ? item?.link : item?.linkEn}
-                                        </span>
+                                            </span>
+                                            <span 
+                                                onClick={()=>{
+                                                    setActive(index)
+                                                }} 
+                                                className={`w-[5rem] relative top-[0.75rem] plus_icon`}
+                                                style={
+                                                    index === active ? {
+                                                      display: hiddenPlus[active] || hiddenPlus[active - 1] ? 'none' : 'block'
+                                                    } : {}
+                                                  }
+                                            >
+                                                <AddCircleIcon className={`w-full h-full`} />
+                                            </span>
+                                            <span 
+                                                onClick={()=>{
+                                                    setActive(null)
+                                                }} 
+                                                className={`w-[5rem] minus_icon ${active2 === null ? 'hidden' :""}`}
+                                                style={
+                                                    index === active ? {
+                                                      display: (hiddenMinus[active] || hiddenMinus[active - 1]) ? 'block' : 'none'
+                                                    } : {}
+                                                  }
+                                            >
+                                                <RemoveCircleSharpIcon className={`w-full h-full relative top-[0.75rem] `} />
+                                            </span>
+                                        </div>
                                     )
                                     :
                                     (
@@ -45,8 +90,16 @@ function MenuMb({ data, handleCloseModal, lang }) {
                             {
                                 item?.listContent && (
                                     <div
-                                        className='flex flex-col mt-[2rem] ml-[5rem]'
-
+                                        className='flex flex-col mt-[2rem] ml-[5rem] menu_mobile_item'
+                                        style={
+                                           (index === active )
+                                                ? 
+                                                {
+                                                    height:(list[active] && active === 0) ? list[active].scrollHeight : list[active-1].scrollHeight,
+                                                    overflow:'visible'
+                                                }
+                                                : { height: '0px', overflow: 'hidden' }
+                                        }
                                     >
                                         {item?.listContent?.map((mbItem, index) => {
                                             return (
