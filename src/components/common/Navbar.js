@@ -269,7 +269,7 @@ function Navbar({
                     (item?.listContent  && index !== 2 ) ?
                     (
                         <span
-                            className={`text-[#000] text-[1.04167rem]  ${checkHome ? '!text-[#000]' : 'text-[#fff]'} link ${(checkScroll && !checkHome) && '!text-[#000]'} `}
+                            className={`text-[#000] md:text-[1.2rem] lg:text-[1.04167rem]  ${checkHome ? '!text-[#000]' : 'text-[#fff]'} link ${(checkScroll && !checkHome) && '!text-[#000]'} `}
                             key={index}>{lang === 'vi' ? item?.link : item?.linkEn}
                         </span>
                     )
@@ -277,7 +277,7 @@ function Navbar({
                     (
                         <Link
                             onClick={handleCloseModal}
-                            className={`text-[#000] mb-[2.67rem] text-[1.04167rem] ${checkHome ? '!text-[#000]' : 'text-[#fff]'} link ${(checkScroll && !checkHome) && '!text-[#000]'} `}
+                            className={`text-[#000] mb-[2.67rem] md:text-[1.2rem] lg:text-[1.04167rem] ${checkHome ? '!text-[#000]' : 'text-[#fff]'} link ${(checkScroll && !checkHome) && '!text-[#000]'} `}
                             href={`/${lang}/${item?.slug}` || '/'}>{lang === 'vi' ? item?.link : item?.linkEn}
                         </Link>
                     )

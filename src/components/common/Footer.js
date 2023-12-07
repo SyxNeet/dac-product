@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import icon1 from '@/assets/imgs/Group.svg'
 import icon2 from '@/assets/imgs/Group-1.svg'
@@ -31,6 +31,22 @@ function Footer({ lang, data,dataSocialFooter }) {
     contentRef.current.style.height = 'auto'
     contentRef.current.style.overflow = 'visible'
   }
+
+  useEffect(()=>{
+    if(isMobile){
+      const title_name_company = document.querySelector('.title_name_company')
+      const listContent = title_name_company.querySelectorAll('p')
+      listContent.forEach((item,index) => {
+        if(index !== 0 && index !== 1 && !active){
+          item.style.display = 'none'
+        }
+        if(index !== 0 && index !== 1 && active){
+          item.style.display = 'block'
+        }
+      })
+    }
+
+  },[active])
   const listSocial = dataSocialFooter?.data?.page?.translation?.homepage?.partners?.socialAction
   
   return (
@@ -40,26 +56,26 @@ function Footer({ lang, data,dataSocialFooter }) {
           <Image src={data?.homepage?.footer?.logo?.sourceUrl} width={100} height={100} className='object-cover w-[7.1875rem] h-[4.09453rem] max-md:w-[20.53333rem] max-md:h-[11.73333rem]' alt={data?.homepage?.footer?.logo?.altText || 'DAC'} />
         </div>
         <div className='flex items-start max-md:flex-col justify-between md:mt-[3.58rem] mt-[6.4rem] description2 md:!tracking-[-0.05rem] !text-[#888] md:mb-[3rem] mb-[6rem]'>
-          <div className="left md:w-[44rem] md:mr-[10.4rem] max-md:mb-[8rem] title_name_company" dangerouslySetInnerHTML={{ __html: `${data?.homepage?.footer?.contentColumn1}` }}>
+          <div className="left md:w-[44rem] md:mr-[10.4rem] max-md:mb-[2rem] title_name_company" dangerouslySetInnerHTML={{ __html: `${data?.homepage?.footer?.contentColumn1}` }}>
           </div>
           <div className='flex flex-col'>
             <div ref={contentRef} className="right title_name_company" dangerouslySetInnerHTML={{ __html: `${data?.homepage?.footer?.contentColumn2}` }}></div>
-            <div className='flex mt-[3rem] max-md:hidden'>
-                  <div className='grid grid-cols-2 gap-[1rem] md:mr-[4.84rem]'>
-                    <Link href={`${listSocial?.facebook}`} target='_blank' > 
-                      <Image src={icon4} alt='icon' className='w-[4rem] h-[4rem] object-contain' />
+            <div className='flex mt-[3rem] max-md:flex-col-reverse'>
+                  <div className='grid md:grid-cols-2 grid-cols-4 gap-[1rem] md:mr-[4.84rem]'>
+                    <Link href={`${listSocial?.facebook}`} target='_blank' className='max-md:flex justify-center' > 
+                      <Image src={icon4} alt='icon' className='md:w-[4rem] md:h-[4rem] w-[13rem] h-[13rem] object-contain' />
                     </Link>
-                    <Link href={`${listSocial?.linkedin}`} target='_blank' >
-                      <Image src={icon3} alt='icon' className='w-[4rem] h-[4rem] object-contain' />
+                    <Link href={`${listSocial?.linkedin}`} target='_blank' className='max-md:flex justify-center' >
+                      <Image src={icon3} alt='icon' className='md:w-[4rem] md:h-[4rem] w-[13rem] h-[13rem] object-contain' />
                     </Link>
-                    <Link href={`tel:${listSocial?.phone}`} target='_blank' >
-                      <Image src={icon2} alt='icon' className='w-[4rem] h-[4rem] object-contain' />
+                    <Link href={`tel:${listSocial?.phone}`} target='_blank' className='max-md:flex justify-center' >
+                      <Image src={icon2} alt='icon' className='md:w-[4rem] md:h-[4rem] w-[13rem] h-[13rem] object-contain' />
                     </Link>
-                    <Link href={`${listSocial?.zalo}`} target='_blank' >
-                      <Image src={icon1} alt='icon' className='w-[4rem] h-[4rem] object-contain' /> 
+                    <Link href={`${listSocial?.zalo}`} target='_blank' className='max-md:flex justify-center' >
+                      <Image src={icon1} alt='icon' className='md:w-[4rem] md:h-[4rem] w-[13rem] h-[13rem] object-contain' /> 
                     </Link>
                   </div>
-                  <Image src={imgFooter} alt='chứng nhận' className='w-[17.65625rem] h-[6.77083rem]' />
+                  <Image src={imgFooter} alt='chứng nhận' className='md:w-[17.65625rem] md:h-[6.77083rem] w-[43.65625rem] h-[15.77083rem] max-md:mb-[4rem]' />
             </div>
           </div>
           

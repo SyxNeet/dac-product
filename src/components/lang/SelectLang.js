@@ -7,7 +7,6 @@ import useStore from '@/(store)/store'
 function SelectLang({ lang, checkHome, color }) {
   const pathName = usePathname()
   const slug = useStore((state) => state.slug);
-  console.log('slug',slug);
   const redirectedPathName = (locale) => {
     if (!pathName) return `/${currentLang}`
     const segments = pathName.split('/')
@@ -28,7 +27,7 @@ function SelectLang({ lang, checkHome, color }) {
           href={locale.locale==='vi'?slug?.slugVi||'/':slug?.slugEn||'/en'}
           className={`flex link items-center w-full border-r border-solid  last:border-none px-[0.6rem] ${checkHome ? 'border-black' : ''} border-[${color}] ${lang==='vi'&&index===0?'active':''} ${lang==='en'&&index===1?'active':''}`}
         >
-          <span className={`uppercase text-[1rem]  ${checkHome ? '!text-black' : 'text-white'} !text-[${color}]`}>{locale.locale}</span>
+          <span className={`uppercase lg:text-[1rem] md:text-[1.2rem]  ${checkHome ? '!text-black' : 'text-white'} !text-[${color}]`}>{locale.locale}</span>
         </Link>
       ))}
     </div>
