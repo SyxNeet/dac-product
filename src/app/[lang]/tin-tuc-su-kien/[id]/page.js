@@ -42,7 +42,6 @@ async function page({ params: { lang,id } }) {
     slugEn:item?.slugEn
   }
 
-  console.log(listSlug);
   return (
     <Blog listSlug={listSlug} slug={id} dataBlog={dataNews?.data?.page?.translation} lang={lang} />
   )

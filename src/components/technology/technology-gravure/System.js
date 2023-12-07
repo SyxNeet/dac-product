@@ -11,7 +11,7 @@ function System({ dataSystem }) {
                 <div className='md:mr-[2.6rem]'>
                     <h2 className='heading md:w-[31.40625rem]'>{dataSystem?.title}</h2>
                     <div
-                        className='md:w-[36.66667rem] md:text-[1.35417rem] text-[4.26667rem] grid md:gap-[1.5rem] gap-[4rem] list_solutions md:tracking-[-0.02708rem] leading-[1.2] tracking-[-0.128rem] text-[#444] font-normal text-justify md:mt-[1.77rem] mt-[6.13rem]'
+                        className='md:w-[36.66667rem] md:text-[1.5rem] lg:text-[1.35417rem] text-[4.26667rem] grid md:gap-[1.5rem] gap-[4rem] list_solutions md:tracking-[-0.02708rem] leading-[1.2] tracking-[-0.128rem] text-[#444] font-normal text-justify md:mt-[1.77rem] mt-[6.13rem]'
                         dangerouslySetInnerHTML={{ __html: `${dataSystem?.description}` }}
                     >
                     </div>

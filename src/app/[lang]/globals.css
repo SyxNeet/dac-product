@@ -5,6 +5,13 @@
 html {
   font-size: 1vw;
 }
+@media screen and (min-width:1800px){
+  html {
+    font-size: 17px;
+  }
+}
+  
+
 body {
   color: #444;
   overflow-x: hidden;
