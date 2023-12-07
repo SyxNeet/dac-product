@@ -152,6 +152,10 @@ html {
     }
 }
 
+.popUpJob{
+  transition: all 0.5s;
+  transform: translateX(100%);
+}
 
 .arrow_down{
   position: relative;
