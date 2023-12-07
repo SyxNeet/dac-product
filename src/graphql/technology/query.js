@@ -1,6 +1,7 @@
 const GET_DATA_TECHNOLOGY_OFFSET = `query getDataPageOffset($language :LanguageCodeEnum!){
   page(id:"cG9zdDo1MzA="){
 		translation(language:$language){
+      id
       slug
       technology_common{
       banner{
@@ -48,6 +49,7 @@ const GET_DATA_TECHNOLOGY_OFFSET = `query getDataPageOffset($language :LanguageC
 const GET_DATA_TECHNOLOGY_FLEXO = `query getDataPageFlexo($language :LanguageCodeEnum!){
   page(id:"cG9zdDo1MzI="){
 		translation(language:$language){
+      id
       slug
       technology_common{
       banner{
@@ -96,6 +98,7 @@ const GET_DATA_TECHNOLOGY_GRAVURE = `
 query getDataPageGravure($language :LanguageCodeEnum!){
   page(id:"cG9zdDo1MzY="){
 		translation(language:$language){
+      id
       slug
       technology_common{
       banner{
@@ -144,6 +147,7 @@ const GET_DATA_TECHNOLOGY_DIGITAL = `
 query getDataPageDigital($language :LanguageCodeEnum!){
   page(id:"cG9zdDo1NDI="){
 		translation(language:$language){
+      id
       slug
       technology_common{
       banner{
@@ -191,6 +195,7 @@ query getDataPageDigital($language :LanguageCodeEnum!){
 const GET_DATA_TECHNOLOGY_OTHERPRINT = `query getDataPageOtherPrint($language :LanguageCodeEnum!){
   page(id:"cG9zdDo1NDQ="){
 		translation(language:$language){
+      id
       slug
       technology_otherPrinting{
         banner{
@@ -299,6 +304,20 @@ const GET_SLUG_OTHERPRINT = `query getDataPageOffset($language :LanguageCodeEnum
     }
   }
 }`
+const SLUG_TECH_PAGE_QUERY =(id)=> `{
+  page(id:"${id}"){
+    language{
+      code
+    }
+    slug
+    translations{
+      language{
+        code
+      }
+      slug
+    }
+  }
+}`
 export {
   GET_DATA_TECHNOLOGY_DIGITAL,
   GET_DATA_TECHNOLOGY_GRAVURE,
@@ -309,5 +328,6 @@ export {
   GET_SLUG_FLEXO,
   GET_SLUG_GRAVURE,
   GET_SLUG_DIGITAL,
-  GET_SLUG_OTHERPRINT
+  GET_SLUG_OTHERPRINT,
+  SLUG_TECH_PAGE_QUERY
 }
