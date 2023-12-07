@@ -83,7 +83,7 @@ function MenuMb({ data, handleCloseModal, lang }) {
                                         <Link
                                             onClick={handleCloseModal}
                                             className='text-[#444] mb-[2.67rem] text-[5.33333rem] font-bold'
-                                            href={`/${lang}/${item?.slug}` || '/'}>{lang === 'vi' ? item?.link : item?.linkEn}
+                                            href={`/${lang}/${lang === 'vi' ? item?.slug : item?.slugEn || item?.slug}` || '/'}>{lang === 'vi' ? item?.link : item?.linkEn}
                                         </Link>
                                     )
                             }
@@ -105,7 +105,7 @@ function MenuMb({ data, handleCloseModal, lang }) {
                                             return (
                                                 <Link
                                                     onClick={handleCloseModal}
-                                                    href={`/${lang}/${item?.slug2}/${mbItem?.slug}` || '/'}
+                                                    href={`/${lang}/${lang === 'vi' ? item?.slug2 : item?.slug2En}/${lang === 'vi' ? mbItem?.slug : mbItem?.slugEn}` || '/'}
                                                     key={index}
                                                     dangerouslySetInnerHTML={{ __html: `${mbItem?.nameEn ? (lang === 'vi' ? mbItem?.name : mbItem?.nameEn) : mbItem.name}` }}
                                                     className='text-[#444] text-[3.46667rem] text_product_item_home leading-[116.662%] tracking-[-0.104rem] mb-[2.67rem]'>
