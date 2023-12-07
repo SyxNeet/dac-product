@@ -2,10 +2,11 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { Pagination,Autoplay,EffectCreative } from 'swiper/modules';
+import { Pagination,Autoplay } from 'swiper/modules';
 import Link from 'next/link';
+import HandleChangeSlug from '@/components/common/HandleChangeSlug';
 
-function ServiceDetail({ data, lang,otherProduct,subTitle }) {
+function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
     const [indexSlide, setIndexSlide] = useState(0)
     const swiperRef = useRef()
     const swiperRef1 = useRef()
@@ -53,6 +54,7 @@ function ServiceDetail({ data, lang,otherProduct,subTitle }) {
     
     return (
         <section className="md:pt-[10.26rem] pt-[29.3rem]">
+            <HandleChangeSlug listSlug={listSlug} />
             <div className='md:px-[4.27rem]'>
                 <svg xmlns="http://www.w3.org/2000/svg" className='w-full' viewBox="0 0 1759 2" fill="none">
                     <path d="M1 1H1758" stroke="black" stroke-linecap="round" />

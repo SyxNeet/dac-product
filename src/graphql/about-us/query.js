@@ -3,6 +3,7 @@ const GET_DATA_ABOUT_US_VISION = `
 query ($language: LanguageCodeEnum!) {
   page(id: "cG9zdDoxMzk=") {
     translation(language: $language) {
+      id
       slug
       vision {
         banner {
@@ -42,6 +43,7 @@ query ($language: LanguageCodeEnum!) {
 const GET_DATA_ABOUT_US_JOURNEY = `query ($language: LanguageCodeEnum!) {
     page(id: "cG9zdDoxNjg=") {
       translation(language: $language) {
+        id
         slug
         journey {
           banner {
@@ -77,6 +79,7 @@ const GET_DATA_ABOUT_US_JOURNEY = `query ($language: LanguageCodeEnum!) {
 const GET_DATA_ABOUT_US_PRIZE = `query ($language: LanguageCodeEnum!) {
   page(id: "cG9zdDoxNzQ=") {
     translation(language: $language) {
+      id
       slug
       prize {
         banner {
@@ -107,6 +110,7 @@ const GET_DATA_ABOUT_US_PRIZE = `query ($language: LanguageCodeEnum!) {
 const GET_DATA_ABOUT_US_ORGANIZE = `query ($language: LanguageCodeEnum!) {
     page(id: "cG9zdDoxNzY=") {
       translation(language: $language) {
+        id
         slug
         organize {
           banner{
@@ -247,6 +251,21 @@ query ($language: LanguageCodeEnum!) {
     }
   }
 }`
+
+const SLUG_VISION_PAGE_QUERY =(id)=> `{
+  page(id:"${id}"){
+    language{
+      code
+    }
+    slug
+    translations{
+      language{
+        code
+      }
+      slug
+    }
+  }
+}`
 export {
     GET_DATA_ABOUT_US_JOURNEY,
     GET_DATA_ABOUT_US_ORGANIZE,
@@ -259,5 +278,6 @@ export {
     SLUG_JOURNEY_QUERY,
     SLUG_ORGANIZE_QUERY,
     SLUG_PRIZE_QUERY,
-    SLUG_VISION_QUERY
+    SLUG_VISION_QUERY,
+    SLUG_VISION_PAGE_QUERY
 }

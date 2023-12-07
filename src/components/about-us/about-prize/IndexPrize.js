@@ -1,10 +1,11 @@
 'use client'
 import Banner from '@/components/common/Banner'
+import HandleChangeSlug from '@/components/common/HandleChangeSlug'
 import TitlePage_About_Us from '@/components/common/TitlePage_About_Us'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
-export const IndexPrize = ({ data, lang, slugPage, titlePage }) => {
+export const IndexPrize = ({ data, lang, slugPage, titlePage,listSlug }) => {
   const dataPrize = data?.data?.page?.translation
   const [active,setActive] = useState(-1)
   const [itemClick,setItemClick] = useState()
@@ -48,6 +49,7 @@ export const IndexPrize = ({ data, lang, slugPage, titlePage }) => {
         textAboutUs={dataPrize?.prize?.banner?.textbanner}
         check={true}
       />
+      <HandleChangeSlug listSlug={listSlug} />
       <TitlePage_About_Us check={2} slugPage={slugPage} titlePage={titlePage} lang={lang} />
       <div className='md:px-[9.46rem] px-[4.27rem] mt-[4.32rem] pb-[15.4rem]'>
         <h2 className='heading relative md:left-[1.8rem] max-md:w-[70%]'>{dataPrize?.prize?.content?.heading}</h2>
