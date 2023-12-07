@@ -61,7 +61,7 @@ function MenuMb({ data, handleCloseModal, lang }) {
                                                     } : {}
                                                   }
                                             >
-                                                <AddCircleIcon className={`w-full h-full`} />
+                                                <AddCircleIcon className={`!w-full !h-full`} />
                                             </span>
                                             <span 
                                                 onClick={()=>{
@@ -74,7 +74,7 @@ function MenuMb({ data, handleCloseModal, lang }) {
                                                     } : {}
                                                   }
                                             >
-                                                <RemoveCircleSharpIcon className={`w-full h-full relative top-[0.75rem] `} />
+                                                <RemoveCircleSharpIcon className={`!w-full !h-full relative top-[0.75rem] `} />
                                             </span>
                                         </div>
                                     )
