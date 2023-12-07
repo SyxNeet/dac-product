@@ -183,6 +183,18 @@ const SLUG_RECRUITMENT_DETAIL_QUERY =(id)=> `{
     }
   }
 }`
+
+const SLUG_JOB_FEATURE = `query ($language: LanguageCodeFilterEnum!) {
+  allJobOpportunity(
+    first: 10
+    where: {language: $language, orderby: {field: DATE, order: DESC}}
+  ){
+    nodes{
+      slug
+      title
+    }
+  }
+}`
 export {
   GET_DATA_RECRUIMENT_DETAIL,
   GET_DATA_NEW_JOBS,
@@ -191,5 +203,6 @@ export {
   META_RECRUITMENT_QUERY,
   META_RECRUITMENT_DETAIL_QUERY,
   SLUG_RECRUITMENT_QUERY,
-  SLUG_RECRUITMENT_DETAIL_QUERY
+  SLUG_RECRUITMENT_DETAIL_QUERY,
+  SLUG_JOB_FEATURE
 }

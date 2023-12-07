@@ -106,40 +106,49 @@ function Navbar({
       link: 'VỀ CHÚNG TÔI',
       linkEn: 'ABOUT-US',
       slug: 've-chung-toi/tam-nhin',
+      slugEn: 'about-us/vision',
       slug2: 've-chung-toi',
+      slug2En: 'about-us',
       listContent: [
         {
           name: 'Tầm nhìn - Sứ mệnh - Giá trị cốt lõi',
           nameEn: 'Vision - Mission - Core values',
-          slug: 'tam-nhin'
+          slug: 'tam-nhin',
+          slugEn: 'vision'
         },
         {
           name: 'Chặng đường phát triển',
           nameEn: 'Development journey',
-          slug: 'chang-duong-phat-trien'
+          slug: 'chang-duong-phat-trien',
+          slugEn: 'history'
         },
         {
           name: 'Chứng chỉ và giải thưởng',
           nameEn: 'Certificates and awards',
-          slug: 'chung-nhan'
+          slug: 'chung-nhan',
+          slug: 'awards'
         },
         {
           name: 'Sơ đồ tổ chức',
           nameEn: 'Organizational chart',
-          slug: 'so-do-to-chuc'
+          slug: 'so-do-to-chuc',
+          slugEn: 'company-structure'
         }
       ]
     },
     {
       link: 'THIẾT KẾ',
       linkEn: 'DESIGN',
-      slug: 'thiet-ke'
+      slug: 'thiet-ke',
+      slugEn: 'news'
     },
     {
       link: 'SẢN PHẨM DỊCH VỤ',
       linkEn: 'PRODUCTS AND SERVICES',
       slug: 'san-pham-dich-vu',
+      slugEn: 'products',
       slug2: 'san-pham-dich-vu',
+      slug2En: 'products',
       listContent: [
         {
           name: dataProductList?.[0]?.product_category?.info?.title,
@@ -179,32 +188,40 @@ function Navbar({
       link: 'CÔNG NGHỆ',
       linkEn: 'TECHNOLOGY',
       slug: 'cong-nghe/in-offset',
+      slugEn:'technology/offset-printing',
       slug2: 'cong-nghe',
+      slug2: 'technology',
       listContent: [
         {
           name: 'Công nghệ in Offset',
           nameEn: 'Offset printing technology',
-          slug: 'in-offset'
+          slug: 'in-offset',
+          slugEn: 'offset-printing'
         },
         {
           name: 'Công nghệ in Flexo',
           nameEn: 'Flexo printing technology',
-          slug: 'in-flexo'
+          slug: 'in-flexo',
+          slug: 'flexography'
         },
         {
           name: 'Công nghệ in Ống đồng',
           nameEn: 'Gravure printing technology',
-          slug: 'in-ong-dong'
+          slug: 'in-ong-dong',
+          slug: 'gravure-printing'
+
         },
         {
           name: 'Công nghệ in Kỹ thuật số',
           nameEn: 'Digital printing technology',
-          slug: 'in-kts'
+          slug: 'in-kts',
+          slug: 'digital-printing',
         },
         {
           name: 'Giải pháp chống giả',
           nameEn: 'Anti-counterfeit solution',
-          slug: 'khac'
+          slug: 'khac',
+          slug: 'others'
         }
       ]
     },
@@ -244,12 +261,14 @@ function Navbar({
     {
       link: 'TUYỂN DỤNG',
       linkEn: 'RECRUITMENT',
-      slug: 'tuyen-dung'
+      slug: 'tuyen-dung',
+      slugEn: 'recruitment'
     },
     {
       link: 'LIÊN HỆ',
       linkEn: 'CONTACT',
-      slug: 'lien-he'
+      slug: 'lien-he',
+      slugEn: 'contact',
     },
   ]
 
@@ -278,7 +297,7 @@ function Navbar({
                         <Link
                             onClick={handleCloseModal}
                             className={`text-[#000] mb-[2.67rem] md:text-[1.2rem] lg:text-[1.04167rem] ${checkHome ? '!text-[#000]' : 'text-[#fff]'} link ${(checkScroll && !checkHome) && '!text-[#000]'} `}
-                            href={`/${lang}/${item?.slug}` || '/'}>{lang === 'vi' ? item?.link : item?.linkEn}
+                            href={`/${lang}/${lang === 'vi' ? item?.slug : item?.slugEn ||  item?.slug}` || '/'}>{lang === 'vi' ? item?.link : item?.linkEn}
                         </Link>
                     )
                   }
