@@ -10,7 +10,7 @@ function BlogItem({ lang,data,slug }) {
             </div>
             <div className='flex flex-col justify-center items-center max-md:mt-[3.47rem] max-md:mb-[7rem] max-md:flex-col-reverse'>
                 <h4 className='description md:mt-[1.35rem] max-md:!text-[6.93333rem]'>{data?.news?.name}</h4>
-                <span className='subDescription md:mt-[0.5rem]'>{data?.news?.time}</span>
+                <span className='subDescription md:mt-[0.5rem] max-md:mb-[4rem]'>{data?.news?.time}</span>
             </div>
         </Link>
     )

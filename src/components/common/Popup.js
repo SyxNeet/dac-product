@@ -24,8 +24,7 @@ function Popup({dataPopup,lang}) {
       const randomElement = dataPopup[randomIndex];
     return (
     !check &&
-        <div ref={popUpRef} className='md:fixed max-md:hidden top-[20%] right-[0] z-[9] w-[20rem] popUpJob rounded-tl-[1rem] rounded-bl-[1rem] bg-[beige] px-[1rem] py-[1rem]'>
-            <div className='absolute inset-0'></div>
+        <div ref={popUpRef} className='md:fixed max-md:hidden top-[20%] right-[0] z-[9] min-w-[20rem] popUpJob rounded-tl-[1rem] rounded-bl-[1rem] bg-[beige] px-[1rem] py-[1rem]'>
             <p className='text-[1.7rem] text-[#444] leading-[1.2] '>{lang === 'vi' ? 'Tuyển dụng mới!!' : 'New Job!!'}</p>
             <Link href={`/${lang}/${lang === 'vi' ? 'tuyen-dung' : 'recruitment'}/${randomElement?.slug}`}>
                 <h2 className='text-[1.3rem] text-[#444] leading-[1.2] '>

@@ -34,7 +34,6 @@ function Banner({ lang, dataBanner,dataDesign }) {
               );
               // Update locomotiveScroll on component updates (optional)
               locomotiveScroll.update(()=>{
-                console.log('vao 4');
               });
 
               // Handle cleanup or destroy if the component unmounts (optional)

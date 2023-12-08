@@ -234,7 +234,7 @@ function Navbar({
       listContent: [
         {
           name: 'Con người APP',
-          nameEn: 'APP-PEOPLE',
+          nameEn: 'App-People',
           slug: 'con-nguoi-app',
           slugEn:'app-people'
         },
