@@ -108,7 +108,7 @@ function MenuMb({ data, handleCloseModal, lang }) {
                                                     href={`/${lang}/${lang === 'vi' ? item?.slug2 : item?.slug2En}/${lang === 'vi' ? mbItem?.slug : mbItem?.slugEn}` || '/'}
                                                     key={index}
                                                     dangerouslySetInnerHTML={{ __html: `${mbItem?.nameEn ? (lang === 'vi' ? mbItem?.name : mbItem?.nameEn) : mbItem.name}` }}
-                                                    className='text-[#444] text-[3.46667rem] text_product_item_home leading-[116.662%] tracking-[-0.104rem] mb-[2.67rem]'>
+                                                    className='text-[#444] capitalize text-[3.46667rem] text_product_item_home leading-[116.662%] tracking-[-0.104rem] mb-[2.67rem]'>
                                                 </Link>
                                             )
                                         })}
