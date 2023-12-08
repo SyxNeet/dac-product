@@ -2,11 +2,11 @@
 import { gsap } from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 ScrollTrigger.normalizeScroll(true);
 export default function GsapSmoother({ children }) {
-  useLayoutEffect(() => {
+  useEffect(() => {
     ScrollSmoother.create({
       smooth: 1,
       effects: true,

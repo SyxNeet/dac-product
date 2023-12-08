@@ -19,7 +19,6 @@ function Banner({ lang, dataBanner, dataDesign }) {
             ? window.innerWidth * 0.05 * index
             : window.innerWidth * 0.02 * index
         }vw`,
-        markers: true,
         onEnter: (self) => {
           gsap.to(item, {
             zIndex: "10",

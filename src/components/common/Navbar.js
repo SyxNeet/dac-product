@@ -140,7 +140,7 @@ function Navbar({
       link: 'THIẾT KẾ',
       linkEn: 'DESIGN',
       slug: 'thiet-ke',
-      slugEn: 'news'
+      slugEn: 'design'
     },
     {
       link: 'SẢN PHẨM DỊCH VỤ',
