@@ -12,7 +12,7 @@ export default function GsapSmoother({ children }) {
       effects: true,
       normalizeScroll: true,
     });
-  });
+  },[children]);
   return (
     <div id="smooth-wrapper">
       <div id="smooth-content">{children}</div>
