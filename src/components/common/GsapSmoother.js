@@ -5,12 +5,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect } from "react";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 ScrollTrigger.normalizeScroll(true);
+ScrollTrigger.config({ ignoreMobileResize: true });
 export default function GsapSmoother({ children }) {
   useEffect(() => {
     ScrollSmoother.create({
-      smooth: 1,
+      smooth: 0.8,
       effects: true,
       normalizeScroll: true,
+      smoothTouch: 1,
     });
   });
   return (

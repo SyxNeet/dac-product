@@ -2,75 +2,107 @@
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Link from "next/link";
-import { useLayoutEffect } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { useMediaQuery } from "react-responsive";
 gsap.registerPlugin(ScrollTrigger);
 function Banner({ lang, dataBanner, dataDesign }) {
   const isMobile = useMediaQuery({ query: "(max-width: 767.9px)" });
+  const boxRef = useRef(null);
 
   useLayoutEffect(() => {
     const list = document.querySelectorAll(".tissue");
-
-    list.forEach((item, index) => {
-      ScrollTrigger.create({
-        trigger: ".frame",
-        start: `start+=${
-          isMobile
-            ? window.innerWidth * 0.05 * index
-            : window.innerWidth * 0.02 * index
-        }vw`,
-        onEnter: (self) => {
-          gsap.to(item, {
-            zIndex: "10",
-            opacity: "1",
-            duration: "0",
-          });
-          for (let i = 0; i < list.length; i++) {
-            if (index !== i) {
-              gsap.to(list[i], {
-                zIndex: "1",
-                opacity: "0",
-                duration: "0",
-              });
-            }
-          }
-        },
-        onLeaveBack: (self) => {
-          gsap.to(item, {
-            zIndex: "1",
-            opacity: "0",
-            duration: "0",
-          });
-          for (let i = 0; i < list.length; i++) {
-            if (index == 0) {
-              gsap.to(list[0], {
-                zIndex: "10",
-                opacity: "1",
-                duration: "0",
-              });
-            } else {
-              if (i !== index - 1) {
-                gsap.to(list[i], {
-                  zIndex: "1",
-                  opacity: "0",
-                  duration: "0",
-                });
+    let ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        paused: true,
+        scrollTrigger: {
+          trigger: boxRef.current,
+          start: "top top",
+          end: "+=2000",
+          pin: true,
+          onUpdate: (self) => {
+            list.forEach((e, index) => {
+              if (
+                self.progress >= index * 0.0111111111111111 &&
+                self.progress < (index + 1) * 0.0111111111111111
+              ) {
+                e.style.zIndex = `${10 + index}`;
+                e.style.opacity = 1;
               } else {
-                gsap.to(list[i], {
-                  zIndex: "10",
-                  opacity: "1",
-                  duration: "0",
-                });
+                e.style.zIndex = 0;
+                e.style.opacity = 0;
               }
-            }
-          }
+            });
+          },
         },
       });
-    });
+    }, boxRef);
+
+    return () => ctx.revert();
+    // const list = document.querySelectorAll(".tissue");
+
+    // list.forEach((item, index) => {
+    //   ScrollTrigger.create({
+    //     trigger: ".frame",
+    //     start: `start+=${
+    //       isMobile
+    //         ? window.innerWidth * 0.05 * index
+    //         : window.innerWidth * 0.02 * index
+    //     }vw`,
+    //     onEnter: (self) => {
+    //       gsap.to(item, {
+    //         zIndex: "10",
+    //         opacity: "1",
+    //         duration: "0",
+    //       });
+    //       for (let i = 0; i < list.length; i++) {
+    //         if (index !== i) {
+    //           gsap.to(list[i], {
+    //             zIndex: "1",
+    //             opacity: "0",
+    //             duration: "0",
+    //           });
+    //         }
+    //       }
+    //     },
+    //     onLeaveBack: (self) => {
+    //       gsap.to(item, {
+    //         zIndex: "1",
+    //         opacity: "0",
+    //         duration: "0",
+    //       });
+    //       for (let i = 0; i < list.length; i++) {
+    //         if (index == 0) {
+    //           gsap.to(list[0], {
+    //             zIndex: "10",
+    //             opacity: "1",
+    //             duration: "0",
+    //           });
+    //         } else {
+    //           if (i !== index - 1) {
+    //             gsap.to(list[i], {
+    //               zIndex: "1",
+    //               opacity: "0",
+    //               duration: "0",
+    //             });
+    //           } else {
+    //             gsap.to(list[i], {
+    //               zIndex: "10",
+    //               opacity: "1",
+    //               duration: "0",
+    //             });
+    //           }
+    //         }
+    //       }
+    //     },
+    //   });
+    // });
   }, []);
   return (
     <>
-      <section className="banner banner_home relative md:w-full md:h-[300vw] xl:h-[170vw] lg:h-[250vw] h-[750vw] max-md:flex flex-col md:justify-center items-center frame ">
+      <section
+        ref={boxRef}
+        className="banner banner_home relative md:w-full md:h-[300vw] xl:h-[170vw] lg:h-[250vw] h-[750vw] max-md:flex flex-col md:justify-center items-center frame "
+      >
         <div className="overlay_banner_mobile md:hidden"></div>
         <div className="flex sticky_box items-center sticky max-md:pt-[10rem] max-md:w-full top-0 md:h-[95vh] justify-between  md:border-b border-solid border-[#888] max-md:flex-col">
           <div className="flex justify-center">
