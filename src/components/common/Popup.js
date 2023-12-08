@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react'
 
 function Popup({dataPopup,lang}) {
+    
     const [isVisible, setIsVisible] = useState(false);
     const [check, setCheck] = useState(false);
     const popUpRef = useRef()
@@ -20,8 +21,20 @@ function Popup({dataPopup,lang}) {
     } else if(!isVisible && popUpRef.current){
         popUpRef.current.style.transform = 'translateX(100%)'
     }
-      const randomIndex = Math.floor(Math.random() * dataPopup?.length);
-      const randomElement = dataPopup[randomIndex];
+      
+
+    const currentDate = new Date();
+    const notExpiredData = dataPopup?.filter(item => {
+    const expirationDateParts = item?.recruimentDetail?.infoJob?.expirationDate?.split('/');
+
+    // Tháng trong đối tượng Date bắt đầu từ 0, nên cần giảm đi 1
+    const expirationDate = new Date(expirationDateParts[2], expirationDateParts[1] - 1, expirationDateParts[0]);
+    return expirationDate > currentDate;
+    });
+
+    const randomIndex = Math.floor(Math.random() * notExpiredData?.length);
+    const randomElement = notExpiredData[randomIndex];
+
     return (
     !check &&
         <div ref={popUpRef} className='md:fixed max-md:hidden top-[20%] right-[0] z-[9] min-w-[20rem] popUpJob rounded-tl-[1rem] rounded-bl-[1rem] bg-[beige] px-[1rem] py-[1rem]'>
