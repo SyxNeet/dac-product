@@ -42,14 +42,14 @@ export default async function RootLayout({ children, params }) {
     <html lang={lang}>
       <body>
         <ApolloClientProvider>
+          <NavbarData lang={lang} />
+          <Popup
+            lang={lang}
+            dataPopup={dataJobFeature?.data?.allJobOpportunity?.nodes}
+          />
+          <SocialAction lang={lang} />
+          <ScrollUp />
           <GsapSmoother>
-            <NavbarData lang={lang} />
-            <Popup
-              lang={lang}
-              dataPopup={dataJobFeature?.data?.allJobOpportunity?.nodes}
-            />
-            <SocialAction lang={lang} />
-            <ScrollUp />
             {children}
             <Footer
               lang={lang}
