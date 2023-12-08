@@ -58,16 +58,17 @@
 }
 
 .image_prize{
-  // overflow: hidden;
-  // position: absolute;
-  // inset: 0;
   transition: all 0.3s;
-  &:hover{
-    transform: scale(1.05);
+  @media screen and (max-width:767px) {
+    &:hover{
+      transform: scale(1.05);
+    }
   }
 } 
 .image_prize.active:hover{
-  transform: scale(1);
+  @media screen and (max-width:767px) {
+    transform: scale(1);
+  }
 }
 .prize_item{
   position: relative;
@@ -78,7 +79,6 @@
   position: absolute;
   bottom: -1px;
   left: 0;
-  // right: 1.55rem;
   padding: 2.08rem 3.44rem 2.14rem 2.13rem;
   background: #444444b5;
   transform: translateY(100%);
@@ -94,23 +94,20 @@
 
 .card_image.active1{
   @media screen and (min-width:768px) {
-    animation: transformPosition 1.4s;
+    animation: transformPosition 1.4s forwards;
   }
-  // @media screen and (max-width:767px) {
-  //   animation: transformPositionMb 1.4s;
-  // }
 }
 
 
 .card_image.active2{
   @media screen and (min-width:768px) {
-    animation: transformPosition2 1.4s;
+    animation: transformPosition2 1.4s forwards;
   }
 }
 
 .card_image.active3{
   @media screen and (min-width:768px) {
-    animation: transformPosition3 1.4s;
+    animation: transformPosition3 1.4s forwards;
   }
 }
 

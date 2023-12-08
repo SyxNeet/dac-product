@@ -126,7 +126,7 @@ function Navbar({
           name: 'Chứng chỉ và giải thưởng',
           nameEn: 'Certificates and awards',
           slug: 'chung-nhan',
-          slug: 'awards'
+          slugEn: 'awards'
         },
         {
           name: 'Sơ đồ tổ chức',
@@ -190,7 +190,7 @@ function Navbar({
       slug: 'cong-nghe/in-offset',
       slugEn:'technology/offset-printing',
       slug2: 'cong-nghe',
-      slug2: 'technology',
+      slug2En: 'technology',
       listContent: [
         {
           name: 'Công nghệ in Offset',
@@ -202,26 +202,26 @@ function Navbar({
           name: 'Công nghệ in Flexo',
           nameEn: 'Flexo printing technology',
           slug: 'in-flexo',
-          slug: 'flexography'
+          slugEn: 'flexography'
         },
         {
           name: 'Công nghệ in Ống đồng',
           nameEn: 'Gravure printing technology',
           slug: 'in-ong-dong',
-          slug: 'gravure-printing'
+          slugEn: 'gravure-printing'
 
         },
         {
           name: 'Công nghệ in Kỹ thuật số',
           nameEn: 'Digital printing technology',
           slug: 'in-kts',
-          slug: 'digital-printing',
+          slugEn: 'digital-printing',
         },
         {
           name: 'Giải pháp chống giả',
           nameEn: 'Anti-counterfeit solution',
           slug: 'khac',
-          slug: 'others'
+          slugEn: 'others'
         }
       ]
     },
@@ -234,7 +234,7 @@ function Navbar({
       listContent: [
         {
           name: 'Con người APP',
-          nameEn: 'APP-PEOPLE',
+          nameEn: 'App-People',
           slug: 'con-nguoi-app',
           slugEn:'app-people'
         },

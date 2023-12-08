@@ -10,7 +10,6 @@ export const IndexPrize = ({ data, lang, slugPage, titlePage,listSlug }) => {
   const [active,setActive] = useState(-1)
   const [itemClick,setItemClick] = useState()
   const handleClick = (num,e) => {
-    console.log(e.target);
     if(num === active) {
       setActive(-1)
     }else{

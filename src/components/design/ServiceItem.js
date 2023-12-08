@@ -23,7 +23,7 @@ function ServiceItem({ icon, textEdit, text }) {
                 <Image src={icon} alt='icon' quality={100} width={1000} height={1000} className='md:w-[3.48958rem] md:h-[3.48958rem] w-[10.94533rem] h-[10.94533rem] object-contain absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2' />
             </div>
 
-            <div className='md:w-[23.59375rem] md:max-h-[12rem] text-justify max-md:mt-[4rem] md:text-[1.5rem] lg:text-[1.35417rem] text-[4.26667rem] text-[#444]'>
+            <div className='md:w-[23.59375rem] md:max-h-[12rem] text-justify leading-[1.2] max-md:mt-[4rem] md:text-[1.5rem] lg:text-[1.35417rem] text-[4.26667rem] text-[#444]'>
                 <p className='font-bold'>
                     {textEdit}
                 </p>

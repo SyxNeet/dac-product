@@ -1,4 +1,3 @@
-import React from 'react'
 import Banner from './Banner'
 import Design from './Design'
 import Product from './Product'
@@ -9,6 +8,26 @@ import VideoSlide from './VideoSlide'
 import Partners from './Partners'
 
 function HomePage({ lang, data, dataProductList,dataNewsHome }) {
+
+//   useEffect(() => {
+//     (
+//         async () => {
+//           try {
+//             const LocomotiveScroll = (await import('locomotive-scroll')).default
+//             const locomotiveScroll = new LocomotiveScroll(
+//                 {
+//                     el:document.querySelector('.scrollContainer'),
+//                     smooth:true
+//                 }
+//             );
+            
+//           } catch (error) {
+//             console.error('Error loading Locomotive Scroll:', error)
+//           }
+//         }
+//     )()
+// } , [])
+
   const dataBanner = data?.data?.page?.translation?.homepage?.banner
   const dataDesign = data?.data?.page?.translation?.homepage?.designSuccess
   const dataProduct = data?.data?.page?.translation?.homepage?.productAndService
@@ -18,16 +37,16 @@ function HomePage({ lang, data, dataProductList,dataNewsHome }) {
   const dataPartner = data?.data?.page?.translation?.homepage?.partners
   const dataSlideVideo = data?.data?.page?.translation?.homepage?.slideVideo
   return (
-    <>
+      <div> 
       <Banner dataBanner={dataBanner} dataDesign={dataDesign} lang={lang} />
-      <Design dataDesign={dataDesign} lang={lang} />
-      <Product dataProductList={dataProductList} dataProduct={dataProduct} lang={lang} />
-      <Technical dataTechnology={dataTechnology} lang={lang} />
-      <Solution dataSolution={dataSolution} />
-      <News dataNews={dataNews} dataNewsHome={dataNewsHome} lang={lang} />
-      <VideoSlide dataSlideVideo={dataSlideVideo} />
-      <Partners dataPartner={dataPartner} />
-    </>
+        <Design dataDesign={dataDesign} lang={lang} />
+        <Product dataProductList={dataProductList} dataProduct={dataProduct} lang={lang} />
+        <Technical dataTechnology={dataTechnology} lang={lang} />
+        <Solution dataSolution={dataSolution} />
+        <News dataNews={dataNews} dataNewsHome={dataNewsHome} lang={lang} />
+        <VideoSlide dataSlideVideo={dataSlideVideo} />
+        <Partners dataPartner={dataPartner} />
+      </div>
   )
 }
 

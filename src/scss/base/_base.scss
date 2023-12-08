@@ -3,6 +3,7 @@ html {
   // scroll-behavior: smooth;
 }
 
+
 .content {
   width: 91.6%;
   margin-left: auto;
@@ -152,6 +153,9 @@ html {
     }
 }
 
+.popUpJob{
+  transition: all 0.3s;
+}
 
 .arrow_down{
   position: relative;

@@ -8,12 +8,14 @@ import icon3 from '@/assets/imgs/Group-2.svg'
 import icon4 from '@/assets/imgs/Group-3.svg'
 import imgFooter from '@/assets/imgs/iconmoi.png'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 function Footer({ lang, data,dataSocialFooter }) {
   
   const [active, setActive] = useState(false)
   const contentRef = useRef()
   const scrollRef = useRef()
+  const pathName = usePathname()
   const isMobile = useMediaQuery({ query: '(max-width: 767.9px)' })
   const handleClick = () => {
     setActive(!active)
@@ -46,7 +48,7 @@ function Footer({ lang, data,dataSocialFooter }) {
       })
     }
 
-  },[active])
+  },[active,pathName])
   const listSocial = dataSocialFooter?.data?.page?.translation?.homepage?.partners?.socialAction
   
   return (
