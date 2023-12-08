@@ -17,7 +17,7 @@ function Banner({ lang, dataBanner, dataDesign }) {
         scrollTrigger: {
           trigger: boxRef.current,
           start: "top top",
-          end: "+=2000",
+          end: ()=> "+=" + 3 * window.innerHeight,
           pin: true,
           onUpdate: (self) => {
             list.forEach((e, index) => {
@@ -38,70 +38,12 @@ function Banner({ lang, dataBanner, dataDesign }) {
     }, boxRef);
 
     return () => ctx.revert();
-    // const list = document.querySelectorAll(".tissue");
-
-    // list.forEach((item, index) => {
-    //   ScrollTrigger.create({
-    //     trigger: ".frame",
-    //     start: `start+=${
-    //       isMobile
-    //         ? window.innerWidth * 0.05 * index
-    //         : window.innerWidth * 0.02 * index
-    //     }vw`,
-    //     onEnter: (self) => {
-    //       gsap.to(item, {
-    //         zIndex: "10",
-    //         opacity: "1",
-    //         duration: "0",
-    //       });
-    //       for (let i = 0; i < list.length; i++) {
-    //         if (index !== i) {
-    //           gsap.to(list[i], {
-    //             zIndex: "1",
-    //             opacity: "0",
-    //             duration: "0",
-    //           });
-    //         }
-    //       }
-    //     },
-    //     onLeaveBack: (self) => {
-    //       gsap.to(item, {
-    //         zIndex: "1",
-    //         opacity: "0",
-    //         duration: "0",
-    //       });
-    //       for (let i = 0; i < list.length; i++) {
-    //         if (index == 0) {
-    //           gsap.to(list[0], {
-    //             zIndex: "10",
-    //             opacity: "1",
-    //             duration: "0",
-    //           });
-    //         } else {
-    //           if (i !== index - 1) {
-    //             gsap.to(list[i], {
-    //               zIndex: "1",
-    //               opacity: "0",
-    //               duration: "0",
-    //             });
-    //           } else {
-    //             gsap.to(list[i], {
-    //               zIndex: "10",
-    //               opacity: "1",
-    //               duration: "0",
-    //             });
-    //           }
-    //         }
-    //       }
-    //     },
-    //   });
-    // });
   }, []);
   return (
     <>
       <section
         ref={boxRef}
-        className="banner banner_home relative md:w-full md:h-[300vw] xl:h-[170vw] lg:h-[250vw] h-[750vw] max-md:flex flex-col md:justify-center items-center frame "
+        className="banner banner_home !max-w-[100%] relative w-full md:h-[300vw] 2xl:h-[150vw] lg:h-[220vw] h-[400vh] max-md:flex flex-col md:justify-center items-center frame"
       >
         <div className="overlay_banner_mobile md:hidden"></div>
         <div className="flex sticky_box items-center sticky max-md:pt-[10rem] max-md:w-full top-0 md:h-[95vh] justify-between  md:border-b border-solid border-[#888] max-md:flex-col">
