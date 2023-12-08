@@ -43,7 +43,7 @@ function Banner({ lang, dataBanner, dataDesign }) {
     <>
       <section
         ref={boxRef}
-        className="banner banner_home !max-w-[100%] relative w-full md:h-[300vw] 2xl:h-[150vw] lg:h-[220vw] h-[400vh] max-md:flex flex-col md:justify-center items-center frame"
+        className="banner banner_home banner_home_page !max-w-[100%] !w-full relative  md:h-[300vw] 2xl:h-[400vh]  h-[400vh] max-md:flex flex-col md:justify-center items-center frame"
       >
         <div className="overlay_banner_mobile md:hidden"></div>
         <div className="flex sticky_box items-center sticky max-md:pt-[10rem] max-md:w-full top-0 md:h-[95vh] justify-between  md:border-b border-solid border-[#888] max-md:flex-col">

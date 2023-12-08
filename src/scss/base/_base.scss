@@ -3,6 +3,9 @@ html {
   // scroll-behavior: smooth;
 }
 
+body.active_lang .text-justify{
+  text-align: start;
+}
 
 .content {
   width: 91.6%;

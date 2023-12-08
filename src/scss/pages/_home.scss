@@ -171,6 +171,21 @@
   }
 }
 
+
+.banner_home_page{
+  @media screen and (min-width:375px) and (max-width:380px) {
+    height: 475vh !important;
+  }
+  @media screen and (min-width:414px) and (max-width:420px) {
+    height: 445vh !important;
+  }
+  @media screen and (min-width:320px) and (max-width:330px) {
+    height: 505vh !important;
+  }
+  @media screen and (min-width:1280px) {
+    height: 400vh;
+  }
+}
 // video
 
 .video_slide_home{
