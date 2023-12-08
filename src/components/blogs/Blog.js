@@ -117,11 +117,13 @@ function Blog({ lang, dataBlog,slug,listSlug }) {
                 <span ref={seeMoreRef} onClick={handleClick} className='md:hidden text-[4.26667rem] text-[#00A84F] leading-[116.662%] underline text-center mb-[8.1rem] mt-[2rem]'>Xem thêm</span>
                     <div className='flex md:mb-[5.21rem] max-md:order-1 max-md:flex-col max-md:justify-center max-md:items-center max-md:mt-[8.27rem]'>
                         {
-                            listCategoryNews?.map((item,index)=>(
-                                <Link className='max-md:mb-[4.8rem]' key={index} href={`/${lang}/${lang === 'vi' ? 'tin-tuc-su-kien' : 'news'}/${lang === 'vi' ? item?.slug :item?.slugEn || item?.slug}`}>
-                                    <h2 className={`uppercase lg:text-[1.04167rem] md:text-[1.2rem] text-[4.26667rem] mr-[3.91rem] cursor-pointer ${pathName?.endsWith(item?.slug) ? 'text-[#00A84F]' : 'text-[#444]'}`}>{lang === 'vi' ? item?.nameVi : item?.nameEn}</h2>
-                                </Link>
-                            ))
+                            listCategoryNews?.map((item,index)=>{
+                                return (
+                                    <Link className='max-md:mb-[4.8rem]' key={index} href={`/${lang}/${lang === 'vi' ? 'tin-tuc-su-kien' : 'news'}/${lang === 'vi' ? item?.slug :item?.slugEn || item?.slug}`}>
+                                        <h2 className={`uppercase lg:text-[1.04167rem] md:text-[1.2rem] text-[4.26667rem] mr-[3.91rem] cursor-pointer ${(pathName?.endsWith(item?.slug) || pathName?.endsWith(item?.slugEn)) ? 'text-[#00A84F]' : 'text-[#444]'}`}>{lang === 'vi' ? item?.nameVi : item?.nameEn}</h2>
+                                    </Link>
+                                )
+                            })
                         }
                     </div>
                 <div className='grid md:grid-cols-4 md:gap-x-[2.6rem] md:gap-y-[4.43rem] max-md:px-[4.27rem]'>
