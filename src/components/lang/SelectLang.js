@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { i18n } from '../../../i18n-config'
 import useStore from '@/(store)/store'
+import { useEffect } from 'react'
 
 function SelectLang({ lang, checkHome, color }) {
   const pathName = usePathname()
@@ -17,6 +18,15 @@ function SelectLang({ lang, checkHome, color }) {
     segments[1] = locale
     return segments.join('/')
   }
+
+  useEffect(()=>{
+    const body = document.querySelector('body');
+    if(pathName?.includes('en')){
+      body.classList.add('active_lang');
+    }else{
+      body.classList.remove('active_lang');
+    }
+  },[lang,pathName])
 
   return (
     <div className='flex items-center select-lang max-md:hidden'>
