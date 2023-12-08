@@ -8,13 +8,11 @@ function Technical({ dataTechnology, lang }) {
           <span className="text-[22.93333rem] leading-[1.2]">&</span>
           <div className="flex flex-col">
             <p
-              data-speed="clamp(0.5)"
               className="text-[8.53333rem] leading-[1.2] w-[60rem] relative bottom-[-2rem] uppercase md:text-end"
             >
               {dataTechnology?.heading?.heading1}
             </p>
             <p
-              data-speed="clamp(0.5)"
               className="text-[8.53333rem] leading-[1.2] w-[60rem] relative bottom-[-2rem] uppercase md:text-end"
             >
               {dataTechnology?.heading?.heading2}
@@ -35,7 +33,7 @@ function Technical({ dataTechnology, lang }) {
                   className="md:w-[5.78125rem] md:h-[5.78125rem] w-[18.13333rem] h-[18.13333rem]"
                 />
                 <Link
-                  href={`/${lang}/cong-nghe/${
+                  href={`/${lang}/${lang === 'vi' ? 'cong-nghe' : 'technology'}/${
                     index === 0
                       ? "in-offset"
                       : index === 1
