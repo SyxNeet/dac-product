@@ -192,6 +192,11 @@ const SLUG_JOB_FEATURE = `query ($language: LanguageCodeFilterEnum!) {
     nodes{
       slug
       title
+      recruimentDetail{
+        infoJob{
+          expirationDate
+        }
+      }
     }
   }
 }`
