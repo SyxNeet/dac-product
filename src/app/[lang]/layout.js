@@ -21,6 +21,7 @@ import ScrollUp from '@/components/common/ScrollUp'
 import Popup from '@/components/common/Popup'
 import { fetchData } from '@/data/fetchData'
 import { SLUG_JOB_FEATURE } from '@/graphql/recruitment/query'
+import Locomotive from '@/components/common/Locomotive'
 export const metadata = {
   viewport: 'width=device-width, initial-scale=1, maximum-scale=1'
 }
@@ -39,12 +40,15 @@ export default async function RootLayout({ children, params }) {
     <html lang={lang}>
       <body>
         <ApolloClientProvider>
-          <NavbarData lang={lang} />
           <Popup lang={lang} dataPopup = {dataJobFeature?.data?.allJobOpportunity?.nodes} />
           <SocialAction lang={lang} />
           <ScrollUp />
-          {children}
-          <Footer lang={lang} data={dataFooterFinal} dataSocialFooter={dataSocialFooter} />
+          <Locomotive> 
+            <NavbarData lang={lang} />
+            {children}
+            <Footer lang={lang} data={dataFooterFinal} dataSocialFooter={dataSocialFooter} />
+          </Locomotive>
+          
         </ApolloClientProvider>
       </body>
     </html>
