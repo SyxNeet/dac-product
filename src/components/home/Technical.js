@@ -34,13 +34,22 @@ function Technical({ dataTechnology, lang }) {
                 />
                 <Link
                   href={`/${lang}/${lang === 'vi' ? 'cong-nghe' : 'technology'}/${
-                    index === 0
-                      ? "in-offset"
+                   lang === 'vi' ? ( index === 0
+                    ? "in-offset"
+                    : index === 1
+                    ? "in-flexo"
+                    : index === 2
+                    ? "in-ong-dong"
+                    : "in-kts")
+                    :(
+                      index === 0
+                      ? "offset-printing"
                       : index === 1
-                      ? "in-flexo"
+                      ? "flexography"
                       : index === 2
-                      ? "in-ong-dong"
-                      : "in-kts"
+                      ? "gravure-printing"
+                      : "others"
+                    )
                   }`}
                 >
                   <h4 className="text-[#444] font-bold md:mt-[1.25rem] max-md:my-[3rem] md:text-[1.5rem] lg:text-[1.35417rem] text-[4.26667rem]">

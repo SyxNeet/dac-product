@@ -8,26 +8,6 @@ import VideoSlide from './VideoSlide'
 import Partners from './Partners'
 
 function HomePage({ lang, data, dataProductList,dataNewsHome }) {
-
-//   useEffect(() => {
-//     (
-//         async () => {
-//           try {
-//             const LocomotiveScroll = (await import('locomotive-scroll')).default
-//             const locomotiveScroll = new LocomotiveScroll(
-//                 {
-//                     el:document.querySelector('.scrollContainer'),
-//                     smooth:true
-//                 }
-//             );
-            
-//           } catch (error) {
-//             console.error('Error loading Locomotive Scroll:', error)
-//           }
-//         }
-//     )()
-// } , [])
-
   const dataBanner = data?.data?.page?.translation?.homepage?.banner
   const dataDesign = data?.data?.page?.translation?.homepage?.designSuccess
   const dataProduct = data?.data?.page?.translation?.homepage?.productAndService

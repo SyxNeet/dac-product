@@ -220,10 +220,15 @@ const GET_NEWS_HOMEPAGE = `query getNewsHomepage($language: LanguageCodeFilterEn
     first: 4
     where: {language: $language, orderby: {field: DATE, order: DESC}}
   ) {
-    nodes{
+    nodes {
       title
       excerpt
       slug
+      categories{
+        nodes{
+          slug
+        }
+      }
     }
   }
 }`
