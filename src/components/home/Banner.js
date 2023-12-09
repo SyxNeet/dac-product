@@ -17,13 +17,14 @@ function Banner({ lang, dataBanner, dataDesign }) {
         scrollTrigger: {
           trigger: boxRef.current,
           start: "top top",
-          end: ()=> "+=" + 3 * window.innerHeight,
-          pin: true,
+          // end: ()=> "+=" + 3 * window.innerHeight,
+          end:"+=1000 center",
+          // pin: boxRef.current,
           onUpdate: (self) => {
             list.forEach((e, index) => {
               if (
-                self.progress >= index * 0.0111111111111111 &&
-                self.progress < (index + 1) * 0.0111111111111111
+                self.progress >= index * 0.0103092783505155 &&
+                self.progress < (index + 1) * 0.0103092783505155
               ) {
                 e.style.zIndex = `${10 + index}`;
                 e.style.opacity = 1;
@@ -43,7 +44,7 @@ function Banner({ lang, dataBanner, dataDesign }) {
     <>
       <section
         ref={boxRef}
-        className="banner banner_home banner_home_page !max-w-[100%] !w-full relative  md:h-[300vw] 2xl:h-[400vh]  h-[400vh] max-md:flex flex-col md:justify-center items-center frame"
+        className="banner banner_home banner_home_page !max-w-[100%] !w-full md:h-[100vh] relative max-md:flex flex-col md:justify-center items-center frame"
       >
         <div className="overlay_banner_mobile md:hidden"></div>
         <div className="flex sticky_box items-center sticky max-md:pt-[10rem] max-md:w-full top-0 md:h-[95vh] justify-between  md:border-b border-solid border-[#888] max-md:flex-col">
@@ -672,21 +673,27 @@ function Banner({ lang, dataBanner, dataDesign }) {
                     index === 0 ? "max-md:border-none" : ""
                   }`}
                 >
-                  <Link
-                    href={`/${lang}/ve-chung-toi/${
+                  <Link href={`/${lang}/${lang === 'vi' ? 've-chung-toi' : 'about-us'}/${
+                     lang === 'vi' ? ( index === 0
+                    ? "tam-nhin"
+                    : index === 1
+                    ? "so-do-to-chuc"
+                    : index === 2
+                    ? "chang-duong-phat-trien"
+                    : "chung-nhan"
+                    )
+                    :(
                       index === 0
-                        ? "tam-nhin"
-                        : index === 1
-                        ? "so-do-to-chuc"
-                        : index === 2
-                        ? "chang-duong-phat-trien"
-                        : "chung-nhan"
-                    }`}
-                  >
-                    <h4 className="font-bold text-[#444] md:text-[1.5rem] lg:text-[1.35417rem] text-[4.26667rem] mb-[1.35417rem]">
-                      {item?.title}
-                    </h4>
-                  </Link>
+                      ? "vision"
+                      : index === 1
+                      ? "company-structure"
+                      : index === 2
+                      ? "history"
+                      : "awards"
+                    )
+                  }`}>
+                  <h4 className='font-bold text-[#444] md:text-[1.5rem] lg:text-[1.35417rem] text-[4.26667rem] mb-[1.35417rem]'>{item?.title}</h4>
+                </Link>
                   <p className="text-[#888] md:text-[1.5rem] md:mt-[1rem] md:tracking-[-0.04063rem] tracking-[-0.128rem] lg:text-[1.35417rem] text-[4.26667rem] text-justify">
                     {item?.description}
                   </p>

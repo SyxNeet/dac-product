@@ -14,7 +14,7 @@ function News({ dataNews,dataNewsHome,lang }) {
           <ul className="grid md:grid-cols-2 gap-x-[1.82rem] gap-y-[2rem] max-md:px-[4.53rem]">
             {dataNewsHome?.map((item, index) => (
               <li key={index} className={`text-[1.35417rem] md:pt-[3.07rem] pt-[7.02rem] md:border-t border-solid border-[#444] ${(index !== 0 && index !== 1 ) ? 'max-md:hidden' : ''}`}>
-                <Link href={`/${lang}/tin-tuc-su-kien/${item?.slug}`} className='font-bold text-[#444] md:text-[1.5rem] lg:text-[1.35417rem] text-[4.26667rem]'>{item?.title}</Link>
+                <Link href={`/${lang}/${lang === 'vi' ? 'tin-tuc-su-kien' : 'news'}/${item?.categories?.nodes[0]?.slug}/${item?.slug}`} className='font-bold text-[#444] md:text-[1.5rem] lg:text-[1.35417rem] text-[4.26667rem]'>{item?.title}</Link>
                 <p className='mt-[1.625rem] text-[#888] md:text-[1.5rem] md:tracking-[-0.06771rem] lg:text-[1.35417rem] text-[4.26667rem]'>{item?.excerpt}</p>
               </li>
             ))}

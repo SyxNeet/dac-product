@@ -1,8 +1,9 @@
 import IndexBlogDetail from '@/components/blogs/blog-detail/IndexBlogDetail'
 import { fetchData } from '@/data/fetchData';
 import getDataDetail from '@/data/getDataDetail'
+import getDataPage from '@/data/getDataPage';
 import { getMeta } from '@/graphql/metaData/getMeta';
-import { GET_DATA_NEWS_DETAIL, META_NEWS_DETAIL_QUERY } from '@/graphql/news-blog/query';
+import { GET_DATA_NEWS_DETAIL, META_NEWS_DETAIL_QUERY, SLUG_BLOG_DETAIL_QUERY } from '@/graphql/news-blog/query';
 import React from 'react'
 
 export async function generateMetadata({ params: { lang, slug } }) {
@@ -17,8 +18,13 @@ export async function generateMetadata({ params: { lang, slug } }) {
 export default async function page({ params: { lang, slug } }) {
     let data = await getDataDetail(lang, slug, GET_DATA_NEWS_DETAIL)
     const dataDetail = data?.data?.post?.translation
+    const listSlugBlogDetail = await getDataPage(lang,SLUG_BLOG_DETAIL_QUERY(data?.data?.post?.translation?.id))
+    const listSlug = {
+        slugVi:'/tin-tuc-su-kien/'+ (listSlugBlogDetail?.data?.post?.translations[0]?.language?.code==='VI'?listSlugBlogDetail?.data?.post?.translations[0]?.slug:listSlugBlogDetail?.data?.post?.slug),
+        slugEn:'/en/news/' +(listSlugBlogDetail?.data?.post?.translations[0]?.language?.code==='EN'?listSlugBlogDetail?.data?.post?.translations[0]?.slug:listSlugBlogDetail?.data?.post?.slug)
+    }
     return (
-        <IndexBlogDetail lang={lang} data={dataDetail} />
+        <IndexBlogDetail listSlug={listSlug} lang={lang} data={dataDetail} />
     )
 }
 

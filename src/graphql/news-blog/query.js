@@ -3,6 +3,7 @@ import { gql } from '@apollo/client'
 const GET_DATA_NEWS_DETAIL = `query ($language: LanguageCodeEnum!, $slug: ID!) {
   post(id: $slug, idType: SLUG) {
     translation(language: $language) {
+      id
       slug
       news {
         banner {
@@ -221,6 +222,20 @@ const SLUG_BLOG_QUERY =(id)=> `{
     }
   }
 }`
+ const SLUG_BLOG_DETAIL_QUERY =(id)=> `{
+  post(id: "${id}", idType: ID) {
+    language {
+      code
+    }
+    slug
+    translations {
+      language {
+        code
+      }
+      slug
+    }
+  }
+}`
 export {
   NEWS_QUERY,
   GET_DATA_NEWS_DETAIL,
@@ -230,5 +245,6 @@ export {
   GET_META_NEWS,
   META_NEWS_DETAIL_QUERY,
   DATA_NEWS_WITH_SEARCH_AND_CATEGORY,
-  SLUG_BLOG_QUERY
+  SLUG_BLOG_QUERY,
+  SLUG_BLOG_DETAIL_QUERY
 }
