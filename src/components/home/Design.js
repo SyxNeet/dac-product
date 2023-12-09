@@ -52,7 +52,7 @@ function Design({ lang, dataDesign }) {
               </div>
               <div className='flex text-[#fff]  md:justify-center block-scroll-word font-bold items-end w-full'>
                 <Link href={`/${lang}/${lang === 'vi' ? 'thiet-ke' : 'design'}`}>
-                  <span className='text-[8.53333rem] md:text-[4rem] uppercase md:text-[#444] leading-[1.2] max-md:w-[60rem] relative max-md:bottom-[-2rem]'>{dataDesign?.textAnimation?.textOnTop}</span>
+                  <span className='text-[8.53333rem] md:text-[4rem] uppercase md:text-[#444] leading-[1.2] max-md:w-[60rem] max-md:bottom-[-2rem]'>{dataDesign?.textAnimation?.textOnTop}</span>
                 </Link>
                 <span className='text-[22.93333rem] max-md:hidden md:text-[2rem] md:text-[#444] relative md:bottom-[0.25rem] leading-[1.2]'>&</span>
               </div>

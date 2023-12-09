@@ -4,12 +4,14 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import Link from "next/link";
 import { useLayoutEffect, useRef } from "react";
 import { useMediaQuery } from "react-responsive";
-gsap.registerPlugin(ScrollTrigger);
+
 function Banner({ lang, dataBanner, dataDesign }) {
   const isMobile = useMediaQuery({ query: "(max-width: 767.9px)" });
   const boxRef = useRef(null);
 
   useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    // gsap.registerPlugin(ScrollSmoother);
     const list = document.querySelectorAll(".tissue");
     let ctx = gsap.context(() => {
       const tl = gsap.timeline({
@@ -18,8 +20,8 @@ function Banner({ lang, dataBanner, dataDesign }) {
           trigger: boxRef.current,
           start: "top top",
           // end: ()=> "+=" + 3 * window.innerHeight,
-          end:"+=1000 center",
-          // pin: boxRef.current,
+          end:"+=2000 center",
+          pin: boxRef.current,
           onUpdate: (self) => {
             list.forEach((e, index) => {
               if (
