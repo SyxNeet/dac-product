@@ -37,10 +37,16 @@ function Branch({ dataBranch,lang }) {
                                     <p className='max-md:mb-[2rem]' dangerouslySetInnerHTML={{ __html: `${item?.infomation}` }}></p>
                                     <Link 
                                     href={
-                                        index === 0 ? 'https://www.google.com/maps/place/C%C3%B4ng+ty+TNHH+C%C3%B4ng+Ngh%E1%BB%87+Ch%E1%BB%91ng+Gi%E1%BA%A3+DAC/@20.9985019,105.8394015,19z/data=!3m1!4b1!4m6!3m5!1s0x3135ad00fe74ffe5:0xd5813080ea2e5bb6!8m2!3d20.9985006!4d105.8400452!16s%2Fg%2F11h44p76g8?entry=ttu'
+                                        index === 0 ? 
+                                        'https://www.google.com/maps/place/C%C3%B4ng+Ty+C%E1%BB%95+Ph%E1%BA%A7n+Bao+B%C3%AC+%26+In+N%C3%B4ng+Nghi%E1%BB%87p/@20.9985006,105.8400452,17z/data=!3m1!4b1!4m6!3m5!1s0x3135ac7abda1f031:0xcf4610975c64fec8!8m2!3d20.9985006!4d105.8400452!16s%2Fg%2F1pzrn4t86?hl=vi&entry=ttu'
                                         : index === 1 ? 
-                                         'https://www.google.com/maps/place/C%C3%B4ng+Ty+C%E1%BB%95+Ph%E1%BA%A7n+Bao+B%C3%AC+%26+In+N%C3%B4ng+Nghi%E1%BB%87p/@20.9985006,105.8400452,17z/data=!3m1!4b1!4m6!3m5!1s0x3135ac7abda1f031:0xcf4610975c64fec8!8m2!3d20.9985006!4d105.8400452!16s%2Fg%2F1pzrn4t86?hl=vi&entry=ttu'
-                                        : 'https://www.google.com/maps/place/Cty+CP+Bao+B%C3%AC+v%C3%A0+In+N%C3%B4ng+Nghi%E1%BB%87p/@20.950711,106.0221108,17.75z/data=!4m14!1m7!3m6!1s0x3135ad00fe74ffe5:0xd5813080ea2e5bb6!2zQ8O0bmcgdHkgVE5ISCBDw7RuZyBOZ2jhu4cgQ2jhu5FuZyBHaeG6oyBEQUM!8m2!3d20.9985006!4d105.8400452!16s%2Fg%2F11h44p76g8!3m5!1s0x3135a54f414813cf:0xbbf05df144c83c20!8m2!3d20.951361!4d106.0228099!16s%2Fg%2F11v11t3lsp?entry=ttu'
+                                        'https://www.google.com/maps/place/Cty+CP+Bao+B%C3%AC+v%C3%A0+In+N%C3%B4ng+Nghi%E1%BB%87p/@20.950711,106.0221108,17.75z/data=!4m14!1m7!3m6!1s0x3135ad00fe74ffe5:0xd5813080ea2e5bb6!2zQ8O0bmcgdHkgVE5ISCBDw7RuZyBOZ2jhu4cgQ2jhu5FuZyBHaeG6oyBEQUM!8m2!3d20.9985006!4d105.8400452!16s%2Fg%2F11h44p76g8!3m5!1s0x3135a54f414813cf:0xbbf05df144c83c20!8m2!3d20.951361!4d106.0228099!16s%2Fg%2F11v11t3lsp?entry=ttu'
+
+                                         
+                                        : 
+                                        'https://www.google.com/maps/place/C%C3%B4ng+ty+TNHH+C%C3%B4ng+Ngh%E1%BB%87+Ch%E1%BB%91ng+Gi%E1%BA%A3+DAC/@20.9985019,105.8394015,19z/data=!3m1!4b1!4m6!3m5!1s0x3135ad00fe74ffe5:0xd5813080ea2e5bb6!8m2!3d20.9985006!4d105.8400452!16s%2Fg%2F11h44p76g8?entry=ttu'
+
+                                        
                                     } 
                                     target='_blank'
                                     className='text-[#888] info_address md:text-[1.04167rem] text-[3.46667rem]  tracking-[-0.12133rem] leading-[1.2] md:tracking-[-0.03646rem] underline'>{lang === 'vi' ? 'Xem bản đồ' :'View the map'}</Link>

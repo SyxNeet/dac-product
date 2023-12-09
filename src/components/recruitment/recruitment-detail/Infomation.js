@@ -107,7 +107,7 @@ function Infomation({ dataContent, lang, dataJobNew }) {
             <div className='bg-[#F5F5F5] md:pl-[4.17rem] md:pb-[6.4rem] pb-[8rem] pt-[6.4rem] max-md:px-[4.53rem] md:w-[50%]'>
                 <h2 className='heading md:w-[28.64583rem] md:mb-[2.8rem] mb-[7rem] max-md:!text-[6.93333rem]'>{dataContent?.heading}</h2>
                 <div
-                    className='grid job_Info md:w-[44.63542rem] md:gap-[0.5rem] gap-[4rem] max-md:!leading-[1.7]'
+                    className='grid job_Info md:w-[44.63542rem] md:gap-[0.5rem] gap-[4rem] max-md:!leading-[1.7] md:!leading-[1.5]'
                     dangerouslySetInnerHTML={{ __html: `${dataContent?.description}` }}>
                 </div>
             </div>

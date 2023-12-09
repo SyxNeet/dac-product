@@ -51,8 +51,10 @@ input[type="file"]{
         flex-direction: column;
     }
 
-    ul {
+    & > ul {
+        display: block;
         li {
+            margin-bottom: 1rem;
             @media screen and (max-width:767px) {
                 margin-bottom: 2rem;
             }
