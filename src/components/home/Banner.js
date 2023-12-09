@@ -13,16 +13,19 @@ function Banner({ lang, dataBanner, dataDesign }) {
     gsap.registerPlugin(ScrollTrigger);
     // gsap.registerPlugin(ScrollSmoother);
     const list = document.querySelectorAll(".tissue");
+    const scroll_word = document.querySelector(".scrolling-words-container")
+    console.log(scroll_word);
     let ctx = gsap.context(() => {
       const tl = gsap.timeline({
         paused: true,
         scrollTrigger: {
           trigger: boxRef.current,
           start: "top top",
-          // end: ()=> "+=" + 3 * window.innerHeight,
           end:"+=2000 center",
+          pinSpacing:'margin',
           pin: boxRef.current,
           onUpdate: (self) => {
+            scroll_word.style.opacity ='0'
             list.forEach((e, index) => {
               if (
                 self.progress >= index * 0.0103092783505155 &&
@@ -36,6 +39,9 @@ function Banner({ lang, dataBanner, dataDesign }) {
               }
             });
           },
+          onLeave:(self) => {
+            scroll_word.style.opacity ='1'
+          }
         },
       });
     }, boxRef);
