@@ -103,6 +103,8 @@ function HistoryMobile({ data }) {
 
     const dataJourney = data?.journey?.slice(0, number)
 
+    console.log('dataJourney',dataJourney);
+
     return (
         <section id='historyMobile' className='md:hidden overflow-x-hidden pr-[4.27rem] max-md:mt-[5rem] relative mb-[15rem]'>
             <div ref={popUpRef} className='popUpRef relative z-[11] w-[22.1rem]'>

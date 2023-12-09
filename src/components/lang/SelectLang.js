@@ -21,7 +21,7 @@ function SelectLang({ lang, checkHome, color }) {
 
   useEffect(()=>{
     const body = document.querySelector('body');
-    if(pathName?.includes('en')){
+    if(pathName.includes('/en')){
       body.classList.add('active_lang');
     }else{
       body.classList.remove('active_lang');

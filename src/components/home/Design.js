@@ -32,7 +32,7 @@ function Design({ lang, dataDesign }) {
                   }`}>
                   <h4 className='font-bold text-[#444] md:text-[1.5rem] lg:text-[1.35417rem] text-[4.26667rem] mb-[1.35417rem]'>{item?.title}</h4>
                 </Link>
-              <p className='text-[#888] md:text-[1.5rem] md:mt-[1rem] md:tracking-[-0.04063rem] tracking-[-0.128rem] lg:text-[1.35417rem] text-[4.26667rem] text-justify'>{item?.description}</p>
+              <p className='text-[#888] md:text-[1.5rem] md:w-[20.9rem] md:mt-[1rem] md:tracking-[-0.04063rem] tracking-[-0.128rem] lg:text-[1.35417rem] text-[4.26667rem] text-justify'>{item?.description}</p>
             </div>
           ))}
         </div>
