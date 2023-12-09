@@ -19,13 +19,15 @@ function HomePage({ lang, data, dataProductList,dataNewsHome }) {
   return (
       <div> 
       <Banner dataBanner={dataBanner} dataDesign={dataDesign} lang={lang} />
-        <Design dataDesign={dataDesign} lang={lang} />
-        <Product dataProductList={dataProductList} dataProduct={dataProduct} lang={lang} />
-        <Technical dataTechnology={dataTechnology} lang={lang} />
-        <Solution dataSolution={dataSolution} />
-        <News dataNews={dataNews} dataNewsHome={dataNewsHome} lang={lang} />
-        <VideoSlide dataSlideVideo={dataSlideVideo} />
-        <Partners dataPartner={dataPartner} />
+        <div className='mt-[1635px]'>
+          <Design dataDesign={dataDesign} lang={lang} />
+          <Product dataProductList={dataProductList} dataProduct={dataProduct} lang={lang} />
+          <Technical dataTechnology={dataTechnology} lang={lang} />
+          <Solution dataSolution={dataSolution} />
+          <News dataNews={dataNews} dataNewsHome={dataNewsHome} lang={lang} />
+          <VideoSlide dataSlideVideo={dataSlideVideo} />
+          <Partners dataPartner={dataPartner} />
+        </div>
       </div>
   )
 }
