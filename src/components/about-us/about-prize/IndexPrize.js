@@ -59,7 +59,10 @@ export const IndexPrize = ({ data, lang, slugPage, titlePage,listSlug }) => {
             <div key={index * Math.random()} title={item?.image?.altText || lang === 'vi' ? 'giải thưởng' : 'prize' } className={`flex flex-col relative items-center justify-center ${index === dataPrize?.prize?.content?.listPrize?.length -1 ? 'md:w-[38.11422rem] md:h-[28.125rem] w-full ' : 'md:w-[14.89vw]  w-[41.86667rem]'} ${index === dataPrize?.prize?.content?.listPrize?.length -1 ? 'col-span-2' : '' }`}>
                 <div 
                   onClick={(e) => handleClick(index,e)} 
-                  className={`overflow-hidden card_image w-full h-full ${active === index && (index === 0 || index === 1 || index === 2 || index === 3) 
+                  className={`overflow-hidden card_image max-md:w-full max-md:h-full 
+                  ${(index === 0 || index === 1 || index === 2 || index === 3) ? 'md:h-[19.79167rem]': (index === 4 || index === 5 || index === 6 || index ===7) ? 'md:h-[12.70833rem]' :'md:h-[28.125rem]' }
+
+                  ${active === index && (index === 0 || index === 1 || index === 2 || index === 3) 
                   ? 
                   'active1 md:w-[34.85rem] md:h-[46.82rem] md:absolute z-[10] max-md:!w-[100rem] max-md:!h-[130rem] fixed max-md:top-[50%] max-md:left-[50%] max-md:-translate-y-1/2 max-md:-translate-x-1/2' 
                   : 
@@ -70,7 +73,7 @@ export const IndexPrize = ({ data, lang, slugPage, titlePage,listSlug }) => {
                   ? 'active3 md:w-[84.16667rem] md:h-[50.8333rem] bg-[#DCDCDC] md:absolute z-[10]  max-md:!w-[100rem] max-md:!h-[76rem] fixed max-md:top-[50%] max-md:left-[50%] max-md:-translate-y-1/2 max-md:-translate-x-1/2' 
                   : 'relative'}`}
                 >
-                  <Image src={item?.image?.sourceUrl} width={1800} height={1000} quality={100} alt={item?.image?.altText || 'prize'} priority className={`image_prize ${index === active ? 'active' : ''}  object-cover w-full h-full`} />
+                  <Image src={item?.image?.sourceUrl} width={1800} height={1000} quality={100} alt={item?.image?.altText || 'prize'} priority className={`image_prize ${index === active ? 'active' : ''}  object-fill w-full h-full`} />
                   <div 
                     className={`${active === index ? 'active' : ''} description_prize ${( active === index  && (index === 0 || index === 1 || index === 2 || index === 3) 
                     ? 'right-[4.5rem] md:right-[1.45rem] md:!bottom-[2.4rem] max-md:!bottom-[5.7rem]' 

@@ -35,9 +35,6 @@ export default async function RootLayout({ children, params }) {
   let dataFooter = await getDataPage(lang, GET_DATA_FOOTER);
   const dataFooterFinal = dataFooter?.data?.page?.translation;
   const dataSocialFooter = await getDataPage(lang, DATA_SOCIAL_FOOTER);
-  const dataJobFeature = await fetchData(SLUG_JOB_FEATURE, {
-    language: lang?.toUpperCase(),
-  });
   return (
     <html lang={lang}>
       <body>
@@ -45,7 +42,6 @@ export default async function RootLayout({ children, params }) {
           <NavbarData lang={lang} />
           <Popup
             lang={lang}
-            dataPopup={dataJobFeature?.data?.allJobOpportunity?.nodes}
           />
           <SocialAction lang={lang} />
           <ScrollUp />
