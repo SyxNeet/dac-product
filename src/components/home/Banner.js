@@ -11,10 +11,8 @@ function Banner({ lang, dataBanner, dataDesign }) {
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    // gsap.registerPlugin(ScrollSmoother);
     const list = document.querySelectorAll(".tissue");
     const scroll_word = document.querySelector(".scrolling-words-container")
-    console.log(scroll_word);
     let ctx = gsap.context(() => {
       const tl = gsap.timeline({
         paused: true,
@@ -43,11 +41,11 @@ function Banner({ lang, dataBanner, dataDesign }) {
             scroll_word.style.opacity ='1'
           }
         },
-      });
+      }); 
     }, boxRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [lang]);
   return (
     <>
       <section
