@@ -7,7 +7,7 @@ function ContentFlexo({ dataContent }) {
                 {dataContent?.heading}
             </h2>
             <div className='flex md:pb-[7rem] md:pt-[4rem] pt-[6rem] max-md:flex-col'>
-                <div className='md:mr-[10.68rem] priDesc md:w-[28.59375rem]' dangerouslySetInnerHTML={{ __html: `${dataContent?.description}` }}>
+                <div className='md:mr-[10.68rem] priDesc md:w-[28.59375rem] content-flexo' dangerouslySetInnerHTML={{ __html: `${dataContent?.description}` }}>
                 </div>
                 <div className='md:grid grid-cols-2 flex flex-col gap-x-[5.31rem] gap-y-[3.2rem] max-md:mt-[6rem]'>
                     {dataContent?.listContent?.map((item, index) => {

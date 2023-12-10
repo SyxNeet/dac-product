@@ -14,7 +14,6 @@ function Banner({ lang, dataBanner, dataDesign }) {
     // gsap.registerPlugin(ScrollSmoother);
     const list = document.querySelectorAll(".tissue");
     const scroll_word = document.querySelector(".scrolling-words-container")
-    console.log(scroll_word);
     let ctx = gsap.context(() => {
       const tl = gsap.timeline({
         paused: true,

@@ -15,3 +15,11 @@
         }
     }
 }
+
+.content-flexo, .content_other_print{
+    p:first-child{
+        @media screen and (min-width:768px) {
+            margin-bottom: 1.5rem;
+        }
+    }
+}
