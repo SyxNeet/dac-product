@@ -12,6 +12,7 @@ import HandleChangeSlug from '../common/HandleChangeSlug'
 
 gsap.registerPlugin(ScrollToPlugin);
 function Recruitment({ data, lang, dataFirstIn,listSlug }) {
+    const [checked,setChecked] = useState(false)
     const [seeMore, setSeeMore] = useState(1)
     const searchParams = useSearchParams()
     const pathName = usePathname()
@@ -22,9 +23,14 @@ function Recruitment({ data, lang, dataFirstIn,listSlug }) {
         setSeeMore(seeMore + 1)
     }
     useEffect(() => {
-        if (!id) return;
-        gsap.to(window, { duration: 1, scrollTo: `#${id}` });
-    }, []);
+        if (!id){
+            return;
+        } else{
+            gsap.to(window, { duration: 1, scrollTo: `#${id}`,onComplete:()=>{
+                setChecked(true)
+            } });
+        }
+    }, [checked]);
     useEffect(() => {
         if (isMobile) {
             const paramNew = new URLSearchParams(searchParams)
