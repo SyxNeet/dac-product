@@ -6,11 +6,9 @@ import { useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
 // ScrollTrigger.normalizeScroll(true);
 // ScrollTrigger.config({ ignoreMobileResize: true });
-export default function GsapSmoother({ children,lang }) {
+export default function GsapSmoother() {
   const isMobile = useMediaQuery({ query: "(max-width: 767.9px)" });
   useEffect(() => {
-    console.log("loggg");
-    try {
       if (!isMobile) {
         gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
         ScrollSmoother.create({
@@ -18,20 +16,9 @@ export default function GsapSmoother({ children,lang }) {
           effects: true,
           smoothTouch: 0.1,
         });
-  
-        return () => {
-          gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
-        };
       }
-    } catch (error) {
-      console.error('Error in GSAP initialization:', error);
-    }
-  }, [lang]);
+  }, []);
   
   
-  return (
-    <div id="smooth-wrapper">
-      <div id="smooth-content">{children}</div>
-    </div>
-  );
+  return<></>
 }

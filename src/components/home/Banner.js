@@ -8,7 +8,6 @@ function Banner({ lang, dataBanner, dataDesign }) {
   const boxRef = useRef(null);
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    console.log("vao day");
     const list = document.querySelectorAll(".tissue");
     const scroll_word = document.querySelector(".scrolling-words-container")
     // let ctx = gsap.context(() => {
