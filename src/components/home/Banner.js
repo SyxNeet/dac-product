@@ -1,16 +1,16 @@
 "use client";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import {gsap} from "gsap";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
 import Link from "next/link";
 import { useEffect, useLayoutEffect, useRef } from "react";
+gsap.registerPlugin(ScrollTrigger);
 
 function Banner({ lang, dataBanner, dataDesign }) {
   const boxRef = useRef(null);
-  useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    const list = document.querySelectorAll(".tissue");
-    const scroll_word = document.querySelector(".scrolling-words-container")
-    // let ctx = gsap.context(() => {
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      const list = document.querySelectorAll(".tissue");
+      const scroll_word = document.querySelector(".scrolling-words-container")
       const tl = gsap.timeline({
         paused: true,
         scrollTrigger: {
@@ -39,12 +39,10 @@ function Banner({ lang, dataBanner, dataDesign }) {
           }
         },
       });
-      return () => {
-        tl.kill();
-      };
+    },boxRef)
+      return () => ctx.revert();
+      
     }, [lang]);
-    // return () => ctx.revert();
-  // }, [lang]);
   return (
     <>
       <section
