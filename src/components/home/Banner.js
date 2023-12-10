@@ -41,7 +41,6 @@ function Banner({ lang, dataBanner, dataDesign }) {
       });
     },boxRef)
       return () => ctx.revert();
-      
     }, [lang]);
   return (
     <>
