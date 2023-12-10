@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import layer_11 from '@/assets/imgs/Layer_11.svg'
 import layer_12 from '@/assets/imgs/Layer_12.svg'
 import layer_13 from '@/assets/imgs/Layer_13.svg'
@@ -11,7 +11,9 @@ import { Formik, Field, ErrorMessage, Form } from 'formik'
 import * as Yup from 'yup'
 import { TextareaAutosize } from '@mui/base/TextareaAutosize';
 import { gql, useMutation } from '@apollo/client'
-
+import { gsap } from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+// gsap.registerPlugin(ScrollToPlugin);
 const SUBMIT_FORM = gql`
   mutation ($input: SubmitGfFormInput!) {
     submitGfForm(input: $input) {
@@ -25,8 +27,10 @@ const SUBMIT_FORM = gql`
   }
 `
 function FormContact({ dataForm ,listSlug}) {
-    const [active, setActive] = useState(0)
     const [mutate, { loading }] = useMutation(SUBMIT_FORM)
+    // useEffect(() => {
+    //     gsap.to(window, { duration: 1, scrollTo: '#form_contact' });
+    // }, []);
     const INITAL_FORM_STATE = {
         fullName: '',
         email: '',
@@ -45,6 +49,8 @@ function FormContact({ dataForm ,listSlug}) {
         message: Yup.string(),
         address: Yup.string()
     })
+    
+    
 
     const handleForm = (values, resetForm) => {
         mutate({

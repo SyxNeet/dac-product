@@ -45,7 +45,7 @@ export default async function RootLayout({ children, params }) {
           />
           <SocialAction lang={lang} />
           <ScrollUp />
-          <GsapSmoother>
+          <GsapSmoother lang={lang}>
             {children}
             <Footer
               lang={lang}
