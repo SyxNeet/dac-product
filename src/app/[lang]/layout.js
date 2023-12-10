@@ -45,14 +45,14 @@ export default async function RootLayout({ children, params }) {
           />
           <SocialAction lang={lang} />
           <ScrollUp />
-          {/* <GsapSmoother> */}
+          <GsapSmoother>
             {children}
             <Footer
               lang={lang}
               data={dataFooterFinal}
               dataSocialFooter={dataSocialFooter}
             />
-          {/* </GsapSmoother> */}
+          </GsapSmoother>
         </ApolloClientProvider>
       </body>
     </html>
