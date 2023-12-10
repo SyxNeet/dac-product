@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useLayoutEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import layer_11 from '@/assets/imgs/Layer_11.svg'
 import layer_12 from '@/assets/imgs/Layer_12.svg'
 import layer_13 from '@/assets/imgs/Layer_13.svg'
@@ -32,14 +32,15 @@ function FormContact({ dataForm }) {
     const searchParams = useSearchParams();
     const [checked,setChecked] = useState(false)
     const id = searchParams.get("id");
+    const formRef = useRef()
     
     useEffect(() => {
         if (!id){
             return;
         } else{
-            gsap.to(window, { duration: 1, scrollTo: `#${id}`,onComplete:()=>{
+            gsap.to(window, { duration: 1, scrollTo: formRef.current.offsetTop,onComplete:()=>{
                 setChecked(true)
-            } });
+            }});
         }
     }, [checked]);
     const INITAL_FORM_STATE = {
@@ -88,8 +89,9 @@ function FormContact({ dataForm }) {
         })
     }
     return (
+        <>
+        <div ref={formRef}></div>
         <section id='form_contact' className='contactForm md:pt-[4.7rem] pt-[5.07rem]  max-md:flex-col md:pl-[4.17rem] md:pr-[9.43rem]  md:pb-[6.56rem] flex justify-between'>
-            
             <div className='max-md:mb-[10rem] max-md:px-[4.27rem] w-full'>
                 <Formik
                     initialValues={{ ...INITAL_FORM_STATE }}
@@ -155,6 +157,7 @@ function FormContact({ dataForm }) {
             </div>
             <Image src={img} alt='image' quality={100} width={1000} height={1000} className='object-cover md:hidden h-[52.8rem] md:h-[31.875rem] w-full' />
         </section>
+        </>
     )
 }
 
