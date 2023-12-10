@@ -23,7 +23,7 @@ function Content({ dataContent }) {
             </div>
             {/*  */}
             <div
-                className='priDesc md:pl-[39rem] md:pb-[3.94rem] max-md:pb-[12rem] max-md:hidden'
+                className='priDesc md:pl-[39rem] md:pb-[3.94rem] max-md:pb-[12rem] content_other_print max-md:hidden'
                 dangerouslySetInnerHTML={{ __html: `${dataContent?.subContent}` }}
             >
             </div>

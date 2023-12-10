@@ -13,7 +13,7 @@ function Solution({ dataSolution }) {
           {dataSolution?.title}
         </h3>
         <div className='md:text-[1.5rem] lg:text-[1.35417rem] text-[4.26667rem] leading-[1.4] max-md:tracking-[-0.08533rem] md:text-[#444] text-[#fff] mt-[4rem] max-md:mb-[4rem]' dangerouslySetInnerHTML={{ __html: `${dataSolution?.listSolution}` }}></div>
-        <div className='md:text-[1.5rem] lg:text-[1.35417rem] max-md:hidden  text-justify text-[4.26667rem] leading-[1.4] md:text-[#444] text-[#fff] mt-[13rem]' dangerouslySetInnerHTML={{ __html: `${dataSolution?.description}` }}></div>
+        <div className='md:text-[1.5rem] lg:text-[1.35417rem] max-md:hidden md:tracking-[-0.02708rem] md:w-[44.3rem] text-justify text-[4.26667rem] leading-[1.2] md:text-[#444] text-[#fff] mt-[13rem]' dangerouslySetInnerHTML={{ __html: `${dataSolution?.description}` }}></div>
         <Link href='https://temchonggia.com.vn/' target='_blank' className='text-[4.26667rem] text_seemore md:text-[1.1rem] cursor-pointer leading-[116.662%] text-[#fff] md:text-[#444] underline tracking-[-0.04167rem] md:absolute md:right-[4.27rem]'>{dataSolution?.seemore}</Link>
       </div>
     </div>
