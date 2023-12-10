@@ -18,8 +18,7 @@ function HomePage({ lang, data, dataProductList,dataNewsHome }) {
   const dataSlideVideo = data?.data?.page?.translation?.homepage?.slideVideo
   return (
       <div> 
-        <Banner dataBanner={dataBanner} dataDesign={dataDesign} lang={lang} />
-        {/* <div className='mt-[1570px]'> */}
+          <Banner dataBanner={dataBanner} dataDesign={dataDesign} lang={lang} />
           <Design dataDesign={dataDesign} lang={lang} />
           <Product dataProductList={dataProductList} dataProduct={dataProduct} lang={lang} />
           <Technical dataTechnology={dataTechnology} lang={lang} />
@@ -27,7 +26,6 @@ function HomePage({ lang, data, dataProductList,dataNewsHome }) {
           <News dataNews={dataNews} dataNewsHome={dataNewsHome} lang={lang} />
           <VideoSlide dataSlideVideo={dataSlideVideo} />
           <Partners dataPartner={dataPartner} lang={lang} />
-        {/* </div> */}
       </div>
   )
 }

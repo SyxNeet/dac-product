@@ -25,7 +25,7 @@ function Popup({lang}) {
     
     return (
         <div ref={popUpRef} className='md:fixed max-md:hidden bottom-[10%] right-[0] z-[9] min-w-[20rem] popUpJob rounded-tl-[1rem] rounded-bl-[1rem] bg-[beige] pl-[1rem] pr-[3rem] py-[1rem]'>
-            <Link href={`/${lang}/${lang === 'vi' ? 'tuyen-dung' : 'recruitment'}/#job-oppo`}>
+            <Link href={`/${lang}/${lang === 'vi' ? 'tuyen-dung' : 'recruitment'}?id=job-oppo`}>
                 <p className='text-[1.7rem] text-[#444] leading-[1.2] '>{lang === 'vi' ? '🔈 Chúng tôi đang tuyển dụng' : '🔈 We are recruiting'}</p>
             </Link>
             <svg xmlns="http://www.w3.org/2000/svg" onClick={() => setCheck(true)} className='absolute top-[20%] right-[5%] w-[1rem] h-[1rem]'  viewBox="0 0 22 22" fill="none">

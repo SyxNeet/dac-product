@@ -11,7 +11,7 @@ function Banner({ lang, dataBanner, dataDesign }) {
     console.log("vao day");
     const list = document.querySelectorAll(".tissue");
     const scroll_word = document.querySelector(".scrolling-words-container")
-    let ctx = gsap.context(() => {
+    // let ctx = gsap.context(() => {
       const tl = gsap.timeline({
         paused: true,
         scrollTrigger: {
@@ -40,9 +40,12 @@ function Banner({ lang, dataBanner, dataDesign }) {
           }
         },
       });
-    }, boxRef);
-    return () => ctx.revert();
-  }, [lang]);
+      return () => {
+        tl.kill();
+      };
+    }, [lang]);
+    // return () => ctx.revert();
+  // }, [lang]);
   return (
     <>
       <section
