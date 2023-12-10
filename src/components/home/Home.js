@@ -18,7 +18,7 @@ function HomePage({ lang, data, dataProductList,dataNewsHome }) {
   const dataSlideVideo = data?.data?.page?.translation?.homepage?.slideVideo
   return (
       <div> 
-      <Banner dataBanner={dataBanner} dataDesign={dataDesign} lang={lang} />
+        <Banner dataBanner={dataBanner} dataDesign={dataDesign} lang={lang} />
         {/* <div className='mt-[1570px]'> */}
           <Design dataDesign={dataDesign} lang={lang} />
           <Product dataProductList={dataProductList} dataProduct={dataProduct} lang={lang} />
