@@ -6,7 +6,7 @@ import { useEffect, useLayoutEffect, useRef } from "react";
 
 function Banner({ lang, dataBanner, dataDesign }) {
   const boxRef = useRef(null);
-  useEffect(() => {
+  useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     console.log("vao day");
     const list = document.querySelectorAll(".tissue");
