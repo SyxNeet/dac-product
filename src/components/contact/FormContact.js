@@ -13,7 +13,7 @@ import { TextareaAutosize } from '@mui/base/TextareaAutosize';
 import { gql, useMutation } from '@apollo/client'
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import { useSearchParams } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
 gsap.registerPlugin(ScrollToPlugin);
 const SUBMIT_FORM = gql`
   mutation ($input: SubmitGfFormInput!) {
@@ -27,15 +27,21 @@ const SUBMIT_FORM = gql`
     }
   }
 `
-function FormContact({ dataForm ,listSlug}) {
+function FormContact({ dataForm }) {
     const [mutate, { loading }] = useMutation(SUBMIT_FORM)
     const searchParams = useSearchParams();
+    const [checked,setChecked] = useState(false)
     const id = searchParams.get("id");
     
     useEffect(() => {
-        if (!id) return;
-        gsap.to(window, { duration: 1, scrollTo: `#${id}` });
-    }, []);
+        if (!id){
+            return;
+        } else{
+            gsap.to(window, { duration: 1, scrollTo: `#${id}`,onComplete:()=>{
+                setChecked(true)
+            } });
+        }
+    }, [checked]);
     const INITAL_FORM_STATE = {
         fullName: '',
         email: '',
