@@ -1,6 +1,7 @@
 "use client";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
 import Link from "next/link";
 import { useLayoutEffect, useRef } from "react";
 import { useMediaQuery } from "react-responsive";
@@ -11,7 +12,8 @@ function Banner({ lang, dataBanner, dataDesign }) {
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    // gsap.registerPlugin(ScrollSmoother);
+    console.log("vao day");
+    gsap.registerPlugin(ScrollSmoother);
     const list = document.querySelectorAll(".tissue");
     const scroll_word = document.querySelector(".scrolling-words-container")
     let ctx = gsap.context(() => {
@@ -46,7 +48,7 @@ function Banner({ lang, dataBanner, dataDesign }) {
     }, boxRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [lang]);
   return (
     <>
       <section

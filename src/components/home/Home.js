@@ -26,7 +26,7 @@ function HomePage({ lang, data, dataProductList,dataNewsHome }) {
           <Solution dataSolution={dataSolution} />
           <News dataNews={dataNews} dataNewsHome={dataNewsHome} lang={lang} />
           <VideoSlide dataSlideVideo={dataSlideVideo} />
-          <Partners dataPartner={dataPartner} />
+          <Partners dataPartner={dataPartner} lang={lang} />
         {/* </div> */}
       </div>
   )

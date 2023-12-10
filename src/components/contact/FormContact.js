@@ -71,7 +71,7 @@ function FormContact({ dataForm ,listSlug}) {
         })
     }
     return (
-        <section className='contactForm md:pt-[4.7rem] pt-[5.07rem]  max-md:flex-col md:pl-[4.17rem] md:pr-[9.43rem]  md:pb-[6.56rem] flex justify-between'>
+        <section id='form_contact' className='contactForm md:pt-[4.7rem] pt-[5.07rem]  max-md:flex-col md:pl-[4.17rem] md:pr-[9.43rem]  md:pb-[6.56rem] flex justify-between'>
             
             <div className='max-md:mb-[10rem] max-md:px-[4.27rem] w-full'>
                 <Formik
