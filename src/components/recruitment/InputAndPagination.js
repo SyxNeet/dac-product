@@ -9,12 +9,16 @@ function InputAndPagination({ dataFirstIn }) {
     const searchParams = useSearchParams()
     const page = searchParams.get('page') || 1
     const textSearch = useDebounce(text, 300)
+
+    const id = searchParams.get("id");
     const handleChangeInput = (e) => {
         setText(e.target.value)
     }
     useEffect(() => {
         const paramNew = new URLSearchParams(searchParams)
-        if (!textSearch) {
+        if(!id){
+            return
+        }else if (!textSearch) {
             paramNew.set('text', '')
             return router.replace(pathName + '?' + paramNew.toString(), {
                 scroll: false,
@@ -25,8 +29,7 @@ function InputAndPagination({ dataFirstIn }) {
             router.replace(pathName + '?' + paramNew.toString(), {
                 scroll: false,
             })
-        }
-
+        } 
     }, [textSearch])
 
     const pageInfo = dataFirstIn?.pageInfo?.offsetPagination?.total
