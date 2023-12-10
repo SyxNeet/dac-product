@@ -10,7 +10,7 @@ export default function GsapSmoother({ children }) {
   const isMobile = useMediaQuery({ query: "(max-width: 767.9px)" });
   useEffect(() => {
     
-    if(!isMobile){
+    // if(!isMobile){
       gsap.registerPlugin(ScrollSmoother);
 
       ScrollSmoother.create({
@@ -18,7 +18,7 @@ export default function GsapSmoother({ children }) {
         effects: true,
         smoothTouch: 0.1,
       });
-    }
+    // }
   });
   return (
     <div id="smooth-wrapper">
