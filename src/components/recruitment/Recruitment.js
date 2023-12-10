@@ -23,8 +23,8 @@ function Recruitment({ data, lang, dataFirstIn,listSlug }) {
     }
     useEffect(() => {
         if (!id) return;
-        gsap.to(window, { duration: 1, scrollTo: { y: `#${id}` , autoKill: false } });
-      }, []);
+        gsap.to(window, { duration: 1, scrollTo: `#${id}` });
+    }, []);
     useEffect(() => {
         if (isMobile) {
             const paramNew = new URLSearchParams(searchParams)

@@ -46,16 +46,16 @@ export default async function RootLayout({ children, params }) {
           <SocialAction lang={lang} />
           <ScrollUp />
           <div id="smooth-wrapper">
-      <div id="smooth-content">
-          <GsapSmoother lang={lang}/>
-            {children}
-            <Footer
-              lang={lang}
-              data={dataFooterFinal}
-              dataSocialFooter={dataSocialFooter}
-            />
+            <div id="smooth-content">
+              <GsapSmoother lang={lang}/>
+              {children}
+              <Footer
+                lang={lang}
+                data={dataFooterFinal}
+                dataSocialFooter={dataSocialFooter}
+              />
             </div>
-            </div>
+          </div>
         </ApolloClientProvider>
       </body>
     </html>

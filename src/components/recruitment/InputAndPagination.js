@@ -16,7 +16,7 @@ function InputAndPagination({ dataFirstIn }) {
         const paramNew = new URLSearchParams(searchParams)
         if (!textSearch) {
             paramNew.set('text', '')
-            return router.replace(pathName + '?' + paramNew.toString(), {
+            return router.replace(pathName, {
                 scroll: false,
             })
         } else {
@@ -26,7 +26,6 @@ function InputAndPagination({ dataFirstIn }) {
                 scroll: false,
             })
         }
-
     }, [textSearch])
 
     const pageInfo = dataFirstIn?.pageInfo?.offsetPagination?.total
