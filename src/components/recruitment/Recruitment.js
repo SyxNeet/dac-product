@@ -18,12 +18,10 @@ function Recruitment({ data, lang, dataFirstIn,listSlug }) {
     const router = useRouter()
     const isMobile = useMediaQuery({ query: '(max-width: 767.9px)' })
     const id = searchParams.get("id");
-    console.log(id);
     const handleSeeMore = () => {
         setSeeMore(seeMore + 1)
     }
     useEffect(() => {
-        console.log('test');
         if (!id) return;
         gsap.to(window, { duration: 1, scrollTo: { y: `#${id}` , autoKill: false } });
       }, []);
