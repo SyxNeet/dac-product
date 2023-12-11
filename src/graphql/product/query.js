@@ -179,6 +179,26 @@ const SLUG_PRODUCT_DETAIL_QUERY =(id)=> `{
     }
   }
 }`
+
+const SLUG_CATE_QUERY = `query getSlugCate($language: LanguageCodeFilterEnum!) {
+  allCategoryProducts(where: {language: $language, order: ASC, orderby: TERM_ID}) {
+    nodes {
+      id
+      slug
+    }
+  }
+}`
+
+const SLUG_FEATURE_PRODUCT_QUERY = `query getFeatureProduct($language: LanguageCodeFilterEnum!,$term:[String!]) {
+  allServiceProduct(
+    first: 1
+    where: {language: $language, orderby: {field: DATE, order: DESC}, taxQuery: {taxArray: {field: SLUG, taxonomy: CATEGORYPRODUCTS, terms: $term, operator: IN}}}
+  ) {
+    nodes {
+      slug
+    }
+  }
+}`
 export {
   GET_DATA_PRODUCT_PAGE,
   GET_DATA_CATEGORY_PRODUCT_SERVICE,
@@ -189,5 +209,7 @@ export {
   OTHER_PRODUCT_QUERY,
   SUBTITLE_PRODUCT_QUERY,
   SLUG_PRODUCT_QUERY,
-  SLUG_PRODUCT_DETAIL_QUERY
+  SLUG_PRODUCT_DETAIL_QUERY,
+  SLUG_CATE_QUERY,
+  SLUG_FEATURE_PRODUCT_QUERY
 }
