@@ -158,26 +158,33 @@ body.active_lang .text-justify{
 
 .popUpJob{
   transition: all 0.3s;
-  transform: translateY(300%);
+  transform: translateY(310%);
 }
 
-.arrow_down{
-  position: relative;
+.overlay_popup{
+  border: 1px solid rgba(255, 255, 255, 0.50);
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  z-index: -1;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+
+.arrow_down,.popUpJob{
   animation: arrowDown 0.7s infinite alternate;
 }
 
 @keyframes arrowDown {
   0% {
-    bottom: 0;
+    bottom: 10%;
   }
 
   100% {
-    bottom: 10px;
+    bottom: 12%;
   }
 }
 
 .pin-spacer{
   width: 100% !important;
   height: unset !important;
-  // padding: 0 !important;
 }

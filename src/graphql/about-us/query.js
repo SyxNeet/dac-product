@@ -92,7 +92,6 @@ const GET_DATA_ABOUT_US_PRIZE = `query ($language: LanguageCodeEnum!) {
         titlePage
         content{
           heading
-          subtitle
           listPrize{
             image{
               sourceUrl

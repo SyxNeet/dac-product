@@ -5,7 +5,7 @@ import Product from './Product'
 import ProductItem from './ProductItem'
 import HandleChangeSlug from '../common/HandleChangeSlug'
 
-function Service({ lang, data, dataCate,listSlug }) {
+function Service({ lang, data, dataCate,listSlug,slugProducts }) {
     return (
         <>
             <HandleChangeSlug listSlug={listSlug} />
@@ -13,13 +13,15 @@ function Service({ lang, data, dataCate,listSlug }) {
             <main>
                 <Product lang={lang} data={data?.product?.content} dataCate={dataCate} />
                 {/* Product items */}
-
                 <div className='md:grid grid-cols-4 md:gap-x-[2.6rem] md:gap-y-[2.45rem] md:px-[4.17rem]  md:pb-[13.23rem]'>
-                    {dataCate?.map((item, index) => (
-                        <Link href={`/${lang}/san-pham-dich-vu/${item?.product_category?.info?.featureProduct}`} key={index}>
-                            <ProductItem image={item?.product_category?.info?.image} text={item?.product_category?.info?.title} />
-                        </Link>
-                    ))}
+                    {dataCate?.map((item, index) => {
+                        const slugProduct = slugProducts[index];
+                        return(
+                            <Link href={`/${lang}/san-pham-dich-vu/${item?.product_category?.info?.featureProduct || slugProduct}`} key={index}>
+                                <ProductItem image={item?.product_category?.info?.image} text={item?.product_category?.info?.title} />
+                            </Link>
+                        )
+                    })}
                 </div>
             </main>
         </>
