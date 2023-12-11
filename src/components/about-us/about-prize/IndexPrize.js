@@ -59,8 +59,8 @@ export const IndexPrize = ({ data, lang, slugPage, titlePage,listSlug }) => {
             <div key={index * Math.random()} title={item?.image?.altText || lang === 'vi' ? 'giải thưởng' : 'prize' } className={`flex flex-col relative items-center justify-center ${index === dataPrize?.prize?.content?.listPrize?.length -1 ? 'md:w-[38.11422rem] md:h-[28.125rem] w-full ' : 'md:w-[14.89vw]  w-[41.86667rem]'} ${index === dataPrize?.prize?.content?.listPrize?.length -1 ? 'col-span-2' : '' }`}>
                 <div 
                   onClick={(e) => handleClick(index,e)} 
-                  className={`overflow-hidden card_image max-md:w-full max-md:h-full 
-                  ${(index === 0 || index === 1 || index === 2 || index === 3) ? 'md:h-[19.79167rem]': (index === 4 || index === 5 || index === 6 || index ===7) ? 'md:h-[12.70833rem]' :'md:h-[28.125rem]' }
+                  className={`overflow-hidden card_image w-full 
+                  ${(index === 0 || index === 1 || index === 2 || index === 3) ? 'md:h-[19.79167rem] h-[54.93rem]': (index === 4 || index === 5 || index === 6 || index ===7) ? 'md:h-[12.70833rem] h-[31.4rem]' :'md:h-[28.125rem] h-[74.1rem]' }
 
                   ${active === index && (index === 0 || index === 1 || index === 2 || index === 3) 
                   ? 
@@ -76,9 +76,9 @@ export const IndexPrize = ({ data, lang, slugPage, titlePage,listSlug }) => {
                   <Image src={item?.image?.sourceUrl} width={1800} height={1000} quality={100} alt={item?.image?.altText || 'prize'} priority className={`image_prize ${index === active ? 'active' : ''}  object-fill w-full h-full`} />
                   <div 
                     className={`${active === index ? 'active' : ''} description_prize ${( active === index  && (index === 0 || index === 1 || index === 2 || index === 3) 
-                    ? 'right-[4.5rem] md:right-[1.45rem] md:!bottom-[2.4rem] max-md:!bottom-[5.7rem]' 
+                    ? 'right-[4.5rem] md:right-[1.7rem] md:!bottom-[2.4rem] max-md:!bottom-[6.5rem]' 
                     : (active === index && (index === 4 || index === 5 || index === 6 || index === 7)) 
-                    ? 'md:right-[1.5rem] right-[4.3rem] md:!bottom-[1rem] max-md:!bottom-[2.8rem]' 
+                    ? 'md:right-[1.7rem] right-[4.9rem] md:!bottom-[1rem] max-md:!bottom-[2.8rem]' 
                     : index ===  dataPrize?.prize?.content?.listPrize?.length -1 
                     ? '!bottom-[0] md:!px-[10rem] md:!py-[7rem]' 
                     : '')}`}

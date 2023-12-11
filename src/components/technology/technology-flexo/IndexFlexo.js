@@ -15,7 +15,7 @@ function IndexFlexo({data,slugPage,lang,titlePage,listSlug}) {
                 image={dataBanner?.banner?.background?.sourceUrl}
                 altText={dataBanner?.banner?.background?.altText}
                 title={dataBanner?.banner?.title}
-                positionAndBox={'md:right-[14.47rem] md:bottom-[8rem] max-md:left-[4.27rem] bottom-[3.73rem] md:w-[30rem] w-[55rem]'}
+                positionAndBox={'md:right-[14.47rem] md:bottom-[8rem] max-md:left-[4.27rem] bottom-[3.73rem] md:w-[18rem] w-[55rem]'}
                 classTitle={'md:text-[3.4375rem] text-[8.53333rem]'}
                 background={'bg-[#f5f5f5]'}
             />

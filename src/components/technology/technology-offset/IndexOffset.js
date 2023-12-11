@@ -14,7 +14,7 @@ function IndexOffset({ data,slugPage,titlePage,lang,listSlug}) {
                  image={dataOffset?.banner?.background?.sourceUrl}
                  altText={dataOffset?.banner?.background?.altText}
                  title={dataOffset?.banner?.title}
-                 positionAndBox={'md:right-[14.47rem] md:bottom-[8rem] max-md:left-[4.27rem] bottom-[3.73rem] md:w-[30rem] w-[55rem]'}
+                 positionAndBox={'md:right-[14.47rem] md:bottom-[8rem] max-md:left-[4.27rem] bottom-[3.73rem] md:w-[19rem] w-[55rem]'}
                  classTitle={'md:text-[3.4375rem] text-[8.53333rem]'}
                  background={'bg-[#f5f5f5]'}
             />
