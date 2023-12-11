@@ -23,8 +23,14 @@ export default async function page({ params: { lang } }) {
     const slugItems = await Promise.all(listSlugCateProduct?.map((item)=>{
         return fetchData(SLUG_FEATURE_PRODUCT_QUERY,{language:lang?.toUpperCase(),term:item?.slug})
     }))
-
-    const slugProducts = slugItems.map((slugItem)=>slugItem?.data?.allServiceProduct?.nodes[0]?.slug)
+    
+    const slugProducts = slugItems.map((slugItem) => {
+        const nodes = slugItem?.data?.allServiceProduct?.nodes;
+        if (nodes && nodes.length > 0) {
+          return nodes[0]?.slug;
+        }
+        return '/';
+      });
     const listSlugProductPage = await getDataPage(lang,SLUG_PRODUCT_QUERY(data?.data?.page?.translation?.id))
     const listSlug = {
         slugVi:'/'+ (listSlugProductPage?.data?.page?.translations[0]?.language?.code==='VI'?listSlugProductPage?.data?.page?.translations[0]?.slug:listSlugProductPage?.data?.page?.slug),
