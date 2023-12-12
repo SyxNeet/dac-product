@@ -5,7 +5,11 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'cms-dac.okhub.tech'
-      }
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com'
+      },
     ]
   },
 }

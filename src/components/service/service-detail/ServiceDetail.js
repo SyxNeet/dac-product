@@ -5,11 +5,21 @@ import Image from 'next/image';
 import { Pagination,Autoplay } from 'swiper/modules';
 import Link from 'next/link';
 import HandleChangeSlug from '@/components/common/HandleChangeSlug';
+import Zoom from 'react-img-zoom';
+
 
 function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
     const [indexSlide, setIndexSlide] = useState(0)
     const swiperRef = useRef()
     const swiperRef1 = useRef()
+    const [width,setWidth] = useState()
+    const [height,setHeight] = useState()
+
+    useEffect(()=>{
+        if(typeof window === 'undefined') return
+        setWidth(window.innerWidth/100*33.2)
+        setHeight(window.innerWidth/100*30.5)
+    },[])
 
     const handleSlideChange = (swiper) => {
         setIndexSlide(swiper.realIndex);
@@ -29,29 +39,8 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
     const handleNextSlide1 = () => {
         swiperRef1?.current?.slideNext();
     };
-
-    useEffect(()=>{
-        let box = document.querySelectorAll('.box')
-        box.forEach(box => {
-            box.addEventListener('mousemove',(e)=>{
-                box.style.setProperty('--box-show','block')
-    
-                let positionPx = e.x - box.getBoundingClientRect().left
-                let positionPy = e.y - box.getBoundingClientRect().top
-    
-                let positionX = 100 * positionPx / box.offsetWidth
-                let positionY = 100 * positionPy / box.offsetHeight
-    
-                box.style.setProperty('--box-x',positionX + '%')
-                box.style.setProperty('--box-y',positionY + '%')
-            })    
-            box.addEventListener('mouseout',(e)=>{
-                box.style.setProperty('--box-show','none')
-            })
-        })
-
-    },[])
-    
+ 
+        
     return (
         <section className="md:pt-[10.26rem] pt-[29.3rem]">
             <HandleChangeSlug listSlug={listSlug} />
@@ -91,9 +80,15 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
                             {data?.product_detail?.listImages?.map((item, index) => (
                                 <SwiperSlide key={index}>
                                     <div className='box relative overflow-hidden w-full h-full'>
-                                        <Image src={item?.image?.sourceUrl} alt='img' width={1000} height={1000} quality={100} className='w-full h-full object-cover' />
-                                        <Image src={item?.image?.sourceUrl} alt='img' width={1000} height={1000} quality={100} className='w-full h-full object-cover' />
-                                          
+                                        {/* <Image src={item?.image?.sourceUrl} alt='img' width={1000} height={1000} quality={100} className='w-full h-full object-cover' /> */}
+                                        {height && <Zoom
+                                        img={item?.image?.sourceUrl}
+                                        zoomScale={2}
+                                        transitionTime={0.5}
+                                        className='w-full h-full object-cover'
+                                        width={width}
+                                        height={height}
+                                        />}
                                     </div>
                                 </SwiperSlide>
                             ))}

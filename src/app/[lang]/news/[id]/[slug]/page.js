@@ -19,7 +19,7 @@ const GET_PARAMS_ALL_NEWS = `query ($language: LanguageCodeFilterEnum!) {
   }
 }`
 export async function generateStaticParams({ params: { lang } }) {
-    const { data } = await fetchData(GET_PARAMS_ALL_NEWS,{language:lang?.toUpperCase()})
+    const { data } = await fetchData(GET_PARAMS_ALL_NEWS,{language:"EN"})
   
     const posts = data?.posts?.nodes || []
     
