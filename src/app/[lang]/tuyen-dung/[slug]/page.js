@@ -15,7 +15,7 @@ const GET_PARAMS_ALL_JOBS = `query ($language: LanguageCodeFilterEnum!) {
      }
    }`
 export async function generateStaticParams({ params: { lang } }) {
-    const { data } = await fetchData(GET_PARAMS_ALL_JOBS,{language:lang?.toUpperCase()})
+    const { data } = await fetchData(GET_PARAMS_ALL_JOBS,{language:"VI"})
   
     const jobs = data?.allJobOpportunity?.nodes || []
     
