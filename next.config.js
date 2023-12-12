@@ -8,10 +8,6 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'cms.asiavivatravel.com'
-      },
-      {
-        protocol: 'https',
         hostname: 'res.cloudinary.com'
       }
     ]
