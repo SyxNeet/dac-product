@@ -6,6 +6,24 @@ import { getMeta } from '@/graphql/metaData/getMeta';
 import { GET_DATA_NEWS_DETAIL, META_NEWS_DETAIL_QUERY, SLUG_BLOG_DETAIL_QUERY } from '@/graphql/news-blog/query';
 import React from 'react'
 
+const GET_PARAMS_ALL_NEWS = `query($language:LanguageCodeFilterEnum!){
+    posts(first: 100, where: {language: $language}) {
+      nodes {
+        slug
+      }
+    }
+  }`
+export async function generateStaticParams({ params: { lang } }) {
+    const { data } = await fetchData(GET_PARAMS_ALL_NEWS,{language:lang?.toUpperCase()})
+  
+    const posts = data?.posts?.nodes || []
+    
+    return posts.map((post) => ({
+      slug: post?.slug || undefined,
+    }))
+
+}
+
 export async function generateMetadata({ params: { lang, slug } }) {
     const res = await fetchData(META_NEWS_DETAIL_QUERY, { language: lang?.toUpperCase(), slug: slug })
     const news = res?.data?.post?.translation?.seo

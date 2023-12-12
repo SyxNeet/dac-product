@@ -6,6 +6,25 @@ import { getMeta } from '@/graphql/metaData/getMeta'
 import { GET_DATA_PRODUCT_DETAIL, META_PRODUCT_DETAIL_QUERY, OTHER_PRODUCT_QUERY ,SLUG_PRODUCT_DETAIL_QUERY,SUBTITLE_PRODUCT_QUERY } from '@/graphql/product/query'
 import React from 'react'
 
+
+const GET_PARAMS_ALL_PRODUCTS = `query ($language: LanguageCodeFilterEnum!) {
+    allServiceProduct(first: 100, where: {language: $language}) {
+      nodes {
+        slug
+      }
+    }
+  }`
+export async function generateStaticParams({ params: { lang } }) {
+    const { data } = await fetchData(GET_PARAMS_ALL_PRODUCTS,{language:lang?.toUpperCase()})
+  
+    const products = data?.allServiceProduct?.nodes || []
+    
+    return products.map((post) => ({
+      slug: post?.slug || undefined,
+    }))
+
+}
+
 export async function generateMetadata({ params: { lang, slug } }) {
     const res = await fetchData(META_PRODUCT_DETAIL_QUERY, { language: lang?.toUpperCase(), slug: slug })
     const servProduct = res?.data?.serviceProduct?.translation?.seo
