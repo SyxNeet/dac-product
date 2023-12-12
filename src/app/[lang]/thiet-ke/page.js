@@ -5,6 +5,10 @@ import { GET_DATA_DESIGN, GET_META_DESIGN, SLUG_DESIGN_QUERY } from '@/graphql/d
 import { getMeta } from '@/graphql/metaData/getMeta'
 import React from 'react'
 
+export async function generateStaticParams() {
+    return [{ lang: "vi" }];
+}
+
 export async function generateMetadata({ params: { lang } }) {
     const res = await fetchData(GET_META_DESIGN, { language: lang?.toUpperCase() })
     const home = res?.data?.page?.translation?.seo

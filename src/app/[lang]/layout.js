@@ -26,9 +26,9 @@ export const metadata = {
   viewport: "width=device-width, initial-scale=1, maximum-scale=1",
 };
 
-export async function generateStaticParams() {
-  return [{ lang: "en" }, { lang: "vi" }];
-}
+// export async function generateStaticParams() {
+//   return [{ lang: "en" }, { lang: "vi" }];
+// }
 
 export default async function RootLayout({ children, params }) {
   let lang = params.lang;

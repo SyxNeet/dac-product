@@ -14,7 +14,7 @@ const GET_PARAMS_ALL_PRODUCTS = `query ($language: LanguageCodeFilterEnum!) {
       }
     }
   }`
-export async function generateStaticParams({ params: { lang } }) {
+export async function generateStaticParams() {
     const { data } = await fetchData(GET_PARAMS_ALL_PRODUCTS,{language:"EN"})
   
     const products = data?.allServiceProduct?.nodes || []
