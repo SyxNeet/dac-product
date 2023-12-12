@@ -9,7 +9,7 @@ function Popup({lang}) {
     const pathName = usePathname()
     useEffect(()=>{
         if(pathName.includes('tuyen-dung') || pathName.includes('recruitment')){
-            popUpRef.current.style.transform = 'translateY(310%)'
+            popUpRef.current.style.transform = 'translateY(400%)'
         }else{
             const timeoutId = setTimeout(() => {
                 if(popUpRef.current && !check){
@@ -17,7 +17,7 @@ function Popup({lang}) {
                 }
             }, 1000);
             if(popUpRef.current && check){
-                popUpRef.current.style.transform = 'translateY(310%)'
+                popUpRef.current.style.transform = 'translateY(400%)'
             }
             return () => clearTimeout(timeoutId);
         }

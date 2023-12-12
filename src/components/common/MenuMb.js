@@ -43,7 +43,7 @@ function MenuMb({ data, handleCloseModal, lang }) {
                     return (
                         <div key={index} className='mb-[2.67rem]'>
                             {
-                                (item?.listContent) ?
+                                (item?.listContent && index !== 2) ?
                                     (
                                         <div className='flex gap-[2rem] items-center'>
                                             <span

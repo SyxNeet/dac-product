@@ -1,48 +1,4 @@
 'use client'
-// import React, { useEffect } from 'react'
-// import gsap from 'gsap';
-// import { ScrollTrigger } from 'gsap/ScrollTrigger';
-// function Locomotive({children}) {
-//   gsap.registerPlugin(ScrollTrigger);
-//     useEffect(() => {
-//         // (
-//         //     async () => {
-//         //       try {
-//         //         const LocomotiveScroll = (await import('locomotive-scroll')).default
-//         //         const locomotiveScroll = new LocomotiveScroll(
-//         //             {
-//         //                 el:document.querySelector('.scrollContainer'),
-//         //                 smooth:true
-//         //             }
-//         //         );
-                
-//         //       } catch (error) {
-//         //         console.error('Error loading Locomotive Scroll:', error)
-//         //       }
-//         //     }
-//         // )()
-//         const mainElement = document.querySelector('.scrollContainer');
-
-//         gsap.to(mainElement, {
-//           scrollTrigger: {
-//             trigger: mainElement,
-//             start: 'top top',
-//             end: 'bottom bottom',
-//             scrub: 1,
-//           },
-//           y: () => -window.scrollY,
-//         });
-
-//         return () => gsap.globalTimeline.clear();
-//           } , [])
-//         return (
-//           <div className='scrollContainer'>
-//               {children}
-//           </div>
-//         )
-// }
-
-// export default Locomotive
 
 import React, { useEffect } from 'react';
 import gsap from 'gsap';
