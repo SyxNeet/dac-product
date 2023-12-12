@@ -30,7 +30,7 @@ function Popup({lang}) {
             <div className='absolute inset-0 overlay_popup'></div>
             <Link
                 href={{
-                    pathname:`${lang ==='vi' ? 'tuyen-dung' : '/en/recruitment'}`,
+                    pathname:`/${lang ==='vi' ? 'tuyen-dung' : '/en/recruitment'}`,
                     query:{id:'job-oppo'}
                 }}
             >
