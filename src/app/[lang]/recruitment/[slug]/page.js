@@ -6,6 +6,23 @@ import { getMeta } from '@/graphql/metaData/getMeta';
 import { GET_DATA_NEW_JOBS, GET_DATA_RECRUIMENT_DETAIL, META_RECRUITMENT_DETAIL_QUERY, SLUG_RECRUITMENT_DETAIL_QUERY } from '@/graphql/recruitment/query';
 import React from 'react'
 
+const GET_PARAMS_ALL_JOBS = `query ($language: LanguageCodeFilterEnum!) {
+    allJobOpportunity(first: 100, where: {language: $language}) {
+       nodes {
+         slug
+       }
+     }
+   }`
+export async function generateStaticParams({ params: { lang } }) {
+    const { data } = await fetchData(GET_PARAMS_ALL_JOBS,{language:lang?.toUpperCase()})
+  
+    const jobs = data?.allJobOpportunity?.nodes || []
+    
+    return jobs.map((post) => ({
+      slug: post?.slug || undefined,
+    }))
+
+}
 
 export async function generateMetadata({ params: { lang, slug } }) {
     const res = await fetchData(META_RECRUITMENT_DETAIL_QUERY, { language: lang?.toUpperCase(), slug: slug })
