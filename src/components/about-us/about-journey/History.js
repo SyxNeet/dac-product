@@ -25,7 +25,7 @@ function History({ data }) {
       <div className='relative mt-[2rem] w-fit md:pl-[4.17rem] '>
         <div className='flex gap-[0.73rem] ml-[1.35rem] border-bottom border-dashed border-[#444] mt-[0.83rem]'>
           {data?.journey?.map((item, index) => (
-            <div onClick={() => handleSelect(index)} key={index} className='flex items-center justify-center cursor-grab'>
+            <div onClick={() => handleSelect(index)} key={index} className='flex items-center justify-center'>
               <span className='lg:text-[0.78125rem] md:text-[1.2rem] text-black year-history'>{item?.year}</span>
               <div className={`absolute bottom-[-0.235rem] w-[0.6rem] h-[0.6rem] rounded-[50%] border border-solid border-[#000] ${index === selected ? 'bg-[#00A84F]' :'bg-[#fff]'}`}></div>
             </div>

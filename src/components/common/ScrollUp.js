@@ -24,7 +24,7 @@ function ScrollUp() {
     }
   },[])
   return (
-    <div className='fixed arrow_up z-50 bottom-[2rem] right-[3.17rem]'>
+    <div className='fixed arrow_up z-50 bottom-[2rem] right-[1.5rem]'>
         <Image ref={arrowRef} src={arrowUp} alt='arrow' className='md:w-[2.29167rem] md:h-[2.13542rem] w-[4.3rem] h-[4.3rem]' />
     </div>
   )

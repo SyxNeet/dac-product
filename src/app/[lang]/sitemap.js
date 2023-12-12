@@ -74,7 +74,7 @@ export default async function sitemap() {
   })
   const arrNewsEn = newsEn?.data?.posts?.nodes?.map(e => {
     return {
-      url: `${process.env.DOMAIN}/tin-tuc-su-kien/${e?.slug}`,
+      url: `${process.env.DOMAIN}/news/${e?.slug}`,
       lastModified: e?.date,
       priority: 0.8
     }
@@ -88,7 +88,7 @@ export default async function sitemap() {
   })
   const arrJobsEn = jobsEn?.data?.allJobOpportunity?.nodes?.map(e => {
     return {
-      url: `${process.env.DOMAIN}/tuyen-dung/${e?.slug}`,
+      url: `${process.env.DOMAIN}/recruitment/${e?.slug}`,
       lastModified: e?.date,
       priority: 0.8
     }
@@ -102,7 +102,7 @@ export default async function sitemap() {
   })
   const arrProductsEn = productsEn?.data?.allServiceProduct?.nodes?.map(e => {
     return {
-      url: `${process.env.DOMAIN}/san-pham-dich-vu/${e?.slug}`,
+      url: `${process.env.DOMAIN}/products/${e?.slug}`,
       lastModified: e?.date,
       priority: 0.8
     }
@@ -126,7 +126,7 @@ export default async function sitemap() {
       priority: 0.9
     },
     {
-      url: `${process.env.DOMAIN}/en/san-pham-dich-vu`,
+      url: `${process.env.DOMAIN}/en/products`,
       lastModified: new Date(),
       priority: 0.9
     },
@@ -136,7 +136,7 @@ export default async function sitemap() {
       priority: 0.9
     },
     {
-      url: `${process.env.DOMAIN}/en/thiet-ke`,
+      url: `${process.env.DOMAIN}/en/news`,
       lastModified: new Date(),
       priority: 0.9
     },
@@ -146,7 +146,7 @@ export default async function sitemap() {
       priority: 0.9
     },
     {
-      url: `${process.env.DOMAIN}/en/ve-chung-toi/vision`,
+      url: `${process.env.DOMAIN}/en/about-us/vision`,
       lastModified: new Date(),
       priority: 0.9
     },
@@ -156,7 +156,7 @@ export default async function sitemap() {
       priority: 0.9
     },
     {
-      url: `${process.env.DOMAIN}/en/ve-chung-toi/journey`,
+      url: `${process.env.DOMAIN}/en/about-us/journey`,
       lastModified: new Date(),
       priority: 0.9
     },
@@ -166,7 +166,7 @@ export default async function sitemap() {
       priority: 0.9
     },
     {
-      url: `${process.env.DOMAIN}/en/ve-chung-toi/awards`,
+      url: `${process.env.DOMAIN}/en/about-us/awards`,
       lastModified: new Date(),
       priority: 0.9
     },
@@ -176,7 +176,7 @@ export default async function sitemap() {
       priority: 0.9
     },
     {
-      url: `${process.env.DOMAIN}/en/ve-chung-toi/company-structure`,
+      url: `${process.env.DOMAIN}/en/about-us/company-structure`,
       lastModified: new Date(),
       priority: 0.9
     },
@@ -186,7 +186,7 @@ export default async function sitemap() {
       priority: 0.9
     },
     {
-      url: `${process.env.DOMAIN}/en/tin-tuc-su-kien`,
+      url: `${process.env.DOMAIN}/en/news`,
       lastModified: new Date(),
       priority: 0.9
     },
@@ -196,7 +196,7 @@ export default async function sitemap() {
       priority: 0.9
     },
     {
-      url: `${process.env.DOMAIN}/en/tuyen-dung`,
+      url: `${process.env.DOMAIN}/en/recruitment`,
       lastModified: new Date(),
       priority: 0.9
     },
@@ -206,7 +206,7 @@ export default async function sitemap() {
       priority: 0.9
     },
     {
-      url: `${process.env.DOMAIN}/en/lien-he`,
+      url: `${process.env.DOMAIN}/en/contact`,
       lastModified: new Date(),
       priority: 0.9
     },
@@ -216,7 +216,7 @@ export default async function sitemap() {
       priority: 0.9
     },
     {
-      url: `${process.env.DOMAIN}/en/cong-nghe/offset`,
+      url: `${process.env.DOMAIN}/en/technology/offset-printing`,
       lastModified: new Date(),
       priority: 0.9
     },
@@ -226,7 +226,7 @@ export default async function sitemap() {
       priority: 0.9
     },
     {
-      url: `${process.env.DOMAIN}/en/cong-nghe/flexo`,
+      url: `${process.env.DOMAIN}/en/technology/flexography`,
       lastModified: new Date(),
       priority: 0.9
     },
@@ -236,7 +236,7 @@ export default async function sitemap() {
       priority: 0.9
     },
     {
-      url: `${process.env.DOMAIN}/en/cong-nghe/gravure`,
+      url: `${process.env.DOMAIN}/en/technology/gravure-printing`,
       lastModified: new Date(),
       priority: 0.9
     },
@@ -246,17 +246,17 @@ export default async function sitemap() {
       priority: 0.9
     },
     {
-      url: `${process.env.DOMAIN}/en/cong-nghe/digital`,
+      url: `${process.env.DOMAIN}/en/technology/digital-printing`,
       lastModified: new Date(),
       priority: 0.9
     },
     {
-      url: `${process.env.DOMAIN}/cong-nghe/other-printing`,
+      url: `${process.env.DOMAIN}/cong-nghe/khac`,
       lastModified: new Date(),
       priority: 0.9
     },
     {
-      url: `${process.env.DOMAIN}/en/cong-nghe/other-printing`,
+      url: `${process.env.DOMAIN}/en/technology/others`,
       lastModified: new Date(),
       priority: 0.9
     },

@@ -157,8 +157,8 @@ body.active_lang .text-justify{
 }
 
 .popUpJob{
-  transition: all 0.3s;
-  transform: translateY(310%);
+  transition: all 0.5s;
+  transform: translateY(400%);
 }
 
 .overlay_popup{
@@ -187,4 +187,8 @@ body.active_lang .text-justify{
 .pin-spacer{
   width: 100% !important;
   height: unset !important;
+}
+
+#fan-quote-360{
+  width: 100% !important;
 }
