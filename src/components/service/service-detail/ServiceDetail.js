@@ -17,8 +17,14 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
 
     useEffect(()=>{
         if(typeof window === 'undefined') return
-        setWidth(window.innerWidth/100*33.2)
-        setHeight(window.innerWidth/100*30.5)
+        if (window.innerWidth > 767){
+            setWidth(window.innerWidth/100*36.7)
+            setHeight(window.innerWidth/100*32.81)
+        } else{
+            setWidth(window.innerWidth/100*91.46667)
+            setHeight(window.innerWidth/100*81.6)
+        }
+
     },[])
 
     const handleSlideChange = (swiper) => {
@@ -58,7 +64,7 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
                 <div className='flex justify-between md:mt-[2.5rem] md:mb-[4.01rem] max-md:flex-col '>
                     {/* slide1 */}
                     <div className='relative md:w-[36.66667rem] w-[100%] md:h-[32.8125rem] md:rounded-br-[8rem] rounded-br-[18rem] overflow-hidden'>
-                        <svg xmlns="http://www.w3.org/2000/svg" className=' absolute inset-0 z-[-1] md:rounded-br-[8rem] rounded-br-[18rem]' viewBox="0 0 704 630" fill="none">
+                        <svg xmlns="http://www.w3.org/2000/svg" className=' absolute inset-0 z-[-1] h-full md:rounded-br-[8rem] rounded-br-[18rem]' viewBox="0 0 704 630" fill="none">
                             <path d="M0 0H704V464.211C704 555.774 643.174 630 568.14 630H0V0Z" fill="#D9D9D9" />
                         </svg> 
                         <Swiper
@@ -83,7 +89,7 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
                                         {/* <Image src={item?.image?.sourceUrl} alt='img' width={1000} height={1000} quality={100} className='w-full h-full object-cover' /> */}
                                         {height && <Zoom
                                         img={item?.image?.sourceUrl}
-                                        zoomScale={2}
+                                        zoomScale={1.5}
                                         transitionTime={0.5}
                                         className='w-full h-full object-cover'
                                         width={width}

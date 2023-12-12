@@ -18,7 +18,7 @@ function SlideProduct({ lang, dataProductList }) {
     setIndexSlider(swiper.activeIndex)
   }
 
-  const newArr = dataProductList.concat(dataProductList)
+  const newArr = dataProductList?.concat(dataProductList)
   return (
     <div className='relative w-full h-full slide-product'>
       <Swiper
