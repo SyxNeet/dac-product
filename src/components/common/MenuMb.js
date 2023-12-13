@@ -78,14 +78,51 @@ function MenuMb({ data, handleCloseModal, lang }) {
                                             </span>
                                         </div>
                                     )
+                                    : (item?.listContent && index == 2) ?
+                                    (
+                                        <div className='flex gap-[2rem] items-center'>
+                                            <Link
+                                                onClick={handleCloseModal}
+                                                className='text-[#444]  text-[5.33333rem] font-bold'
+                                                href={`/${lang}/${lang === 'vi' ? item?.slug : item?.slugEn || item?.slug}` || '/'}>{lang === 'vi' ? item?.link : item?.linkEn}
+                                            </Link>
+                                            <span 
+                                                onClick={()=>{
+                                                    setActive(index)
+                                                }} 
+                                                className={`w-[5rem] relative top-[0.75rem] plus_icon`}
+                                                style={
+                                                    index === active ? {
+                                                      display: hiddenPlus[active] || hiddenPlus[active - 1] ? 'none' : 'block'
+                                                    } : {}
+                                                  }
+                                            >
+                                                <AddCircleIcon className={`!w-full !h-full`} />
+                                            </span>
+                                            <span 
+                                                onClick={()=>{
+                                                    setActive(null)
+                                                }} 
+                                                className={`w-[5rem] minus_icon ${active2 === null ? 'hidden' :""}`}
+                                                style={
+                                                    index === active ? {
+                                                      display: (hiddenMinus[active] || hiddenMinus[active - 1]) ? 'block' : 'none'
+                                                    } : {}
+                                                  }
+                                            >
+                                                <RemoveCircleSharpIcon className={`!w-full !h-full relative top-[0.75rem] `} />
+                                            </span>
+                                        </div>
+                                    )
                                     :
                                     (
                                         <Link
-                                            onClick={handleCloseModal}
-                                            className='text-[#444] mb-[2.67rem] text-[5.33333rem] font-bold'
-                                            href={`/${lang}/${lang === 'vi' ? item?.slug : item?.slugEn || item?.slug}` || '/'}>{lang === 'vi' ? item?.link : item?.linkEn}
-                                        </Link>
+                                        onClick={handleCloseModal}
+                                        className='text-[#444] mb-[2.67rem] text-[5.33333rem] font-bold'
+                                        href={`/${lang}/${lang === 'vi' ? item?.slug : item?.slugEn || item?.slug}` || '/'}>{lang === 'vi' ? item?.link : item?.linkEn}
+                                    </Link>
                                     )
+
                             }
                             {
                                 item?.listContent && (
