@@ -39,7 +39,7 @@ function SlidePartners({ data }) {
                 width={500}
                 height={500}
                 alt='partners'
-                className={`object-contain md:w-[10.19rem] md:h-[9.6rem] w-[29.86427rem] h-[28.53333rem] `}
+                className={`object-contain md:w-[15.625rem] md:h-[15.625rem] w-[50.86427rem] h-[70.53333rem] `}
               />
             </SwiperSlide>
           )

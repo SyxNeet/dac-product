@@ -6,7 +6,7 @@ function Partners({ dataPartner,lang }) {
       <h3 className='md:text-[2.5rem] text-[6.93333rem] text-[#444] font-bold leading-[1.16] text-center max-md:mb-[15rem]'>{dataPartner?.title}</h3>
       <SlidePartners data={dataPartner?.listPartners} />
       <div style={{ background: 'linear-gradient(180deg, #FFF 0%, #CFEAE4 100%)' }}>
-        <h3 className='md:text-[2.5rem] text-[4.26667rem] text-[#444] leading-[1.16] text-center md:mt-[14.48rem] mt-[22.3rem] '>{dataPartner?.subtitle}</h3>
+        <h3 className='md:text-[2.5rem] text-[4.26667rem] text-[#444] leading-[1.16] text-center md:mt-[14.48rem] '>{dataPartner?.subtitle}</h3>
         <h3 className='pb-[12.81rem] flex justify-center'>
           <Link
           href={{
