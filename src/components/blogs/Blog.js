@@ -6,50 +6,67 @@ import { DATA_NEWS_WITH_SEARCH_AND_CATEGORY } from '@/graphql/news-blog/query'
 import BlogItem from './BlogItem'
 import { useMediaQuery } from 'react-responsive'
 import useDebounce from '@/hooks/useDebounce'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import HandleChangeSlug from '../common/HandleChangeSlug'
 import FireQuoteWidget from '../common/FireQuoteWidget'
 function Blog({ lang, dataBlog,slug,listSlug }) {
     let language = lang?.toUpperCase()
-    const [activePage, setActivePage] = useState(0)
-    const [text, setText] = useState("")
+    const searchParams = useSearchParams()
+    const page = searchParams.get('page') || 1
+    const textParam = searchParams.get('text') || '';
+    const [activePage, setActivePage] = useState(page -1  || 0)
+    const [text, setText] = useState(textParam)
     const [number, setNumber] = useState(0)
     const [dataNew, setDataNew] = useState([])
     const textSearch = useDebounce(text, 500)
     const pathName = usePathname()
+    const router = useRouter();
     const eleRef = useRef()
     const seeMoreRef = useRef()
     const isMobile = useMediaQuery({ query: '(max-width: 767.9px)' })
     const { data, refetch, loading } = useQuery(DATA_NEWS_WITH_SEARCH_AND_CATEGORY, {
         variables: {
             language,
-            offset: 0,
+            offset: (page - 1) * (isMobile ? 3 : 8),
             size: isMobile ? 3 : 8,
             text: textSearch,
             term:slug
         }
     })
-    useEffect(() => {
-        if(text !== ""){
-            eleRef?.current?.scrollIntoView({
-                behavior: 'smooth'
-            })
-        }
-    }, [activePage, textSearch])
     ///////////////////////////////////////////// handle click PC//////////////////////////////////////////
 
-    function handleInput(e) {
-        setText(e.target.value)
-        setNumber(0)
+    function handleInput(searchText) {
+        setText(searchText)
+        const paramNew = new URLSearchParams(searchParams)
+                paramNew.set('page', page)
+                paramNew.set('text', searchText)
+                router.push(pathName + '?' + paramNew.toString(), {
+                    scroll: false,
+                })
     }
     const handleChangePage = (index) => {
         setActivePage(index)
         refetch({
             offset: index * 8,
-            size: 8
+            size: 8,
+            text: textSearch,
         })
+        router.push(`?page=${index + 1}&text=${textSearch}`,{
+            scroll: false,
+        });
     }
+
+    useEffect(()=>{
+        if(activePage !== page ){
+            refetch({
+                offset: (page - 1) * (isMobile ? 3 : 8),
+                size: isMobile ? 3 : 8,
+                text: textSearch,
+              });
+        }
+    },[page,activePage])
+
     ///////////////////////////////////////////// handle click mobile//////////////////////////////////////////
     const handleClick = () => {
         setNumber(number + 1)
@@ -61,7 +78,7 @@ function Blog({ lang, dataBlog,slug,listSlug }) {
             size: 3,
             text: textSearch
         }).then(response => {
-            if (number === Math.floor(response.data?.posts?.pageInfo?.offsetPagination?.total / 3) && seeMoreRef?.current) {
+            if ( number === (Math.floor(response.data?.posts?.pageInfo?.offsetPagination?.total / 3) - 1) && seeMoreRef?.current) {
                 seeMoreRef.current.style.display = 'none'
             } else {
                 seeMoreRef.current.style.display = 'block'
@@ -81,7 +98,6 @@ function Blog({ lang, dataBlog,slug,listSlug }) {
     const allNews = isMobile ? dataNew : data?.posts?.nodes
     const pageInfo = data?.posts?.pageInfo?.offsetPagination?.total
     const totalPage = Math.ceil(pageInfo / 8)
-
 
     // list category
     const listCategoryNews = [
@@ -130,9 +146,7 @@ function Blog({ lang, dataBlog,slug,listSlug }) {
                     </div>
                         
                         
-                {(pathName?.includes('/nha-dau-tu') || pathName?.includes('/investor')) && <div className='max-md:order-2 max-md:mt-[1rem]'>
-                            <FireQuoteWidget></FireQuoteWidget>
-                </div> }    
+                  
                 <div className='grid md:grid-cols-4 md:gap-x-[2.6rem] md:gap-y-[4.43rem] max-md:px-[4.27rem] md:mt-[2rem]'>
                     {
                         allNews?.map((item, index) => (
@@ -143,7 +157,7 @@ function Blog({ lang, dataBlog,slug,listSlug }) {
                 </div>
                 {/* input search */}
                 <div className='searchTextBlog flex justify-center md:mt-[2.97rem] md:mb-[1rem] max-md:pt-[3.73rem] max-md:pb-[4.8rem]'>
-                    <input onChange={handleInput} placeholder={`${lang === 'vi' ? 'Tìm Kiếm' : 'Search'}`} className='md:px-[0.8rem] md:pb-[0.25rem] md:w-[10.625rem] w-[42.4576rem] md:h-[2.1875rem] h-[8.8rem] md:rounded-[2.23958rem] rounded-[11.46667rem] bg-[#F0F0F0]' />
+                    <input onChange={(e) => handleInput(e.target.value)} placeholder={`${lang === 'vi' ? 'Tìm Kiếm' : 'Search'}`} className='md:px-[0.8rem] md:pb-[0.25rem] md:w-[10.625rem] w-[42.4576rem] md:h-[2.1875rem] h-[8.8rem] md:rounded-[2.23958rem] rounded-[11.46667rem] bg-[#F0F0F0]' />
                 </div>
                 
 
@@ -159,6 +173,9 @@ function Blog({ lang, dataBlog,slug,listSlug }) {
                         </div>
                     ))}
                 </div>
+                {(pathName?.includes('/nha-dau-tu') || pathName?.includes('/investor')) && <div className='max-md:order-2 mt-[4rem] max-md:mt-[1rem]'>
+                            <FireQuoteWidget></FireQuoteWidget>
+                </div> }  
 
             </section>
         </>

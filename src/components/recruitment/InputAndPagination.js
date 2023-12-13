@@ -3,19 +3,18 @@ import useDebounce from '@/hooks/useDebounce'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 function InputAndPagination({ dataFirstIn }) {
-    const [text, setText] = useState("")
+    const searchParams = useSearchParams()
+    const textParam = searchParams.get('text') || ''
+    const [text, setText] = useState(textParam)
     const router = useRouter()
     const pathName = usePathname()
-    const searchParams = useSearchParams()
     const page = searchParams.get('page') || 1
     const textSearch = useDebounce(text, 300)
-    const id = searchParams.get("id");
     const handleChangeInput = (e) => {
         setText(e.target.value)
     }
     useEffect(() => {
         const paramNew = new URLSearchParams(searchParams)
-        if(!id) return
         if (!textSearch) {
             paramNew.set('text', '')
             return router.replace(pathName, {
