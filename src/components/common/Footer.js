@@ -60,8 +60,8 @@ function Footer({ lang, data,dataSocialFooter }) {
         <div className='flex items-start max-md:flex-col justify-between md:mt-[3.58rem] mt-[6.4rem] description2 md:!tracking-[-0.05rem] !text-[#888] md:mb-[3rem] mb-[6rem]'>
           <div className="left md:w-[44rem] md:mr-[10.4rem] max-md:mb-[2rem] title_name_company" dangerouslySetInnerHTML={{ __html: `${data?.homepage?.footer?.contentColumn1}` }}>
           </div>
-          <div className='flex flex-col'>
-            <div ref={contentRef} className="right title_name_company" dangerouslySetInnerHTML={{ __html: `${data?.homepage?.footer?.contentColumn2}` }}></div>
+          <div ref={contentRef} className='right flex flex-col'>
+            <div  className=" title_name_company" dangerouslySetInnerHTML={{ __html: `${data?.homepage?.footer?.contentColumn2}` }}></div>
             <div className='flex mt-[3rem] max-md:flex-col-reverse'>
                   <div className='grid md:grid-cols-2 grid-cols-4 gap-[1rem] md:mr-[4.84rem]'>
                     <Link href={`${listSocial?.facebook}`} target='_blank' className='max-md:flex justify-center' > 
@@ -90,7 +90,7 @@ function Footer({ lang, data,dataSocialFooter }) {
         
         {/*  */}
         <div className="h-[0.0625vw] w-full bg-[#fff] opacity-60 mt-[1.35417rem]"></div>
-        <div className="flex items-center max-md:flex-col justify-between copy-right md:py-[3.25rem] py-[4rem] max-md:text-[3.73333rem] md:leading-[0.01867rem]">
+        <div className="flex items-center max-md:flex-col justify-between copy-right tracking-[0.01867rem] md:py-[3.25rem] py-[4rem] max-md:text-[3.73333rem] md:leading-[0.01867rem]">
           <p>{data?.homepage?.footer?.copyrightAndPolicy?.copyright}</p>
           <div className='flex items-center gap-[2rem]'>
             {data?.homepage?.footer?.copyrightAndPolicy?.policy?.map((item, index) => (
