@@ -4,11 +4,14 @@ import HandleChangeSlug from '@/components/common/HandleChangeSlug'
 import TitlePage_About_Us from '@/components/common/TitlePage_About_Us'
 import Image from 'next/image'
 import { useEffect, useLayoutEffect, useState } from 'react'
+import { useMediaQuery } from 'react-responsive'
 
 export const IndexPrize = ({ data, lang, slugPage, titlePage,listSlug }) => {
   const dataPrize = data?.data?.page?.translation
   const [active,setActive] = useState(-1)
   const [itemClick,setItemClick] = useState()
+  const isMobile = useMediaQuery({ query: '(max-width: 767.9px)' })
+
   const handleClick = (num,e) => {
     if(num === active) {
       setActive(-1)
@@ -42,21 +45,8 @@ export const IndexPrize = ({ data, lang, slugPage, titlePage,listSlug }) => {
     }
   }, [active]);
 
-  
-  // useEffect(()=>{
-  //   let imgboxes = document.querySelectorAll('.imgbox');
-  //   let popUp = document.querySelector('.')
-  //   imgboxes.forEach(function (imgbox) {
-  //   let rect = imgbox.getBoundingClientRect(),
-  //     screen_width = document.body.clientWidth,
-  //     popup_width = 
-  //   if (rect.right + popup_width > screen_width) {
-  //     imgbox.classList.add('to_left');
-  //   }
-  // });
-  // },[])
-
   useEffect(()=>{
+    if(!isMobile){
       const banner_home = document.querySelector('.banner_home')
       const navheader = document.getElementById('navheader')
       const card_image1 = document.querySelector(".card_image.active1")
@@ -94,8 +84,7 @@ export const IndexPrize = ({ data, lang, slugPage, titlePage,listSlug }) => {
           behavior:"smooth"
         })
       }
-
-    
+    }
   },[active])
 
   return (
