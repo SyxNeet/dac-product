@@ -41,6 +41,63 @@ export const IndexPrize = ({ data, lang, slugPage, titlePage,listSlug }) => {
       }
     }
   }, [active]);
+
+  
+  // useEffect(()=>{
+  //   let imgboxes = document.querySelectorAll('.imgbox');
+  //   let popUp = document.querySelector('.')
+  //   imgboxes.forEach(function (imgbox) {
+  //   let rect = imgbox.getBoundingClientRect(),
+  //     screen_width = document.body.clientWidth,
+  //     popup_width = 
+  //   if (rect.right + popup_width > screen_width) {
+  //     imgbox.classList.add('to_left');
+  //   }
+  // });
+  // },[])
+
+  useEffect(()=>{
+      const banner_home = document.querySelector('.banner_home')
+      const navheader = document.getElementById('navheader')
+      const card_image1 = document.querySelector(".card_image.active1")
+      const card1 = document.querySelectorAll(".card_img1")
+      const card2 = document.querySelector(".card_img2")
+      const card_image2 = document.querySelector(".card_image.active2")
+      const card_image3 = document.querySelector(".card_image.active3")
+      let temp
+      let temp2
+      if(card1){
+        temp = card1[0].offsetHeight
+      }
+
+      if(card2){
+        temp2 = card2.offsetHeight
+      }
+      console.log(temp);
+      if(card_image1){
+        window.scrollTo({
+          top:banner_home.offsetHeight + navheader.offsetHeight - 200,
+          behavior:"smooth"
+        })
+      }
+
+      if(card_image2){
+        window.scrollTo({
+          top:banner_home.offsetHeight + navheader.offsetHeight + temp,
+          behavior:"smooth"
+        })
+      }
+
+      if(card_image3){
+        window.scrollTo({
+          top:banner_home.offsetHeight + navheader.offsetHeight + temp + temp2 + 300,
+          behavior:"smooth"
+        })
+      }
+
+    
+  },[active])
+
   return (
     <section>
       <Banner
@@ -60,7 +117,7 @@ export const IndexPrize = ({ data, lang, slugPage, titlePage,listSlug }) => {
                 <div 
                   onClick={(e) => handleClick(index,e)} 
                   className={`overflow-hidden card_image w-full 
-                  ${(index === 0 || index === 1 || index === 2 || index === 3) ? 'md:h-[19.79167rem] h-[54.93rem]': (index === 4 || index === 5 || index === 6 || index ===7) ? 'md:h-[12.70833rem] h-[31.4rem]' :'md:h-[28.125rem] h-[74.1rem]' }
+                  ${(index === 0 || index === 1 || index === 2 || index === 3) ? 'md:h-[19.79167rem] h-[54.93rem] card_img1': (index === 4 || index === 5 || index === 6 || index ===7) ? 'md:h-[12.70833rem] h-[31.4rem] card_img2' :'md:h-[28.125rem] h-[74.1rem] card_img3' }
 
                   ${active === index && (index === 0 || index === 1 || index === 2 || index === 3) 
                   ? 
