@@ -54,7 +54,7 @@ function SlideProduct({ lang, dataProductList }) {
                 <Link href={`/${lang}/san-pham-dich-vu/${item?.product_category?.info?.featureProduct}`} className='relative block w-full h-full '>
                   <div className="overlay absolute top-0 w-full md:h-[100%]  h-[100rem] " style={{ background: 'linear-gradient(90deg, #000D10 0%, rgba(217, 217, 217, 0.00) 54.34%)' }}></div>
                   <Image src={item?.product_category?.info?.image?.sourceUrl} quality={100} width={1000} height={1000} alt={item?.product_category?.info?.image?.altText || 'img-product'} className='w-full md:h-full h-[100rem] object-cover' />
-                  <h3 className='absolute md:bottom-[2.64rem] text_product_item_home bottom-[10rem] md:pr-[2.9rem] w-full md:pl-[2.64rem] max-md:px-[4.27rem] text-[6.93333rem]  md:text-[2.5rem] font-bold text-white leading-[1.16]' dangerouslySetInnerHTML={{ __html: `${item.product_category?.info?.title}` }} ></h3>
+                  <h3 className='absolute md:bottom-[2.64rem] text_product_item_home bottom-[10rem] md:pr-[1.9rem] w-full md:pl-[1.9rem] max-md:px-[4.27rem] text-[6.93333rem]  md:text-[2.5rem] font-bold text-white leading-[1.16]' dangerouslySetInnerHTML={{ __html: `${item.product_category?.info?.title}` }} ></h3>
                 </Link>
               )}
             </SwiperSlide>
