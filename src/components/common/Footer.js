@@ -94,7 +94,9 @@ function Footer({ lang, data,dataSocialFooter }) {
           <p>{data?.homepage?.footer?.copyrightAndPolicy?.copyright}</p>
           <div className='flex items-center gap-[2rem]'>
             {data?.homepage?.footer?.copyrightAndPolicy?.policy?.map((item, index) => (
-              <span key={index}>{item?.text}</span>
+              <Link href={index === 0 ? 'https://www.bloomberg.com/notices/privacy/' : index === 1 ? 'https://www.bloomberg.com/notices/notices-and-policies/' : 'https://www.bloomberg.com/notices/tos/'} key={index} target='_blank' className='cursor-pointer'>
+                <span>{item?.text}</span>
+              </Link>
             ))}
           </div>
         </div>
