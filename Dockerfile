@@ -7,6 +7,9 @@ WORKDIR /app
 
 # Install dependencies based on the preferred package manager
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
+
+# Install gsap-bonus
+COPY gsap-bonus.tgz .
 # Omit --production flag for TypeScript devDependencies
 RUN \
   if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
@@ -24,7 +27,6 @@ COPY loader.js .
 COPY i18n-config.js .
 COPY tailwind.config.js .
 COPY postcss.config.js .
-
 
 # Environment variables must be present at build time
 # https://github.com/vercel/next.js/discussions/14030

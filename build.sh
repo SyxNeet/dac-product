@@ -1,7 +1,13 @@
 #!/bin/bash
 
-npm install
+# Create a network, which allows containers to communicate
+docker network create dacnetwork
 
-npm run build
+# Build production
+docker compose -f docker-compose.yml build
 
-pm2 reload dac
+# Up dev
+docker compose -f docker-compose.yml up -d
+
+# Reload nginx
+sudo systemctl reload nginx

@@ -22,5 +22,5 @@ services:
 # Define a network, which allows containers to communicate
 # with each other, by using their container name as a hostname
 networks:
-  asivivatravel:
+  dacnetwork:
     external: true
