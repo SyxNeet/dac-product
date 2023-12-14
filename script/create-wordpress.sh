@@ -27,11 +27,14 @@ sudo mysql_secure_installation
 # Install PHP and required extensions
 sudo apt install -y php-fpm php-mysql
 
+# Install Certbot and the Nginx plugin
+sudo apt install -y certbot python3-certbot-nginx
+
 # Configure Nginx for the domain cms.appjsc.com
 sudo tee /etc/nginx/sites-available/cms.appjsc.com <<EOF
 server {
     listen 80;
-    server_name cms.appjsc.com www.cms.appjsc.com;
+    server_name cms.appjsc.com;
 
     root /var/www/html/cms.appjsc.com;
     index index.php index.html index.htm;
@@ -56,6 +59,15 @@ EOF
 # Create site enable
 sudo ln -s /etc/nginx/sites-available/cms.appjsc.com /etc/nginx/sites-enabled/
 
+# Test Nginx configuration again
+sudo nginx -t
+
+# If the test is successful, restart Nginx
+sudo systemctl restart nginx
+
+# Prompt Certbot to obtain and install SSL/TLS certificate for the domain appjsc.com
+sudo certbot --nginx -d cms.appjsc.com
+
 # Create the document root directory
 sudo mkdir -p /var/www/html/cms.appjsc.com
 
@@ -71,22 +83,15 @@ sudo cp -r wordpress/* /var/www/html/cms.appjsc.com/
 sudo cp /var/www/html/cms.appjsc.com/wp-config-sample.php /var/www/html/cms.appjsc.com/wp-config.php
 sudo chown www-data:www-data /var/www/html/cms.appjsc.com/wp-config.php
 
-# Generate secret keys for WordPress
-sudo curl -s https://api.wordpress.org/secret-key/1.1/salt/ > /tmp/wp-salt
-sudo sed -i '/AUTH_KEY/d' /var/www/html/cms.appjsc.com/wp-config.php
-sudo sed -i '/SECURE_AUTH_KEY/d' /var/www/html/cms.appjsc.com/wp-config.php
-sudo sed -i '/LOGGED_IN_KEY/d' /var/www/html/cms.appjsc.com/wp-config.php
-sudo sed -i '/NONCE_KEY/d' /var/www/html/cms.appjsc.com/wp-config.php
-sudo sed -i '/AUTH_SALT/d' /var/www/html/cms.appjsc.com/wp-config.php
-sudo sed -i '/SECURE_AUTH_SALT/d' /var/www/html/cms.appjsc.com/wp-config.php
-sudo sed -i '/LOGGED_IN_SALT/d' /var/www/html/cms.appjsc.com/wp-config.php
-sudo sed -i '/NONCE_SALT/d' /var/www/html/cms.appjsc.com/wp-config.php
-sudo cat /tmp/wp-salt >> /var/www/html/cms.appjsc.com/wp-config.php
-
 # Create MySQL database and user
 DB_NAME="cms_appjsc_com"
 DB_USER="cms_user"
 DB_PASSWORD=$(openssl rand -base64 12)
+
+# Generate secret keys for WordPress
+sudo sed -i 's/database_name_here/$DB_NAME/g' /var/www/html/cms.appjsc.com/wp-config.php
+sudo sed -i 's/username_here/$DB_USER/g' /var/www/html/cms.appjsc.com/wp-config.php
+sudo sed -i 's/password_here/$DB_PASSWORD/g' /var/www/html/cms.appjsc.com/wp-config.php
 
 # Create the database
 sudo mysql -e "CREATE DATABASE $DB_NAME;"
