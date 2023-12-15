@@ -10,8 +10,8 @@ import imgFooter from '@/assets/imgs/iconmoi.png'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-function Footer({ lang, data,dataSocialFooter }) {
-  
+function Footer({ lang, data,dataSocialFooter,dataPolicy }) {
+  console.log(dataPolicy);
   const [active, setActive] = useState(false)
   const contentRef = useRef()
   const scrollRef = useRef()

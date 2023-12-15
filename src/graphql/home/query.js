@@ -232,6 +232,13 @@ const GET_NEWS_HOMEPAGE = `query getNewsHomepage($language: LanguageCodeFilterEn
     }
   }
 }`
+const POLICY_QUERY = `query($language:LanguageCodeEnum!){
+  page(id:"cG9zdDoyMjE1"){
+    translation(language:$language){
+      slug
+    }
+  }
+}`
 export {
   GET_DATA_HEADER,
   GET_DATA_FOOTER,
@@ -242,5 +249,6 @@ export {
   GET_DATA_MOBILE_VISION,
   GET_META_HOME,
   GET_NEWS_HOMEPAGE,
-  DATA_SOCIAL_FOOTER
+  DATA_SOCIAL_FOOTER,
+  POLICY_QUERY
 }

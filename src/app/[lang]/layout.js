@@ -1,6 +1,5 @@
 import ApolloClientProvider from "../apolloProvider";
 import "./globals.css";
-import Footer from "@/components/common/Footer";
 // Sass
 import "@/scss/main.scss";
 // fonts
@@ -13,15 +12,13 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/thumbs";
 import "swiper/css/free-mode";
-import getDataPage from "@/data/getDataPage";
-import { DATA_SOCIAL_FOOTER, GET_DATA_FOOTER } from "@/graphql/home/query";
 import NavbarData from "@/components/common/NavbarData";
 import SocialAction from "@/components/common/SocialAction";
 import ScrollUp from "@/components/common/ScrollUp";
 import Popup from "@/components/common/Popup";
-import { fetchData } from "@/data/fetchData";
-import { SLUG_JOB_FEATURE } from "@/graphql/recruitment/query";
 import GsapSmoother from "@/components/common/GsapSmoother";
+import SocialActionMb from "@/components/common/SocialActionMb";
+import FooterData from "@/components/common/FooterData";
 export const metadata = {
   viewport: "width=device-width, initial-scale=1, maximum-scale=1",
 };
@@ -32,9 +29,6 @@ export const metadata = {
 
 export default async function RootLayout({ children, params }) {
   let lang = params.lang;
-  let dataFooter = await getDataPage(lang, GET_DATA_FOOTER);
-  const dataFooterFinal = dataFooter?.data?.page?.translation;
-  const dataSocialFooter = await getDataPage(lang, DATA_SOCIAL_FOOTER);
   return (
     <html lang={lang}>
       <body>
@@ -44,16 +38,13 @@ export default async function RootLayout({ children, params }) {
             lang={lang}
           />
           <SocialAction lang={lang} />
+          {/* <SocialActionMb lang={lang} /> */}
           <ScrollUp />
           <div id="smooth-wrapper">
             <div id="smooth-content">
               <GsapSmoother lang={lang}/>
               {children}
-              <Footer
-                lang={lang}
-                data={dataFooterFinal}
-                dataSocialFooter={dataSocialFooter}
-              />
+              <FooterData lang={lang} />
             </div>
           </div>
         </ApolloClientProvider>
