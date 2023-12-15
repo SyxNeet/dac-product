@@ -22,9 +22,12 @@ import Popup from "@/components/common/Popup";
 import { fetchData } from "@/data/fetchData";
 import { SLUG_JOB_FEATURE } from "@/graphql/recruitment/query";
 import GsapSmoother from "@/components/common/GsapSmoother";
-export const metadata = {
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
-};
+
+export function generateViewport() {
+  return {
+    viewport: 'width=device-width, initial-scale=1, maximum-scale=1'
+  }
+}
 
 // export async function generateStaticParams() {
 //   return [{ lang: "en" }, { lang: "vi" }];
