@@ -4,6 +4,7 @@ import { GET_DATA_ABOUT_US_PRIZE, META_PRIZE_QUERY, SLUG_JOURNEY_QUERY, SLUG_ORG
 import { IndexPrize } from '@/components/about-us/about-prize/IndexPrize'
 import { fetchData } from '@/data/fetchData'
 import { getMeta } from '@/graphql/metaData/getMeta'
+import ScrollToTop from '@/components/common/ScrollToTop'
 const PARAM_ARR = [
   SLUG_VISION_QUERY,
   SLUG_JOURNEY_QUERY,
@@ -51,13 +52,14 @@ async function page({params}) {
     }
     return (
         <>
-             <IndexPrize 
-              slugPage={slugPage} 
-              titlePage={titlePage} 
-              data={data} 
-              lang={params?.lang} 
-              listSlug={listSlug}
-             />
+            <ScrollToTop />
+            <IndexPrize 
+            slugPage={slugPage} 
+            titlePage={titlePage} 
+            data={data} 
+            lang={params?.lang} 
+            listSlug={listSlug}
+            />
         </>
   )
 }

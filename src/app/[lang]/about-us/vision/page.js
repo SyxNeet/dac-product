@@ -1,4 +1,5 @@
 import IndexVision from '@/components/about-us/about-vision/IndexVision'
+import ScrollToTop from '@/components/common/ScrollToTop'
 import { fetchData } from '@/data/fetchData'
 import getDataPage from '@/data/getDataPage'
 import { GET_DATA_ABOUT_US_VISION, META_VISION_QUERY, SLUG_JOURNEY_QUERY, SLUG_ORGANIZE_QUERY, SLUG_PRIZE_QUERY, SLUG_VISION_PAGE_QUERY, SLUG_VISION_QUERY } from '@/graphql/about-us/query'
@@ -52,6 +53,7 @@ async function page({params}) {
     }
     return (
         <>
+        <ScrollToTop />
             <IndexVision 
               slugPage={slugPage} 
               titlePage={titlePage} 

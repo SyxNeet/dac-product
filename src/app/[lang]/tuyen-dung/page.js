@@ -1,3 +1,4 @@
+import ScrollToTop from '@/components/common/ScrollToTop'
 import Recruitment from '@/components/recruitment/Recruitment'
 import { fetchData } from '@/data/fetchData'
 import getData from '@/data/getData'
@@ -25,6 +26,9 @@ export default async function page({ params, searchParams }) {
         slugEn:'/en/' +(listSlugRecruitment?.data?.page?.translations[0]?.language?.code==='EN'?listSlugRecruitment?.data?.page?.translations[0]?.slug:listSlugRecruitment?.data?.page?.slug)
     }
     return (
-        <Recruitment listSlug={listSlug} dataFirstIn={dataFirstIn?.data?.allJobOpportunity} lang={params?.lang} data={dataRecruitment} />
+        <>
+            <ScrollToTop />
+            <Recruitment listSlug={listSlug} dataFirstIn={dataFirstIn?.data?.allJobOpportunity} lang={params?.lang} data={dataRecruitment} />
+        </>
     )
 }

@@ -1,4 +1,5 @@
 import { IndexOrganize } from '@/components/about-us/about-organize/IndexOrganize'
+import ScrollToTop from '@/components/common/ScrollToTop'
 import { fetchData } from '@/data/fetchData'
 import getDataPage from '@/data/getDataPage'
 import { GET_DATA_ABOUT_US_ORGANIZE, META_ORGANIZE_QUERY, SLUG_JOURNEY_QUERY, SLUG_ORGANIZE_QUERY, SLUG_PRIZE_QUERY, SLUG_VISION_PAGE_QUERY, SLUG_VISION_QUERY } from '@/graphql/about-us/query'
@@ -49,6 +50,7 @@ async function page({params}) {
     }
     return (
         <>
+          <ScrollToTop />
             <IndexOrganize 
               slugPage={slugPage} 
               titlePage={titlePage} 

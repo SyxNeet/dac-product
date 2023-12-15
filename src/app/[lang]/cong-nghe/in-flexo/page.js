@@ -1,3 +1,4 @@
+import ScrollToTop from '@/components/common/ScrollToTop'
 import IndexFlexo from '@/components/technology/technology-flexo/IndexFlexo'
 import { fetchData } from '@/data/fetchData'
 import getDataPage from '@/data/getDataPage'
@@ -45,6 +46,7 @@ export default async function page({params}) {
     }
   return (
     <> 
+    <ScrollToTop />
         <IndexFlexo slugPage={slugPage} listSlug={listSlug} lang={params?.lang} titlePage={titlePage} data={data} />
     </>
   )
