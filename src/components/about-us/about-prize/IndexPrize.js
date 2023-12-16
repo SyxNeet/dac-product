@@ -63,7 +63,6 @@ export const IndexPrize = ({ data, lang, slugPage, titlePage,listSlug }) => {
       if(card2){
         temp2 = card2.offsetHeight
       }
-      console.log(temp);
       if(card_image1){
         window.scrollTo({
           top:banner_home.offsetHeight + navheader.offsetHeight - 200,

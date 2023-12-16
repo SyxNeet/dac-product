@@ -10,8 +10,7 @@ import imgFooter from '@/assets/imgs/iconmoi.png'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-function Footer({ lang, data,dataSocialFooter }) {
-  
+function Footer({ lang, data,dataSocialFooter,dataPolicy }) {
   const [active, setActive] = useState(false)
   const contentRef = useRef()
   const scrollRef = useRef()
@@ -94,7 +93,7 @@ function Footer({ lang, data,dataSocialFooter }) {
           <p>{data?.homepage?.footer?.copyrightAndPolicy?.copyright}</p>
           <div className='flex items-center gap-[2rem]'>
             {data?.homepage?.footer?.copyrightAndPolicy?.policy?.map((item, index) => (
-              <Link href={index === 0 ? 'https://www.bloomberg.com/notices/privacy/' : index === 1 ? 'https://www.bloomberg.com/notices/notices-and-policies/' : 'https://www.bloomberg.com/notices/tos/'} key={index} target='_blank' className='cursor-pointer'>
+              <Link href={index === 0 ? '#' : index === 1 ? `/${lang}/${dataPolicy?.slug}` : '#'} key={index} target='_blank' className='cursor-pointer'>
                 <span>{item?.text}</span>
               </Link>
             ))}
