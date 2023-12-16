@@ -9,7 +9,7 @@ import HandleChangeSlug from '@/components/common/HandleChangeSlug'
 function IndexOffset({ data,slugPage,titlePage,lang,listSlug}) {
     const dataOffset = data?.data?.page?.translation?.technology_common
     return (
-        <>
+        <div>
             <Banner
                  image={dataOffset?.banner?.background?.sourceUrl}
                  altText={dataOffset?.banner?.background?.altText}
@@ -18,14 +18,14 @@ function IndexOffset({ data,slugPage,titlePage,lang,listSlug}) {
                  classTitle={'md:text-[3.4375rem] text-[8.53333rem]'}
                  background={'bg-[#f5f5f5]'}
             />
-            <main>
+            <main className='containerWrapper'>
                 <HandleChangeSlug listSlug={listSlug} />
                 <TitlePage_Tech check={0} lang={lang} slugPage={slugPage} titlePage={titlePage} />
                 <Introduce dataIntro = {dataOffset?.content?.introduce} />
                 <System dataSystem = {dataOffset?.content?.system} />
                 <ContentOffset dataContent = {dataOffset?.content?.mainContent} />
             </main>
-        </>
+        </div>
     )
 }
 

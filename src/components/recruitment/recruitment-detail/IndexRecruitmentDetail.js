@@ -8,7 +8,7 @@ function IndexRecruitmentDetail({ data, dataJobNew, lang,listSlug}) {
         <>
             <BannerDetail dataBanner={data?.recruimentDetail?.banner} />
             <HandleChangeSlug listSlug={listSlug}/>
-            <main>
+            <main className='containerWrapper'>
                 <Infomation lang={lang} dataJobNew={dataJobNew} dataContent={data?.recruimentDetail?.content} />
             </main>
         </>

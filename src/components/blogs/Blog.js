@@ -131,7 +131,7 @@ function Blog({ lang, dataBlog,slug,listSlug }) {
         <>
             <Banner dataBanner={dataBlog} />
             <HandleChangeSlug listSlug={listSlug}/>
-            <section ref={eleRef} className='md:px-[4.17rem] max-md:mt-[4rem] blog_news md:pt-[3.13rem] md:pb-[2.97rem] max-md:flex flex-col-reverse'>
+            <section ref={eleRef} className='md:px-[4.17rem] containerWrapper max-md:mt-[4rem] blog_news md:pt-[3.13rem] md:pb-[2.97rem] max-md:flex flex-col-reverse'>
                 <span ref={seeMoreRef} onClick={handleClick} className='md:hidden text-[4.26667rem] text-[#00A84F] leading-[116.662%] underline text-center mb-[8.1rem] mt-[2rem]'>{lang === 'vi' ? 'Xem thêm' : 'See more'}</span>
                     <div className='flex md:mb-[5.21rem] max-md:order-1 max-md:flex-col max-md:justify-center max-md:items-center max-md:mt-[8.27rem]'>
                         {

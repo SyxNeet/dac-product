@@ -48,7 +48,7 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
  
         
     return (
-        <section className="md:pt-[10.26rem] pt-[29.3rem]">
+        <section className="md:pt-[10.26rem] pt-[29.3rem] containerWrapper">
             <HandleChangeSlug listSlug={listSlug} />
             <div className='md:px-[4.27rem]'>
                 <svg xmlns="http://www.w3.org/2000/svg" className='w-full' viewBox="0 0 1759 2" fill="none">

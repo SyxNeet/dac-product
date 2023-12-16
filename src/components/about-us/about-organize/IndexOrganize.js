@@ -17,7 +17,7 @@ export const IndexOrganize = ({ data, lang, slugPage, titlePage, listSlug }) => 
         check={true}
       />
       <HandleChangeSlug listSlug={listSlug} />
-      <main className='content pb-[2.31rem]'>
+      <main className='content pb-[2.31rem] containerWrapper'>
         <TitlePage_About_Us check={3} lang={lang} slugPage={slugPage} titlePage={titlePage} />
         <h1 className='heading pl-[5.47rem] mt-[4.32rem]'>{dataOrganize?.organize?.content?.heading}</h1>
         <Image 
