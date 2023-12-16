@@ -72,7 +72,11 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
                             pagination={{
                                 clickable: true,
                               }}
-                            speed={500}
+                            speed={800}
+                            autoplay={{
+                                delay: 5000,
+                                disableOnInteraction: false,
+                            }}
                             modules={[Pagination,Autoplay]}
                             className="mySwiper slideFeatureImage md:w-[36.7rem] md:h-full h-[81.6rem]"
                             onSlideChange={handleSlideChange1}
@@ -90,7 +94,7 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
                                         {height && <Zoom
                                         img={item?.image?.sourceUrl}
                                         zoomScale={1.5}
-                                        transitionTime={0.5}
+                                        transitionTime={0.8}
                                         className='w-full h-full object-cover'
                                         width={width}
                                         height={height}
@@ -155,10 +159,10 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
                                 }
                             }
                             modules={[Autoplay]}
-                            // speed={800}
+                            speed={800}
                             freeMode={true}
                             autoplay={{
-                                delay: 3000,
+                                delay: 5000,
                                 disableOnInteraction: false,
                             }}
                             loop={true}
