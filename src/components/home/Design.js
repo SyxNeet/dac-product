@@ -41,8 +41,8 @@ function Design({ lang, dataDesign }) {
         <div className="left md:w-[36.7rem] max-md:bg-[#444545] flex flex-col items-center">
           <div className='max-md:flex items-center w-full max-md:px-[4.27rem]'>
             <span className='md:hidden text-[#fff] text-[22.93333rem] font-bold'>&</span>
-            <div class="scrolling-words-container max-md:w-full">
-              <div class="scrolling-words-box max-md:w-full">
+            <div className="scrolling-words-container max-md:w-full">
+              <div className="scrolling-words-box max-md:w-full">
                 <ul>
                   {dataDesign?.textAnimation?.listTextScroll?.map((item, index) => (
                     <li className='list-none md:text-[4rem] text-[8.53333rem] md:text-[#888] text-[#fff] uppercase' key={index}>{item?.text}</li>
