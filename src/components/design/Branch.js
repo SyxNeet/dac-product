@@ -21,7 +21,7 @@ function Branch({data}) {
         swiperRef2.current?.slidePrev()
     }
     return (
-        <section>
+        <section className='containerWrapper'>
             {/* nâng tầm thương hiệu */}
             <div className="md:px-[12.03rem] flex md:pt-[5.89rem] pt-[9.33rem] md:pb-[7.97rem] justify-between max-md:flex-col px-[4.27rem]">
                 <h2 

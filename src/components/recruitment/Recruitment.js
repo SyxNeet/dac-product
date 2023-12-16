@@ -47,7 +47,7 @@ function Recruitment({ data, lang, dataFirstIn,listSlug }) {
     return (
         <>
             <Banner dataBanner={data?.banner} />
-            <main>
+            <main className='containerWrapper'>
                 <HandleChangeSlug listSlug={listSlug}/>
                 <Culture dataCulture={data?.content} />
                 <div ref={test}></div>

@@ -8,7 +8,7 @@ function Contact({ dataContact,lang,listSlug }) {
         <>
             <HandleChangeSlug listSlug={listSlug}/>
             <Banner dataBanner={dataContact?.banner} />
-            <main>
+            <main className='containerWrapper'>
                 <Branch 
                     lang={lang} 
                     dataBranch={dataContact?.contentAddress} 

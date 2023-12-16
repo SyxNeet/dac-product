@@ -17,7 +17,7 @@ function IndexJourney({ data, lang, slugPage, titlePage,listSlug }) {
         check={true}
       />
       <HandleChangeSlug listSlug={listSlug} />
-      <main>
+      <main className='containerWrapper'>
         <TitlePage_About_Us check={1} lang={lang} slugPage={slugPage} titlePage={titlePage} />
         <div className='mt-[5.31rem]'>
           <div className='content' id='contentHisMb'>

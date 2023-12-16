@@ -22,6 +22,8 @@ import Popup from "@/components/common/Popup";
 import { fetchData } from "@/data/fetchData";
 import { SLUG_JOB_FEATURE } from "@/graphql/recruitment/query";
 import GsapSmoother from "@/components/common/GsapSmoother";
+import SocialActionMb from "@/components/common/SocialActionMb";
+import SocialData from "@/components/common/SocialData";
 export const metadata = {
   viewport: "width=device-width, initial-scale=1, maximum-scale=1",
 };
@@ -44,6 +46,7 @@ export default async function RootLayout({ children, params }) {
             lang={lang}
           />
           <SocialAction lang={lang} />
+          <SocialData lang={lang} />
           <ScrollUp />
           <div id="smooth-wrapper">
             <div id="smooth-content">

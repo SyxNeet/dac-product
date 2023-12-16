@@ -19,7 +19,7 @@ async function IndexVision({ data, lang, slugPage, titlePage,listSlug }) {
         check={true}
       />
       <HandleChangeSlug listSlug={listSlug} />
-      <main>
+      <main className='containerWrapper'>
         <TitlePage_About_Us check={0} lang={lang} slugPage={slugPage} titlePage={titlePage} />
         <Story data={dataStory} />
         <Motto data={dataMotto} />

@@ -1,3 +1,11 @@
+// main *{}:not(.pin-spacer){
+//   @media screen and (min-width:1600px) {
+//     width: 100rem;
+//     max-width: 1600px;
+//     margin: 0 auto;
+//   }
+// }
+
 .design {
   .title b {
     font-weight: 700;
