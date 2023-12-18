@@ -21,10 +21,24 @@ function SelectLang({ lang, checkHome, color }) {
 
   useEffect(()=>{
     const body = document.querySelector('body');
+    const priDesc = document.querySelectorAll('.priDesc');
+    const job_Info = document.querySelectorAll('.job_Info');
     if(pathName.includes('/en')){
       body.classList.add('active_lang');
+      priDesc.forEach((i)=>{
+        i.classList.add('active_lang');
+      })
+      job_Info.forEach((i)=>{
+        i.classList.add('active_lang');
+      })
     }else{
       body.classList.remove('active_lang');
+      priDesc.forEach((i)=>{
+        i.classList.remove('active_lang');
+      })
+      job_Info.forEach((i)=>{
+        i.classList.remove('active_lang');
+      })
     }
   },[lang,pathName])
 

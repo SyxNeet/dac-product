@@ -109,6 +109,9 @@ body.active_lang .text-justify{
   }
 
 }
+.priDesc.active_lang {
+  text-align: start !important;
+}
 
 .contentWrapper {
   padding: 4.69rem 4.27rem 0;
@@ -161,6 +164,10 @@ body.active_lang .text-justify{
             padding-left: 7rem;
         }
     }
+}
+
+.job_Info.active_lang{
+  text-align: start !important;
 }
 
 .popUpJob{
