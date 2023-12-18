@@ -278,8 +278,8 @@ function Navbar({
 
   return (
     <>
-      <nav id='navheader'  className={`bg-[${bgColor}] ${shadow} top-0 w-full fixed navbar md:pt-[2.6rem] md:pb-[1.3rem] pt-[6.27rem] z-[20] ${isMobile && 'bg-transparent'}`}>
-        <div className="md:pl-[4.11rem] md:pr-[4.37rem] max-md:px-[4.27rem]">
+      <nav id='navheader'  className={`bg-[${bgColor}] ${shadow}  top-0 w-full fixed navbar md:pt-[2.6rem] md:pb-[1.3rem] pt-[6.27rem] z-[20] ${isMobile && 'bg-transparent'}`}>
+        <div className="md:pl-[4.11rem] md:pr-[4.37rem] containerWrapper max-md:px-[4.27rem]">
           <div className='flex items-center justify-between'>
             {checkHome ?
               <Link href={`/${lang}`}><Image src={logo} width={100} height={100} className='object-cover md:w-[7.91667rem] md:h-[4.21875rem] w-[18.4rem] h-[9.86667rem]' alt='DAC' /></Link>
