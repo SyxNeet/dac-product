@@ -10,7 +10,7 @@ function Service({ lang, data, dataCate,listSlug,slugProducts }) {
         <>
             <HandleChangeSlug listSlug={listSlug} />
             <Banner data={data?.product?.banner} />
-            <main>
+            <main className='containerWrapper'>
                 <Product lang={lang} data={data?.product?.content} dataCate={dataCate} />
                 {/* Product items */}
                 <div className='md:grid grid-cols-4 md:gap-x-[2.6rem] md:gap-y-[2.45rem] md:px-[4.17rem]  md:pb-[13.23rem]'>

@@ -32,10 +32,10 @@ function SlideProduct({ lang, dataProductList }) {
         }
         freeMode={true}
         spaceBetween={0}
-        // autoplay={{
-        //   delay: 3000,
-        //   disableOnInteraction: false,
-        // }}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
         loop={true}
         onSlideChange={handleSlideChange}
         modules={[Autoplay,Pagination]}

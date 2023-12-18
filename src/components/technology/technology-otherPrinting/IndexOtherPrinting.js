@@ -19,7 +19,7 @@ function IndexOtherPrinting({ data,slugPage,lang,titlePage,listSlug }) {
                 classTitle={'md:text-[3.4375rem] text-[8.53333rem]'}
                 background={'bg-[#f5f5f5]'}
             />
-            <main>
+            <main className='containerWrapper'>
                 <HandleChangeSlug listSlug={listSlug} />
                 <TitlePage_Tech check={4} lang={lang} slugPage={slugPage} titlePage={titlePage} />
                 <Introduce dataIntro={dataPrint?.introduce} />

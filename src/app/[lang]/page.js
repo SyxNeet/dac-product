@@ -6,8 +6,6 @@ import { GET_DATA_HOMEPAGE, GET_META_HOME, GET_NEWS_HOMEPAGE } from "@/graphql/h
 import { getMeta } from "@/graphql/metaData/getMeta";
 import { GET_DATA_CATEGORY_PRODUCT_SERVICE } from "@/graphql/product/query";
 
-
-
 export async function generateMetadata({ params: { lang } }) {
   const res = await fetchData(GET_META_HOME, { language: lang?.toUpperCase() })
   const home = res?.data?.page?.translation?.seo
