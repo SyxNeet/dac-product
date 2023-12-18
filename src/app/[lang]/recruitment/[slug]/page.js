@@ -1,3 +1,4 @@
+import ScrollToTop from '@/components/common/ScrollToTop';
 import IndexRecruitmentDetail from '@/components/recruitment/recruitment-detail/IndexRecruitmentDetail'
 import { fetchData } from '@/data/fetchData';
 import getDataDetail from '@/data/getDataDetail'
@@ -44,7 +45,10 @@ async function page({ params: { lang, slug } }) {
         slugEn:'/en/recruitment/' +(listSlugRecruitmentDetail?.data?.jobOpportunity?.translations[0]?.language?.code==='EN'?listSlugRecruitmentDetail?.data?.jobOpportunity?.translations[0]?.slug:listSlugRecruitmentDetail?.data?.jobOpportunity?.slug)
     }
     return (
+      <>
+        <ScrollToTop />
         <IndexRecruitmentDetail listSlug={listSlug} lang={lang} dataJobNew={dataJobNew} data={dataDetail} />
+      </>
     )
 }
 

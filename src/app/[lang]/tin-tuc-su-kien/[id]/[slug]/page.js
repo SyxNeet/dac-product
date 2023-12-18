@@ -1,4 +1,5 @@
 import IndexBlogDetail from '@/components/blogs/blog-detail/IndexBlogDetail'
+import ScrollToTop from '@/components/common/ScrollToTop';
 import { fetchData } from '@/data/fetchData';
 import getDataDetail from '@/data/getDataDetail'
 import getDataPage from '@/data/getDataPage';
@@ -48,7 +49,10 @@ export default async function page({ params: { lang, slug } }) {
         slugEn:'/en/news/' +(listSlugBlogDetail?.data?.post?.translations[0]?.language?.code==='EN'?listSlugBlogDetail?.data?.post?.translations[0]?.slug:listSlugBlogDetail?.data?.post?.slug)
     }
     return (
+      <>
+        <ScrollToTop />
         <IndexBlogDetail listSlug={listSlug} lang={lang} data={dataDetail} />
+      </>
     )
 }
 

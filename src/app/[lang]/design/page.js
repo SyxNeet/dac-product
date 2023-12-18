@@ -1,3 +1,4 @@
+import ScrollToTop from '@/components/common/ScrollToTop'
 import Design from '@/components/design/Design'
 import { fetchData } from '@/data/fetchData'
 import getDataPage from '@/data/getDataPage'
@@ -27,7 +28,10 @@ export default async function page({ params: { lang } }) {
     }
 
     return (
-        <Design listSlug={listSlug} data={data?.data?.page?.translation} />
+        <>
+            <ScrollToTop />
+            <Design listSlug={listSlug} data={data?.data?.page?.translation} />
+        </>
     )
 }
 

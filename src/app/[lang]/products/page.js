@@ -1,3 +1,4 @@
+import ScrollToTop from '@/components/common/ScrollToTop'
 import Service from '@/components/service/Service'
 import { fetchData } from '@/data/fetchData'
 import getDataPage from '@/data/getDataPage'
@@ -37,13 +38,17 @@ export default async function page({ params: { lang } }) {
         slugEn:'/en/' +(listSlugProductPage?.data?.page?.translations[0]?.language?.code==='EN'?listSlugProductPage?.data?.page?.translations[0]?.slug:listSlugProductPage?.data?.page?.slug)
     }
     return (
-        <Service
-            data={data?.data?.page?.translation}
-            lang={lang}
-            dataCate={dataCategory?.data?.allCategoryProducts?.nodes}
-            listSlug={listSlug}
-            slugProducts={slugProducts}
-        />
+        <>
+            <ScrollToTop />
+            <Service
+                data={data?.data?.page?.translation}
+                lang={lang}
+                dataCate={dataCategory?.data?.allCategoryProducts?.nodes}
+                listSlug={listSlug}
+                slugProducts={slugProducts}
+            />
+        </>
+        
     )
 }
 

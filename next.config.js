@@ -18,6 +18,7 @@ const nextConfig = {
   },
   staticPageGenerationTimeout: 1000,
   output: 'standalone',
+  trailingSlash: true,
 }
 
 module.exports = nextConfig

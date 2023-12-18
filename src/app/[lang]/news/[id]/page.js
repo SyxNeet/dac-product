@@ -1,4 +1,5 @@
 import Blog from '@/components/blogs/Blog'
+import ScrollToTop from '@/components/common/ScrollToTop'
 import { fetchData } from '@/data/fetchData'
 import { getMeta } from '@/graphql/metaData/getMeta'
 import { GET_META_NEWS, NEWS_QUERY, SLUG_BLOG_QUERY } from '@/graphql/news-blog/query'
@@ -43,7 +44,10 @@ async function page({ params: { lang,id } }) {
   }
 
   return (
-    <Blog listSlug={listSlug} slug={id} dataBlog={dataNews?.data?.page?.translation} lang={lang} />
+    <>
+      <ScrollToTop />
+      <Blog listSlug={listSlug} slug={id} dataBlog={dataNews?.data?.page?.translation} lang={lang} />
+    </>
   )
 }
 

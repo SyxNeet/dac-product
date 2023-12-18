@@ -1,3 +1,4 @@
+import ScrollToTop from '@/components/common/ScrollToTop'
 import IndexOffset from '@/components/technology/technology-offset/IndexOffset'
 import { fetchData } from '@/data/fetchData'
 import getDataPage from '@/data/getDataPage'
@@ -47,6 +48,7 @@ export default async function page({params}) {
     }
   return (
     <> 
+        <ScrollToTop />
         <IndexOffset slugPage={slugPage} listSlug={listSlug} lang={params?.lang} titlePage={titlePage} data={data} />
     </>
   )

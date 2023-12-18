@@ -1,3 +1,4 @@
+import ScrollToTop from '@/components/common/ScrollToTop'
 import IndexGravure from '@/components/technology/technology-gravure/IndexGravure'
 import { fetchData } from '@/data/fetchData'
 import getDataPage from '@/data/getDataPage'
@@ -46,6 +47,7 @@ export default async function page({params}) {
     }
   return (
     <> 
+        <ScrollToTop />
         <IndexGravure slugPage={slugPage} listSlug={listSlug} lang={params?.lang} titlePage={titlePage} data={data} />
     </>
   )

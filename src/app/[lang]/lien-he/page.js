@@ -1,3 +1,4 @@
+import ScrollToTop from '@/components/common/ScrollToTop'
 import Contact from '@/components/contact/Contact'
 import { fetchData } from '@/data/fetchData'
 import getDataPage from '@/data/getDataPage'
@@ -27,11 +28,14 @@ async function page({ params: { lang } }) {
         slugEn:'/en/' +(listSlugContact?.data?.page?.translations[0]?.language?.code==='EN'?listSlugContact?.data?.page?.translations[0]?.slug:listSlugContact?.data?.page?.slug)
     }
     return (
-        <Contact 
-            dataContact={data?.data?.page?.translation?.contact} 
-            lang={lang} 
-            listSlug={listSlug}
-        />
+        <>
+            <ScrollToTop />
+            <Contact 
+                dataContact={data?.data?.page?.translation?.contact} 
+                lang={lang} 
+                listSlug={listSlug}
+            />
+        </>
     )
 }
 

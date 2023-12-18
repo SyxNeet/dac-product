@@ -19,9 +19,12 @@ import Popup from "@/components/common/Popup";
 import GsapSmoother from "@/components/common/GsapSmoother";
 import SocialData from "@/components/common/SocialData";
 import FooterData from "@/components/common/FooterData";
-export const metadata = {
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
-};
+
+export function generateViewport() {
+  return {
+    viewport: 'width=device-width, initial-scale=1, maximum-scale=1'
+  }
+}
 
 // export async function generateStaticParams() {
 //   return [{ lang: "en" }, { lang: "vi" }];
