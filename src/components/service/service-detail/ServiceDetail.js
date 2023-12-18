@@ -17,14 +17,16 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
 
     useEffect(()=>{
         if(typeof window === 'undefined') return
-        if (window.innerWidth > 767){
-            setWidth((1600)/100*36.7)
-            setHeight(1600/100*32.81)
-        } else{
-            setWidth(1600/100*91.46667)
-            setHeight(1600/100*81.6)
+        if (window.innerWidth > 1600){
+            setWidth((window.innerWidth - (window.innerWidth - 1600))/100*36.7)
+            setHeight((window.innerWidth - (window.innerWidth - 1600))/100*32.81)
+        } else if(window.innerWidth > 767 && window.innerWidth <= 1600){
+            setWidth(window.innerWidth/100*36.7)
+            setHeight(window.innerWidth/100*32.81)
+        }else {
+            setWidth(window.innerWidth/100*91.46667)
+            setHeight(window.innerWidth/100*81.6)
         }
-
     },[])
 
     const handleSlideChange = (swiper) => {
@@ -153,8 +155,7 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
                             breakpoints={
                                 {
                                     768: {
-                                        slidesPerView: 5,
-                                        spaceBetween: 25
+                                        slidesPerView: 5
                                     }
                                 }
                             }

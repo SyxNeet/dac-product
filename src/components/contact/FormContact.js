@@ -140,7 +140,7 @@ function FormContact({ dataForm }) {
                                         <span className='md:text-[1.04167rem] max-md:mt-[2rem] text-[4.26667rem] leading-[140.662%] md:tracking-[-0.05208rem] tracking-[-0.21333rem]'>{dataForm?.formData?.content}</span>
                                         <div className='flex flex-col justify-between max-md:pt-[2rem] mb-[8rem] border-b border-solid  border-[#000] md:mb-[1rem]' >
                                             <TextareaAutosize
-                                                className='outline-none md:w-[25rem]'
+                                                className='outline-none md:w-full'
                                                 minRows={4}
                                                 name='message'
                                                 onChange={(e) => setFieldValue("message", e.target.value)}

@@ -3,6 +3,9 @@ import { fetchData } from '@/data/fetchData'
 import getDataPage from '@/data/getDataPage'
 import { PRIVACY_POLICY, SLUG_POLICY_QUERY } from '@/graphql/policy/query'
 
+export async function generateStaticParams() {
+  return [{ lang: "vi" }];
+}
 async function page({ params: { lang } }) {
     const data = await fetchData(PRIVACY_POLICY, { language: lang?.toUpperCase()})
     const listSlugCookie = await getDataPage(lang,SLUG_POLICY_QUERY(data?.data?.page?.translation?.id))
