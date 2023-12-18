@@ -98,10 +98,10 @@ export const IndexPrize = ({ data, lang, slugPage, titlePage,listSlug }) => {
       <HandleChangeSlug listSlug={listSlug} />
       <TitlePage_About_Us check={2} slugPage={slugPage} titlePage={titlePage} lang={lang} />
       <div className='md:px-[9.46rem] px-[4.27rem] mt-[4.32rem] pb-[15.4rem]'>
-        <h2 className='heading relative md:left-[1.8rem] max-md:w-[70%]'>{dataPrize?.prize?.content?.heading}</h2>
+        <h2 className='heading relative md:left-[3.8rem] max-md:w-[70%]'>{dataPrize?.prize?.content?.heading}</h2>
         <div className='md:flex grid grid-cols-2 justify-center flex-wrap md:mt-[3.2rem] mt-[15rem] md:gap-[4rem] max-md:gap-x-[8rem] max-md:gap-y-[12.8rem] justify-items-center'>
           {dataPrize?.prize?.content?.listPrize?.map((item, index) => (
-            <div key={index * Math.random()} title={item?.image?.altText || lang === 'vi' ? 'giải thưởng' : 'prize' } className={`flex flex-col relative items-center  justify-center ${index === dataPrize?.prize?.content?.listPrize?.length -1 ? 'md:w-[38.11422rem] md:h-[28.125rem] w-full ' : 'md:w-[14.89vw]  w-[41.86667rem]'} ${index === dataPrize?.prize?.content?.listPrize?.length -1 ? 'col-span-2' : '' }`}>
+            <div key={index * Math.random()} title={item?.image?.altText || lang === 'vi' ? 'giải thưởng' : 'prize' } className={`flex flex-col relative items-center item_award justify-center ${index === dataPrize?.prize?.content?.listPrize?.length -1 ? 'md:w-[38.11422rem] md:h-[28.125rem] w-full ' : 'md:w-[14.89vw]  w-[41.86667rem]'} ${index === dataPrize?.prize?.content?.listPrize?.length -1 ? 'col-span-2' : '' }`}>
                 <div 
                   onClick={(e) => handleClick(index,e)} 
                   className={`overflow-hidden card_image w-full 
