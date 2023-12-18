@@ -97,14 +97,14 @@ const GET_SLUG_FIRST_PRODUCT = `query ($language: LanguageCodeEnum!,$term:[Strin
   }
 }`
 
-const OTHER_PRODUCT_QUERY = `query($taxonomyId: [ID!]) {
+const OTHER_PRODUCT_QUERY = `query ($taxonomyId: [ID!]) {
   allCategoryProducts(where: {termTaxonomId: $taxonomyId}) {
     nodes {
-      serviceProduct{
-        nodes{
+      serviceProduct(first: 100) {
+        nodes {
           slug
-          featuredImage{
-            node{
+          featuredImage {
+            node {
               altText
               sourceUrl
             }

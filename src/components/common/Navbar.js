@@ -17,7 +17,8 @@ import PopupSearch from './PopupSearch'
 
 function Navbar({
   lang,
-  dataProductList
+  dataProductList,
+  slugProducts
 }) {
   const [color, setColor] = useState('')
   const [bgColor, setBgColor] = useState('')
@@ -310,10 +311,11 @@ function Navbar({
                                         className='flex flex-col menu_dropdown  rounded-br-[2.61198rem] px-[1rem] py-[1rem] absolute'
                                     >
                                         {item?.listContent?.map((mbItem, index) => {
+                                          const slugProduct = slugProducts[index];
                                             return (
                                                 <Link
                                                     onClick={handleCloseModal}
-                                                    href={`/${lang}/${lang === 'vi' ? item?.slug2 : item?.slug2En || item?.slug2}/${lang === 'vi' ? mbItem?.slug : mbItem?.slugEn || mbItem?.slug}` || '/'}
+                                                    href={`/${lang}/${lang === 'vi' ? item?.slug2 : item?.slug2En || item?.slug2}/${(lang === 'vi' ? mbItem?.slug : mbItem?.slugEn) || slugProduct}` || '/'}
                                                     key={index}
                                                     dangerouslySetInnerHTML={{ __html: `${mbItem?.nameEn ? (lang === 'vi' ? mbItem?.name : mbItem?.nameEn) : mbItem.name}` }}
                                                     className='text-[#888888] uppercase text_hover whitespace-nowrap text_product_item_nav text-[1.04167rem]  mb-[0.5rem]'>
