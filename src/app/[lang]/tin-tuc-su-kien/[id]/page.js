@@ -37,7 +37,7 @@ async function page({ params: { lang,id } }) {
   const item = listSlugNews.find((e)=>{
       if(lang==='vi' && e?.slugVi?.includes(id)) return e
       if(lang==='en' && e?.slugEn?.includes(id)) return e
-})
+  })
   const listSlug = {
     slugVi:item?.slugVi,
     slugEn:item?.slugEn

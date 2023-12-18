@@ -236,6 +236,30 @@ const SLUG_BLOG_QUERY =(id)=> `{
     }
   }
 }`
+
+const NEWS_SEARCH_INPUT_QUERY = gql`
+query getData($text: String!, $language: LanguageCodeFilterEnum!, $offset: Int!, $size: Int!, $term: [String!]) {
+  posts(
+    where: {language: $language, search: $text, offsetPagination: {size: $size, offset: $offset}, orderby: {field: DATE, order: DESC}, taxQuery: {taxArray: {field: SLUG, taxonomy: CATEGORY, operator: IN, terms: $term}}}
+  ) {
+    nodes {
+      featuredImage {
+        node {
+          altText
+          sourceUrl
+        }
+      }
+      slug
+      title
+      categories{
+        nodes{
+          slug
+        }
+      }
+    }
+  }
+}
+`
 export {
   NEWS_QUERY,
   GET_DATA_NEWS_DETAIL,
@@ -246,5 +270,6 @@ export {
   META_NEWS_DETAIL_QUERY,
   DATA_NEWS_WITH_SEARCH_AND_CATEGORY,
   SLUG_BLOG_QUERY,
-  SLUG_BLOG_DETAIL_QUERY
+  SLUG_BLOG_DETAIL_QUERY,
+  NEWS_SEARCH_INPUT_QUERY
 }

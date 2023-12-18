@@ -19,8 +19,27 @@ const GET_PARAMS_ALL_NEWS = `query ($language: LanguageCodeFilterEnum!) {
     }
   }
 }`
+const listSlugNews = [
+  {
+    slugVi:"/tin-tuc-su-kien/con-nguoi-app",
+    slugEn:"/en/news/app-people",
+  },
+  {
+    slugVi:"/tin-tuc-su-kien/nha-dau-tu",
+    slugEn:"/en/news/investor",
+  },
+  {
+    slugVi:"/tin-tuc-su-kien/khach-hang",
+    slugEn:"/en/news/customers",
+  },
+  {
+    slugVi:"/tin-tuc-su-kien/khac",
+    slugEn:"/en/news/others",
+  },
+]
+
 export async function generateStaticParams({ params: { lang } }) {
-    const { data } = await fetchData(GET_PARAMS_ALL_NEWS,{language:"EN"})
+    const { data } = await fetchData(GET_PARAMS_ALL_NEWS,{language:"VI"})
   
     const posts = data?.posts?.nodes || []
     
@@ -31,7 +50,7 @@ export async function generateStaticParams({ params: { lang } }) {
 
 }
 
-export async function generateMetadata({ params: { lang, slug } }) {
+export async function generateMetadata({ params: { lang, slug} }) {
     const res = await fetchData(META_NEWS_DETAIL_QUERY, { language: lang?.toUpperCase(), slug: slug })
     const news = res?.data?.post?.translation?.seo
     const featuredImage = res?.data?.post?.translation?.featuredImage
@@ -40,13 +59,18 @@ export async function generateMetadata({ params: { lang, slug } }) {
     return getMeta(title, excerpt, featuredImage)
 }
 
-export default async function page({ params: { lang, slug } }) {
+export default async function page({ params: { lang, slug, id  } }) {
     let data = await getDataDetail(lang, slug, GET_DATA_NEWS_DETAIL)
     const dataDetail = data?.data?.post?.translation
     const listSlugBlogDetail = await getDataPage(lang,SLUG_BLOG_DETAIL_QUERY(data?.data?.post?.translation?.id))
+    const item = listSlugNews.find((e)=>{
+      if(lang==='vi' && e?.slugVi?.includes(id)) return e
+      if(lang==='en' && e?.slugEn?.includes(id)) return e
+    })
+    
     const listSlug = {
-        slugVi:'/tin-tuc-su-kien/'+ (listSlugBlogDetail?.data?.post?.translations[0]?.language?.code==='VI'?listSlugBlogDetail?.data?.post?.translations[0]?.slug:listSlugBlogDetail?.data?.post?.slug),
-        slugEn:'/en/news/' +(listSlugBlogDetail?.data?.post?.translations[0]?.language?.code==='EN'?listSlugBlogDetail?.data?.post?.translations[0]?.slug:listSlugBlogDetail?.data?.post?.slug)
+        slugVi:item?.slugVi + "/" + (listSlugBlogDetail?.data?.post?.translations[0]?.language?.code==='VI'?listSlugBlogDetail?.data?.post?.translations[0]?.slug:listSlugBlogDetail?.data?.post?.slug),
+        slugEn:item?.slugEn + "/" + (listSlugBlogDetail?.data?.post?.translations[0]?.language?.code==='EN'?listSlugBlogDetail?.data?.post?.translations[0]?.slug:listSlugBlogDetail?.data?.post?.slug)
     }
     return (
       <>

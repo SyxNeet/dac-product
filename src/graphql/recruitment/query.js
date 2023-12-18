@@ -1,3 +1,5 @@
+import { gql } from "@apollo/client"
+
 const GET_DATA_RECRUIMENT_DETAIL = `query getDataRecruitmentDetail($slug:ID!,$language:LanguageCodeEnum!){
   jobOpportunity(id: $slug, idType: SLUG) {
     translation(language:$language){
@@ -200,6 +202,34 @@ const SLUG_JOB_FEATURE = `query ($language: LanguageCodeFilterEnum!) {
     }
   }
 }`
+
+const JOB_SEARCH_INPUT_QUERY = gql `query getDataSearchJob($language:LanguageCodeFilterEnum!,$text:String!, $offset:Int!, $size:Int!){
+  allJobOpportunity(
+    where:{
+      language:$language,
+      search:$text,
+      offsetPagination:{
+        size:$size,
+        offset:$offset
+      },
+      orderby:{
+        field:DATE,
+        order:DESC
+      }
+    }
+  ){
+    nodes{
+      featuredImage{
+        node{
+          sourceUrl
+          altText
+        }
+      }
+      title
+      slug
+    }
+  }
+}`
 export {
   GET_DATA_RECRUIMENT_DETAIL,
   GET_DATA_NEW_JOBS,
@@ -209,5 +239,6 @@ export {
   META_RECRUITMENT_DETAIL_QUERY,
   SLUG_RECRUITMENT_QUERY,
   SLUG_RECRUITMENT_DETAIL_QUERY,
-  SLUG_JOB_FEATURE
+  SLUG_JOB_FEATURE,
+  JOB_SEARCH_INPUT_QUERY
 }
