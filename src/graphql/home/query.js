@@ -240,6 +240,24 @@ const POLICY_QUERY = `query($language:LanguageCodeEnum!){
     }
   }
 }`
+
+const TERM_CONDITION_QUERY = `query($language:LanguageCodeEnum!){
+  page(id:"cG9zdDoyMjUy"){
+    translation(language:$language){
+      id
+      slug
+    }
+  }
+}`
+
+const COOKIE_QUERY = `query($language:LanguageCodeEnum!){
+  page(id:"cG9zdDoyMjU2"){
+    translation(language:$language){
+      id
+      slug
+    }
+  }
+}`
 export {
   GET_DATA_HEADER,
   GET_DATA_FOOTER,
@@ -251,5 +269,7 @@ export {
   GET_META_HOME,
   GET_NEWS_HOMEPAGE,
   DATA_SOCIAL_FOOTER,
-  POLICY_QUERY
+  POLICY_QUERY,
+  TERM_CONDITION_QUERY,
+  COOKIE_QUERY
 }

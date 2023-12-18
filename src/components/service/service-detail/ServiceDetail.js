@@ -18,11 +18,11 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
     useEffect(()=>{
         if(typeof window === 'undefined') return
         if (window.innerWidth > 767){
-            setWidth(window.innerWidth/100*36.7)
-            setHeight(window.innerWidth/100*32.81)
+            setWidth((1600)/100*36.7)
+            setHeight(1600/100*32.81)
         } else{
-            setWidth(window.innerWidth/100*91.46667)
-            setHeight(window.innerWidth/100*81.6)
+            setWidth(1600/100*91.46667)
+            setHeight(1600/100*81.6)
         }
 
     },[])
@@ -93,7 +93,7 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
                                         {/* <Image src={item?.image?.sourceUrl} alt='img' width={1000} height={1000} quality={100} className='w-full h-full object-cover' /> */}
                                         {height && <Zoom
                                         img={item?.image?.sourceUrl}
-                                        zoomScale={1.5}
+                                        zoomScale={3}
                                         transitionTime={0.8}
                                         className='w-full h-full object-cover'
                                         width={width}

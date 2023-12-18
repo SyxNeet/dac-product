@@ -42,7 +42,6 @@ export default async function page({ params: { lang, slug } }) {
     const product = await fetchData(OTHER_PRODUCT_QUERY,{taxonomyId:idCate})
     const subTitle = await fetchData(SUBTITLE_PRODUCT_QUERY,{termTaxonomId:idCate ,language:lang?.toUpperCase()})
     const otherProduct = product?.data?.allCategoryProducts?.nodes[0]?.serviceProduct?.nodes?.filter(item => item?.slug !== slug);
-
     const listSlugProductDetail = await getDataPage(lang,SLUG_PRODUCT_DETAIL_QUERY(data?.data?.serviceProduct?.translation?.id))
     const listSlug = {
         slugVi:'/san-pham-dich-vu/'+ (listSlugProductDetail?.data?.serviceProduct?.translations[0]?.language?.code==='VI'?listSlugProductDetail?.data?.serviceProduct?.translations[0]?.slug:listSlugProductDetail?.data?.serviceProduct?.slug),
