@@ -15,7 +15,7 @@ function IndexOtherPrinting({ data,slugPage,lang,titlePage,listSlug }) {
                 image={dataBanner?.banner?.background?.sourceUrl}
                 altText={dataBanner?.banner?.background?.altText}
                 title={dataBanner?.banner?.title}
-                positionAndBox={'md:right-[14.47rem] md:bottom-[8rem] max-md:left-[4.27rem] bottom-[3.73rem] md:w-[17rem] w-[75rem]'}
+                positionAndBox={'md:right-[8.47rem] md:bottom-[8rem] max-md:left-[4.27rem] bottom-[3.73rem] md:w-[26rem] w-[75rem]'}
                 classTitle={'md:text-[3.4375rem] text-[8.53333rem]'}
                 background={'bg-[#f5f5f5]'}
             />
