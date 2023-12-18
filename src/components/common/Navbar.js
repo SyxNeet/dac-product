@@ -13,6 +13,7 @@ import { usePathname } from 'next/navigation'
 import MenuMb from './MenuMb'
 import { useMediaQuery } from 'react-responsive'
 import useStore from '@/(store)/store'
+import PopupSearch from './PopupSearch'
 
 function Navbar({
   lang,
@@ -24,7 +25,9 @@ function Navbar({
   const [shadow, setShadow] = useState('')
   const [logoHome, setLogoHome] = useState(logoW)
   const [checkScroll, setCheckScroll] = useState(false)
-  const setSlug = useStore((state) => state.setSlug )
+  const setSearch = useStore((state) => state.setSearch )
+  const setLang = useStore((state) => state.setLang )
+  const search = useStore((state) => state.search);
   const refMb = useRef()
   const isMobile = useMediaQuery({ query: '(max-width: 767.9px)' })
   const handleOpenModal = () => {
@@ -324,8 +327,14 @@ function Navbar({
               ))}
             </div>
             <SelectLang lang={lang} color={color} checkHome={checkHome} />
-            {checkHome ? <Image src={searchIcon} width={50} height={50} alt='search' className='w-[1.2vw] max-md:hidden h-[1.2vw] mr-[2.24vw] ml-[0.5vw]' /> :
-              <Image src={searchIconW} width={50} height={50} alt='search' className='w-[1.2vw] max-md:hidden h-[1.2vw] mr-[2.24vw] ml-[0.5vw] ' />}
+            {checkHome ? <Image onClick={() => {
+              setSearch(true),
+              setLang(lang)
+            }} src={searchIcon} width={50} height={50} alt='search' className='cursor-pointer w-[1.2vw] max-md:hidden h-[1.2vw] mr-[2.24vw] ml-[0.5vw]' /> :
+              <Image onClick={() => {
+                setSearch(true),
+                setLang(lang)
+              }} src={searchIconW} width={50} height={50} alt='search' className='cursor-pointer w-[1.2vw] max-md:hidden h-[1.2vw] mr-[2.24vw] ml-[0.5vw] ' />}
             <div onClick={handleOpenModal} className={`w-[10.4rem] h-[10.4rem] rounded-full grid md:hidden item place-items-center ${checkHome ? 'bg-[#525252]' : 'bg-white'}`}>
               {checkHome ? <Image src={barsIconW} width={50} height={50} alt='bars' className='w-[3.03125rem] h-[3.03125rem]' /> :
                 <Image src={barsIcon} width={50} height={50} alt='bars' className='w-[3.03125rem] h-[3.03125rem]' />}
@@ -341,6 +350,9 @@ function Navbar({
           lang={lang}
         />
       </div>
+
+      {/* popup search */}
+      {search && (<PopupSearch />)}
     </>
   )
 }

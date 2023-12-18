@@ -14,8 +14,8 @@ export async function generateMetadata({ params: { lang } }) {
   const excerpt = home?.metaDesc
   return getMeta(title, excerpt, featuredImage)
 }
-export default async function Page({ params: { lang } }) {
 
+export default async function Page({ params: { lang } }) {
   let language = lang.toUpperCase()
   let data = await getDataHomePage(language, GET_DATA_HOMEPAGE)
   let dataCategory = await getDataPage(lang, GET_DATA_CATEGORY_PRODUCT_SERVICE)

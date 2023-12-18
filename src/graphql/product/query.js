@@ -199,6 +199,48 @@ const SLUG_FEATURE_PRODUCT_QUERY = `query getFeatureProduct($language: LanguageC
     }
   }
 }`
+
+const PRODUCT_SEARCH_INPUT_QUERY = gql`query getDataSearchProduct(
+  $language:LanguageCodeFilterEnum!,
+  $text:String!, 
+  $offset:Int!, 
+  $size:Int!,
+  $term: [String!]
+){
+  allServiceProduct(
+    where:{
+      language:$language,
+      search:$text,
+      offsetPagination:{
+        size:$size,
+        offset:$offset
+      },
+      orderby:{
+        field:DATE,
+        order:DESC
+      },
+      taxQuery:{
+        taxArray:{
+          field:SLUG,
+          operator:IN,
+          taxonomy:CATEGORYPRODUCTS,
+          terms:$term
+        }
+      }
+    }
+  ){
+    nodes{
+      featuredImage{
+        node{
+          sourceUrl
+          altText
+        }
+      }
+      slug
+      title
+    }
+  }
+}`
 export {
   GET_DATA_PRODUCT_PAGE,
   GET_DATA_CATEGORY_PRODUCT_SERVICE,
@@ -211,5 +253,6 @@ export {
   SLUG_PRODUCT_QUERY,
   SLUG_PRODUCT_DETAIL_QUERY,
   SLUG_CATE_QUERY,
-  SLUG_FEATURE_PRODUCT_QUERY
+  SLUG_FEATURE_PRODUCT_QUERY,
+  PRODUCT_SEARCH_INPUT_QUERY
 }
