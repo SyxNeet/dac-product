@@ -60,10 +60,17 @@ function PopupSearch() {
   }
   useEffect(() => {
     const paramNew = new URLSearchParams(searchParams)
-      paramNew.set('text', textSearch)
-      router.push(pathName + '?' + paramNew.toString(), {
+    if (!textSearch) {
+      paramNew.set('text', '')
+      return router.replace(pathName, {
           scroll: false,
       })
+    }else{
+        paramNew.set('text', textSearch)
+        router.push(pathName + '?' + paramNew.toString(), {
+            scroll: false,
+        })
+    }
   }, [textSearch])
 
   const { data: jobsResult,refetch:refetchJob,loading:loadingJob } = useQuery(JOB_SEARCH_INPUT_QUERY,{
@@ -129,7 +136,7 @@ function PopupSearch() {
   return (
     <div className='max-md:hidden w-[100vw] h-[100vh] fixed z-[100]'>
       <div className='absolute inset-0 z-[-1]' style={{ background: 'rgba(0, 0, 0, 0.6)' }}></div>
-      <div className='w-[60rem] h-[50rem] relative bg-white  overflow-auto top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2'>
+      <div className='w-[60rem] h-[40rem] relative bg-white  overflow-auto top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2'>
         <div className='flex '>
           <input 
             placeholder={lang === 'vi' ? 'Tìm kiếm...' : 'Search...'}
@@ -156,7 +163,7 @@ function PopupSearch() {
               
               `} key={index} className='flex items-center bg-slate-50 hover:bg-slate-100 mb-[1rem] transition-all'>
                 <Image src={item?.featuredImage?.sourceUrl} alt={item?.featuredImage?.altText} className='object-contain w-[4rem] h-[4rem]'  />
-                <h3>{item?.title}</h3>
+                <h3 className='ml-[1rem] text-[1.1rem]'>{item?.title}</h3>
               </Link>
             )
           })}
