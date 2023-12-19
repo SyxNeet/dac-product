@@ -3,7 +3,7 @@ version: '3'
 services:
   dac-next:
     container_name: dac
-    image: dac/dac:latest
+    image: ngotheson/dac:latest
     build:
       context: .
       dockerfile: Dockerfile

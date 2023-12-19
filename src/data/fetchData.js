@@ -1,3 +1,4 @@
+const revalidate = process.env.NEXT_PUBLIC_REVALIDATE || 60
 export const fetchData = async (query, variables = {}) => {
     const res = await fetch(process.env.NEXT_PUBLIC_API, {
         method: 'POST',
@@ -8,7 +9,7 @@ export const fetchData = async (query, variables = {}) => {
             query,
             variables,
         }),
-        next: { revalidate: 60 },
+        next: { revalidate },
     })
     if (!res.ok) {
         throw new Error('Failed to fetch data')

@@ -1,3 +1,4 @@
+const revalidate = process.env.NEXT_PUBLIC_REVALIDATE || 60
 export default async function getDataPage(lang, query) {
     const res = await fetch(process.env.NEXT_PUBLIC_API, {
         method: 'POST',
@@ -8,7 +9,7 @@ export default async function getDataPage(lang, query) {
             query: query,
             variables: { language: lang?.toUpperCase() }
         }),
-        next: { revalidate: 60 }
+        next: { revalidate }
     })
     if (!res.ok) {
         throw new Error('Failed to fetch data')
