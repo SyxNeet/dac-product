@@ -7,6 +7,11 @@ const NEWS_QUERY = `{
     nodes {
       slug
       date
+      categories{
+        nodes{
+          slug
+        }
+      }
     }
   }
 }`
@@ -16,6 +21,11 @@ const NEWS_QUERY_EN = `{
     nodes {
       slug
       date
+      categories{
+        nodes{
+          slug
+        }
+      }
     }
   }
 }`
@@ -74,14 +84,14 @@ export default async function sitemap() {
   
   const arrNews = news?.data?.posts?.nodes?.map(e => {
     return {
-      url: `${process.env.DOMAIN}/tin-tuc-su-kien/${e?.slug}`,
+      url: `${process.env.DOMAIN}/tin-tuc-su-kien/${e?.categories?.nodes[0]?.slug}/${e?.slug}`,
       lastModified: e?.date,
       priority: 0.8
     }
   })
   const arrNewsEn = newsEn?.data?.posts?.nodes?.map(e => {
     return {
-      url: `${process.env.DOMAIN}/news/${e?.slug}`,
+      url: `${process.env.DOMAIN}/news/${e?.categories?.nodes[0]?.slug}/${e?.slug}`,
       lastModified: e?.date,
       priority: 0.8
     }
@@ -143,7 +153,7 @@ export default async function sitemap() {
       priority: 0.9
     },
     {
-      url: `${process.env.DOMAIN}/en/news`,
+      url: `${process.env.DOMAIN}/en/design`,
       lastModified: new Date(),
       priority: 0.9
     },
