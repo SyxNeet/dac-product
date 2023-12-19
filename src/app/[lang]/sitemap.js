@@ -1,4 +1,5 @@
 import { fetchData } from "@/data/fetchData"
+import { i18n } from "../../../i18n-config"
 
 // tieu de
 const NEWS_QUERY = `{
@@ -65,6 +66,12 @@ export default async function sitemap() {
   const jobsEn = await fetchData(JOB_QUERY_EN)
   const products = await fetchData(PRODUCT_QUERY)
   const productsEn = await fetchData(PRODUCT_QUERY_EN)
+  const { locales } = i18n
+  const arrLocales = [
+    { value: 'vi', id: 'TGFuZ3VhZ2U6dmk=' },
+    { value: 'en', id: 'TGFuZ3VhZ2U6ZW4=' }
+  ]
+  
   const arrNews = news?.data?.posts?.nodes?.map(e => {
     return {
       url: `${process.env.DOMAIN}/tin-tuc-su-kien/${e?.slug}`,
