@@ -9,6 +9,7 @@ import { PRODUCT_SEARCH_INPUT_QUERY } from '@/graphql/product/query'
 import { JOB_SEARCH_INPUT_QUERY } from '@/graphql/recruitment/query'
 import Image from 'next/image'
 import Link from 'next/link'
+import img from '@/assets/imgs/imageDefault.png'
 
 const arrProductCateVi = ["bao-bi-thuoc-la-vi",
 "bao-bi-thuc-pham-vi",
@@ -52,7 +53,7 @@ function PopupSearch() {
   const textParam = searchParams.get('text') || ''
   const [text, setText] = useState(textParam)
   const [dataSearch,setDataSearch] = useState([])
-  const [number,setNumber] = useState(0)
+  const [number,setNumber] = useState(5)
   const textSearch = useDebounce(text, 500)
 
   const handleChangeInput = (e) => {
@@ -110,29 +111,28 @@ function PopupSearch() {
   useEffect(()=>{
     refetchJob({
       language,
-      offset:number * 5,
-      size:5,
+      offset:0,
+      size:number,
       text: textSearch,
     })
 
     refetchProduct({
       language,
-      offset:number * 5,
-      size:5,
+      offset:0,
+      size:number,
       text: textSearch,
       term: lang === 'vi' ? arrProductCateVi : arrProductCateEn
     })
 
     refetchNew({
       language,
-      offset:number * 5,
-      size:5,
+      offset:0,
+      size:number,
       text: textSearch,
       term: lang === 'vi' ? arrNewsCateVi : arrNewsCateEn
     })
     // setDataSearch((prevDataSearch) => [...prevDataSearch,...dataFinal])
   },[textSearch, number])
-
   return (
     <div className='max-md:hidden w-[100vw] h-[100vh] fixed z-[100]'>
       <div className='absolute inset-0 z-[-1]' style={{ background: 'rgba(0, 0, 0, 0.6)' }}></div>
@@ -159,10 +159,9 @@ function PopupSearch() {
                   ? "tin-tuc-su-kien" : item?.__typename === 'JobOpportunity' ? "tuyen-dung" : "san-pham-dich-vu")
                 :
                 (item?.__typename === 'Post' ? 'news' : item?.__typename === 'JobOpportunity' ? 'recruitment' : 'products')
-              }/${item?.__typename === 'Post' ? item?.categories?.nodes[0]?.slug : ''}/${item?.slug}
-              
-              `} key={index} className='flex items-center bg-slate-50 hover:bg-slate-100 mb-[1rem] transition-all'>
-                <Image src={item?.featuredImage?.sourceUrl} alt={item?.featuredImage?.altText} className='object-contain w-[4rem] h-[4rem]'  />
+              }/${item?.__typename === 'Post' ? item?.categories?.nodes[0]?.slug : ''}/${item?.slug}`} key={index} className='flex items-center bg-slate-50 hover:bg-slate-100 mb-[1rem] transition-all'>
+                <Image src={item?.featuredImage?.node?.sourceUrl?item?.featuredImage?.node?.sourceUrl:img} alt={item?.featuredImage?.node?.altText || 'image'}
+                width={300} height={200} className='object-contain w-[4rem] h-[4rem]'  />
                 <h3 className='ml-[1rem] text-[1.1rem]'>{item?.title}</h3>
               </Link>
             )
@@ -170,7 +169,7 @@ function PopupSearch() {
         </div>
         {
           (!loadingJob && !loadingNews && !loadingProduct) && (
-            <p onClick={() => setNumber(number + 1)} className='text-[1.35147rem] cursor-pointer text-[#00A84F] mt-[3rem] mb-[2rem] leading-[116.662%] underline text-center'>{lang === 'vi' ? 'Xem thêm' : 'Seemore'}</p>
+            <p onClick={() => setNumber(number + 5)} className='text-[1.35147rem] cursor-pointer text-[#00A84F] mt-[3rem] mb-[2rem] leading-[116.662%] underline text-center'>{lang === 'vi' ? 'Xem thêm' : 'Seemore'}</p>
           ) 
         }
       </div>
