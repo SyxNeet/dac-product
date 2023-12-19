@@ -23,6 +23,7 @@ function Navbar({
   const [color, setColor] = useState('')
   const [bgColor, setBgColor] = useState('')
   const [checkHome, setCheckHome] = useState(false)
+  const [checkPro, setCheckPro] = useState(false)
   const [shadow, setShadow] = useState('')
   const [logoHome, setLogoHome] = useState(logoW)
   const [checkScroll, setCheckScroll] = useState(false)
@@ -40,8 +41,10 @@ function Navbar({
   const listPageBlackHeader = ['/', '/san-pham-dich-vu/','/en/products/', '/en']
 
   const pathName = usePathname()
+  
   useEffect(() => {
     setCheckHome(listPageBlackHeader.includes(pathName) || pathName.startsWith('/san-pham-dich-vu/') || pathName.startsWith('/en/products/'))
+    setCheckPro(pathName.startsWith('/san-pham-dich-vu/') || pathName.startsWith('/en/products/'))
   }, [pathName])
 
   useEffect(() => {
@@ -52,12 +55,14 @@ function Navbar({
         setShadow('md:shadow-md')
         setLogoHome(logo)
         setCheckScroll(true)
+        setCheckPro(true)
       } else if ((listPageBlackHeader.includes(pathName) || pathName.startsWith('/san-pham-dich-vu/') || pathName.startsWith('/en/products/'))) {
         setBgColor('')
         setColor('#000')
         setShadow('')
         setLogoHome(logoW)
         setCheckScroll(false)
+        setCheckPro(false)
 
       } else {
         setCheckScroll(false)
@@ -65,6 +70,8 @@ function Navbar({
         setShadow('')
         setColor('#fff')
         setLogoHome(logoW)
+        setCheckPro(false)
+
       }
     }
     window.addEventListener('scroll', e)
@@ -332,7 +339,12 @@ function Navbar({
             {checkHome ? <Image onClick={() => {
               setSearch(true),
               setLang(lang)
-            }} src={searchIcon} width={50} height={50} alt='search' className='cursor-pointer w-[1.2vw] max-md:hidden h-[1.2vw] mr-[2.24vw] ml-[0.5vw]' /> :
+            }} src={searchIcon} width={50} height={50} alt='search' className='cursor-pointer w-[1.2vw] max-md:hidden h-[1.2vw] mr-[2.24vw] ml-[0.5vw]' /> 
+            :
+            checkPro ? (<Image onClick={() => {
+              setSearch(true),
+              setLang(lang)
+            }} src={searchIcon} width={50} height={50} alt='search' className='cursor-pointer w-[1.2vw] max-md:hidden h-[1.2vw] mr-[2.24vw] ml-[0.5vw] ' />) :
               <Image onClick={() => {
                 setSearch(true),
                 setLang(lang)
