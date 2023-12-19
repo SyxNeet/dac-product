@@ -1,11 +1,11 @@
 import React from "react";
 
 export async function generateStaticParams() {
-  return [{ lang: "vi" }];
+  return [{ lang: "en" }];
 }
 
-const NewsLayoutV = ({ children }) => {
+const NewsLayoutE = ({ children }) => {
   return <div>{children}</div>;
 };
 
-export default NewsLayoutV;
+export default NewsLayoutE;
