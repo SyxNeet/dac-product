@@ -4,7 +4,7 @@ import React from 'react'
 
 function BlogItem({ lang,data,slug }) {
     return (
-        <Link href={`/${lang}/tin-tuc-su-kien/${slug}/${data?.slug}`} className='flex flex-col relative  items-center '>
+        <Link href={`/${lang}/${lang === 'vi' ? 'tin-tuc-su-kien' : 'news'}/${slug}/${data?.slug}`} className='flex flex-col relative  items-center '>
             <div className='blog_item_animate overflow-hidden w-full'>
                 <Image src={data?.featuredImage?.node?.sourceUrl} alt={data?.featuredImage?.node?.altText || 'imgItem'} quality={100} width={1000} height={1000} className='md:w-[20.98958rem] w-full h-[91.46667rem] md:h-[28.02083rem] object-contain' />
             </div>
