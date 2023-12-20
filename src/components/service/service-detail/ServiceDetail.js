@@ -89,7 +89,6 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
                                     swiperRef1.current = swiper;
                                 }
                             }}
-                            
                         >
                             {data?.product_detail?.listImages?.map((item, index) => (
                                 <SwiperSlide key={index}>
@@ -107,6 +106,7 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
                             ))}
                         </Swiper>
                         {/* pre */}
+                        <div className='absolute max-md:z-10 inset-0'>
                         <button
                             className='absolute left-[1.6rem] top-[50%] z-[10]'
                             onClick={handlePreSlide1}
@@ -125,6 +125,7 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
                                 <path d="M2 2L16 16L2 30" stroke="white" stroke-width="3" />
                             </svg>
                         </button>
+                        </div>
                     </div>
                     {/* info */}
                     <div className=''>
