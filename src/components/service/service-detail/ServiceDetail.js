@@ -7,6 +7,7 @@ import { Pagination,Autoplay } from 'swiper/modules';
 import Link from 'next/link';
 import HandleChangeSlug from '@/components/common/HandleChangeSlug';
 import Zoom from 'react-img-zoom';
+import { useMediaQuery } from 'react-responsive';
 
 
 function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
@@ -15,6 +16,8 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
     const swiperRef1 = useRef()
     const [width,setWidth] = useState()
     const [height,setHeight] = useState()
+    const isMobile = useMediaQuery({ query: '(max-width: 767.9px)' })
+
 
     useEffect(()=>{
         if(typeof window === 'undefined') return
@@ -48,7 +51,28 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
     const handleNextSlide1 = () => {
         swiperRef1?.current?.slideNext();
     };
- 
+    
+    useEffect(() => {
+        if(isMobile){
+            let startX 
+            document.addEventListener('touchstart',(e)=>{
+                if(e.target.closest('.overlay-box')){
+                    startX = e.pageX
+                }
+            })
+    
+            document.addEventListener('touchend',(e)=>{
+                if(e.target.closest('.overlay-box')){
+                    let deltaX = e.pageX - startX
+                    if(deltaX < 0) {
+                        handleNextSlide1()
+                    }else{
+                        handlePreSlide1()
+                    }
+                }
+            })  
+        }
+    },[indexSlide])
         
     return (
         <section className="md:pt-[10.26rem] pt-[29.3rem] containerWrapper">
@@ -106,7 +130,7 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
                             ))}
                         </Swiper>
                         {/* pre */}
-                        <div className='absolute max-md:z-10 inset-0'>
+                        <div className='absolute overlay-box max-md:z-10 inset-0'>
                         <button
                             className='absolute left-[1.6rem] top-[50%] z-[10]'
                             onClick={handlePreSlide1}

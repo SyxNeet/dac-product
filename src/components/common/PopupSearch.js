@@ -10,6 +10,7 @@ import { JOB_SEARCH_INPUT_QUERY } from '@/graphql/recruitment/query'
 import Image from 'next/image'
 import Link from 'next/link'
 import img from '@/assets/imgs/imageDefault.png'
+import Loading from './Loading'
 
 const arrProductCateVi = ["bao-bi-thuoc-la-vi",
 "bao-bi-thuc-pham-vi",
@@ -133,6 +134,8 @@ function PopupSearch() {
     })
     // setDataSearch((prevDataSearch) => [...prevDataSearch,...dataFinal])
   },[textSearch, number])
+
+  const dataLoading = new Array(10).fill(0)
   return (
     <div className='max-md:hidden w-[100vw] h-[100vh] fixed z-[100]'>
       <div className='absolute inset-0 z-[-1]' style={{ background: 'rgba(0, 0, 0, 0.6)' }}></div>
@@ -148,25 +151,37 @@ function PopupSearch() {
           </svg>
         </div>
         <hr/>
-        <div className='pt-[1rem] px-[1rem]'>
-          {dataFinal?.map((item,index)=>{
-            return(
-              <Link onClick={() => setSearch(false)} href={`/${lang}/${
-                lang === 'vi' 
-                ?
-                (
-                  item?.__typename === 'Post'
-                  ? "tin-tuc-su-kien" : item?.__typename === 'JobOpportunity' ? "tuyen-dung" : "san-pham-dich-vu")
-                :
-                (item?.__typename === 'Post' ? 'news' : item?.__typename === 'JobOpportunity' ? 'recruitment' : 'products')
-              }/${item?.__typename === 'Post' ? item?.categories?.nodes[0]?.slug : ''}/${item?.slug}`} key={index} className='flex items-center bg-slate-50 hover:bg-slate-100 mb-[1rem] transition-all'>
-                <Image src={item?.featuredImage?.node?.sourceUrl?item?.featuredImage?.node?.sourceUrl:img} alt={item?.featuredImage?.node?.altText || 'image'}
-                width={300} height={200} className='object-contain w-[4rem] h-[4rem]'  />
-                <h3 className='ml-[1rem] text-[1.1rem]'>{item?.title}</h3>
-              </Link>
-            )
-          })}
-        </div>
+        {
+          loadingJob && loadingNews && loadingProduct ? 
+          (<div className='pt-[1rem] px-[1rem]'>
+              {dataLoading?.map((item)=>(
+                <Loading className={'h-[4rem] mt-[1rem]'} />
+              ))}
+          </div>) 
+          : 
+          (
+          <div className='pt-[1rem] px-[1rem]'>
+            {dataFinal?.map((item,index)=>{
+              return(
+                <Link onClick={() => setSearch(false)} href={`/${lang}/${
+                  lang === 'vi' 
+                  ?
+                  (
+                    item?.__typename === 'Post'
+                    ? "tin-tuc-su-kien" : item?.__typename === 'JobOpportunity' ? "tuyen-dung" : "san-pham-dich-vu")
+                  :
+                  (item?.__typename === 'Post' ? 'news' : item?.__typename === 'JobOpportunity' ? 'recruitment' : 'products')
+                }/${item?.__typename === 'Post' ? item?.categories?.nodes[0]?.slug : ''}/${item?.slug}`} key={index} className='flex items-center bg-slate-50 hover:bg-slate-100 mb-[1rem] transition-all'>
+                  <Image src={item?.featuredImage?.node?.sourceUrl?item?.featuredImage?.node?.sourceUrl:img} alt={item?.featuredImage?.node?.altText || 'image'}
+                  width={300} height={200} className='object-contain w-[4rem] h-[4rem]'  />
+                  <h3 className='ml-[1rem] text-[1.1rem]'>{item?.title}</h3>
+                </Link>
+              )
+            })}
+          </div>
+          )
+        }
+        
         {
           (!loadingJob && !loadingNews && !loadingProduct) && (
             <p onClick={() => setNumber(number + 5)} className='text-[1.35147rem] cursor-pointer text-[#00A84F] mt-[3rem] mb-[2rem] leading-[116.662%] underline text-center'>{lang === 'vi' ? 'Xem thêm' : 'Seemore'}</p>
