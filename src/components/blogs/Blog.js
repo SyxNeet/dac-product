@@ -10,6 +10,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import HandleChangeSlug from '../common/HandleChangeSlug'
 import FireQuoteWidget from '../common/FireQuoteWidget'
+import Loading from '../common/Loading'
 function Blog({ lang, dataBlog,slug,listSlug }) {
     let language = lang?.toUpperCase()
     const searchParams = useSearchParams()
@@ -127,6 +128,7 @@ function Blog({ lang, dataBlog,slug,listSlug }) {
         },
     ]
 
+    const arrSke = new Array(8).fill(0)
     return (
         <>
             <Banner dataBanner={dataBlog} />
@@ -146,15 +148,24 @@ function Blog({ lang, dataBlog,slug,listSlug }) {
                     </div>
                         
                         
-                  
-                <div className='grid md:grid-cols-4 md:gap-x-[2.6rem] md:gap-y-[4.43rem] max-md:px-[4.27rem] md:mt-[2rem]'>
+                
+                {
+                    loading ? (<div className='grid md:grid-cols-4 md:gap-x-[2.6rem] md:gap-y-[4.43rem] max-md:px-[4.27rem] md:mt-[2rem]'>
+                        {arrSke?.map((item,index)=>{
+                            return (
+                                <Loading className={'md:h-[28.02083rem] h-[91.46667rem]'} key={index} />
+                            )
+                        })}
+                    </div>) :
+                (<div className='grid md:grid-cols-4 md:gap-x-[2.6rem] md:gap-y-[4.43rem] max-md:px-[4.27rem] md:mt-[2rem]'>
                     {
                         allNews?.map((item, index) => (
                             <BlogItem slug={slug} lang={lang} key={index} data={item} />
-                        )
+                            )
                         )
                     }
-                </div>
+                </div>)
+                } 
                 {/* input search */}
                 <div className='searchTextBlog flex justify-center md:mt-[2.97rem] md:mb-[1rem] max-md:pt-[3.73rem] max-md:pb-[4.8rem]'>
                     <input onChange={(e) => handleInput(e.target.value)} placeholder={`${lang === 'vi' ? 'Tìm Kiếm' : 'Search'}`} className='md:px-[0.8rem] md:pb-[0.25rem] md:w-[10.625rem] w-[42.4576rem] md:h-[2.1875rem] h-[8.8rem] md:rounded-[2.23958rem] rounded-[11.46667rem] bg-[#F0F0F0]' />
