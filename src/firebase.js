@@ -8,12 +8,12 @@ import { getStorage } from '@firebase/storage'
 
 // Your web app's Firebase configuration
 export const firebaseConfig = {
-  apiKey: "AIzaSyBOfnLf0o2p256YsFwn2bBlXKzAkX7I1xU",
-  authDomain: "dac-okhub.firebaseapp.com",
-  projectId: "dac-okhub",
-  storageBucket: "dac-okhub.appspot.com",
-  messagingSenderId: "314936690389",
-  appId: "1:314936690389:web:b59eb2821ef52fa742845c"
+  apiKey: process.env.NEXT_PUBLIC_APIKEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTHDOMAIN,
+  projectId: process.env.NEXT_PUBLIC_PROJECTID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGEBUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGINGSENDERID,
+  appId: process.env.NEXT_PUBLIC_APPID
 };
 
 // Initialize Firebase
