@@ -36,6 +36,7 @@ function SlideProduct({ lang, dataProductList }) {
           delay: 3000,
           disableOnInteraction: false,
         }}
+        // speed={1000}
         loop={true}
         onSlideChange={handleSlideChange}
         modules={[Autoplay,Pagination]}

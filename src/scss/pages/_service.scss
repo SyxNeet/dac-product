@@ -7,12 +7,15 @@
 
 .slideFeatureImage {
   width: 100%;
-  
   .swiper-slide{
     display: flex;
     justify-content: center;
     z-index: 10;
     width: 100% !important;
+    // @media screen and (max-width: 767px) {
+    //   border-bottom-right-radius: 20rem;
+    //   overflow: hidden;
+    // }
   }
   .swiper-pagination-bullet {
     background: #444;
@@ -85,8 +88,10 @@
 }
 
 .box-custom{
+  overflow: hidden;
   &>div{
     &>div{
+      border-bottom-right-radius: 20rem;
       background-size: cover !important;
     }
   }
