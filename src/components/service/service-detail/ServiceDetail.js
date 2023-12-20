@@ -74,7 +74,7 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
                             pagination={{
                                 clickable: true,
                               }}
-                            speed={800}
+                            speed={500}
                             autoplay={{
                                 delay: 5000,
                                 disableOnInteraction: false,
@@ -91,7 +91,7 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
                         >
                             {data?.product_detail?.listImages?.map((item, index) => (
                                 <SwiperSlide key={index}>
-                                    <div className='box relative overflow-hidden w-full h-full'>
+                                    <div className='box box-custom relative overflow-hidden w-full h-full'>
                                         {/* <Image src={item?.image?.sourceUrl} alt='img' width={1000} height={1000} quality={100} className='w-full h-full object-cover' /> */}
                                         {height && <Zoom
                                         img={item?.image?.sourceUrl}
