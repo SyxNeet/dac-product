@@ -13,7 +13,7 @@ function SocialActionMb({lang,dataPartner}) {
         <>
         {!active && (<Image onClick={() => setActive(true)} className='w-[12.5632rem] md:hidden fixed z-50 right-0 top-[82%] h-[12.50187rem] object-contain' src={phone} width={'100%'} height={'100%'} alt='phone' />)}
         
-        <div className='md:hidden popUpAction  bg-transparent fixed z-50 right-0 top-[58%] -translate-y-[30%] px-[0.5rem] py-[1.5rem] rounded-bl-[1.97rem]'>
+        <div className='md:hidden popUpAction  bg-transparent fixed z-50 right-[1rem] top-[58%] -translate-y-[30%] px-[0.5rem] py-[1.5rem] rounded-bl-[1.97rem]'>
             {active && (
                 <div className='grid grid-cols-1 gap-[3.58rem] mb-[3.58rem]'>
                 <Link href={`${dataPartner?.socialAction?.facebook}`} target='_blank' className='transition-all hover:scale-95'>

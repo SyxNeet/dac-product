@@ -11,8 +11,8 @@
   .swiper-slide{
     display: flex;
     justify-content: center;
-    // position: absolute;
     z-index: 10;
+    width: 100% !important;
   }
   .swiper-pagination-bullet {
     background: #444;

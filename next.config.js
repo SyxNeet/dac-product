@@ -17,8 +17,7 @@ const nextConfig = {
     loaderFile: './loader.js'
   },
   staticPageGenerationTimeout: 1000,
-  output: 'standalone',
-  trailingSlash: true,
+  output: 'standalone'
 }
 
 module.exports = nextConfig

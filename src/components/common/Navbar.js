@@ -56,7 +56,7 @@ function Navbar({
         setLogoHome(logo)
         setCheckScroll(true)
         setCheckPro(true)
-      } else if ((listPageBlackHeader.includes(pathName) || pathName.startsWith('/san-pham-dich-vu/') || pathName.startsWith('/en/products/'))) {
+      } else if ((listPageBlackHeader.includes(pathName) || pathName.startsWith('/san-pham-dich-vu') || pathName.startsWith('/en/products'))) {
         setBgColor('')
         setColor('#000')
         setShadow('')
@@ -308,7 +308,7 @@ function Navbar({
                         <Link
                             onClick={handleCloseModal}
                             className={`text-[#000] mb-[2.67rem] md:text-[1.2rem] lg:text-[1.04167rem] ${checkHome ? '!text-[#000]' : 'text-[#fff]'} link ${(checkScroll && !checkHome) && '!text-[#000]'} `}
-                            href={`/${lang}/${lang === 'vi' ? item?.slug : item?.slugEn ||  item?.slug}` || '/'}>{lang === 'vi' ? item?.link : item?.linkEn}
+                            href={`/${lang}/${lang === 'vi' ? item?.slug : item?.slugEn}`}>{lang === 'vi' ? item?.link : item?.linkEn}
                         </Link>
                     )
                   }
