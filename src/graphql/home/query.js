@@ -4,11 +4,12 @@ const GET_DATA_HOMEPAGE = `
     translation(language:$language){
       homepage{
         banner{
-          background{
-            sourceUrl
-          }
           slogan
           textfeature
+          gallerybox{
+            sourceUrl
+            altText
+          }
         }
         designSuccess{
           heading
