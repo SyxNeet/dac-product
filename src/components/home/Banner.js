@@ -52,7 +52,7 @@ function Banner({ lang, dataBanner, dataDesign }) {
         <div className="flex sticky_box items-center sticky max-md:pt-[10rem] max-md:w-full top-0 md:h-[95vh] justify-between  md:border-b border-solid border-[#888] max-md:flex-col">
           <div className="containerWrapper md:flex">
           <div className="flex justify-center">
-            <div className="lg:w-[48.02rem] lg:h-[45.8rem]  md:w-[45rem] md:h-[45rem] w-[74.3464rem] h-[74rem] relative">
+            <div className="lg:w-[48.02rem] lg:h-[45.8rem] md:w-[45rem] md:h-[45rem] w-[74.3464rem] h-[74rem] relative">
               <img
                 alt="tissue-picture"
                 src="https://res.cloudinary.com/dj9q6wack/image/upload/v1701748254/Tissues_050000_zwr9hc.png"

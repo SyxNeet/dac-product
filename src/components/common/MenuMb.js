@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import SelectLangMb from '../lang/SelectLangMb'
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import RemoveCircleSharpIcon from '@mui/icons-material/RemoveCircleSharp';
-function MenuMb({ data, handleCloseModal, lang }) {
+function MenuMb({ data, handleCloseModal, lang,slugProducts }) {
     const [active,setActive] = useState(null)
     const [active2,setActive2] = useState(null)
     const [hiddenPlus,setHiddenPlus] = useState()
@@ -139,10 +139,11 @@ function MenuMb({ data, handleCloseModal, lang }) {
                                         }
                                     >
                                         {item?.listContent?.map((mbItem, index) => {
+                                            const slugProduct = slugProducts[index];
                                             return (
                                                 <Link
                                                     onClick={handleCloseModal}
-                                                    href={`/${lang}/${lang === 'vi' ? item?.slug2 : item?.slug2En}/${lang === 'vi' ? mbItem?.slug : mbItem?.slugEn}` || '/'}
+                                                    href={`/${lang}/${lang === 'vi' ? item?.slug2 : item?.slug2En || item?.slug2}/${(lang === 'vi' ? mbItem?.slug : mbItem?.slugEn) || slugProduct}` || '/'}
                                                     key={index}
                                                     dangerouslySetInnerHTML={{ __html: `${mbItem?.nameEn ? (lang === 'vi' ? mbItem?.name : mbItem?.nameEn) : mbItem.name}` }}
                                                     className='text-[#444] capitalize text-[3.46667rem] text_product_item_home leading-[116.662%] tracking-[-0.104rem] mb-[2.67rem]'>

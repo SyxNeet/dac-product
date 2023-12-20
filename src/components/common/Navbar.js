@@ -362,6 +362,7 @@ function Navbar({
           data={navLinks}
           handleCloseModal={handleCloseModal}
           lang={lang}
+          slugProducts={slugProducts}
         />
       </div>
 
