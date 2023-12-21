@@ -21,10 +21,10 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
 
     useEffect(()=>{
         if(typeof window === 'undefined') return
-        if (window.innerWidth > 1600){
-            setWidth((window.innerWidth - (window.innerWidth - 1600))/100*36.7)
-            setHeight((window.innerWidth - (window.innerWidth - 1600))/100*32.81)
-        } else if(window.innerWidth > 767 && window.innerWidth <= 1600){
+        if (window.innerWidth > 3000){
+            setWidth((window.innerWidth - (window.innerWidth - 3000))/100*36.7)
+            setHeight((window.innerWidth - (window.innerWidth - 3000))/100*32.81)
+        } else if(window.innerWidth > 767 && window.innerWidth <= 3000){
             setWidth(window.innerWidth/100*36.7)
             setHeight(window.innerWidth/100*32.81)
         }else {
