@@ -51,7 +51,7 @@ const GET_DATA_DESIGN = `query getDataDesign($language:LanguageCodeEnum!){
 
 const GET_META_DESIGN = `
 query($language: LanguageCodeEnum!){
-  page(id: "cG9zdDozNzA=") {
+  page(id: "cG9zdDozNzI=") {
     translation(language:$language){
       seo{
       title

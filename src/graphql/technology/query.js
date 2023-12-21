@@ -318,6 +318,96 @@ const SLUG_TECH_PAGE_QUERY =(id)=> `{
     }
   }
 }`
+const META_OFFSET_QUERY = `
+query($language: LanguageCodeEnum!){
+  page(id: "cG9zdDo1Mjg=") {
+    translation(language:$language){
+      seo{
+      title
+      fullHead
+      metaDesc
+      }
+       featuredImage{
+      node{
+        altText
+        sourceUrl
+      }
+    }
+    }
+  }
+}`
+const META_FLEXO_QUERY = `
+query($language: LanguageCodeEnum!){
+  page(id: "cG9zdDo1MzQ=") {
+    translation(language:$language){
+      seo{
+      title
+      fullHead
+      metaDesc
+      }
+       featuredImage{
+      node{
+        altText
+        sourceUrl
+      }
+    }
+    }
+  }
+}`
+const META_GRAVURE_QUERY = `
+query($language: LanguageCodeEnum!){
+  page(id: "cG9zdDo1MzY=") {
+    translation(language:$language){
+      seo{
+      title
+      fullHead
+      metaDesc
+      }
+       featuredImage{
+      node{
+        altText
+        sourceUrl
+      }
+    }
+    }
+  }
+}`
+const META_DIGITAL_QUERY = `
+query($language: LanguageCodeEnum!){
+  page(id: "cG9zdDo1NDA=") {
+    translation(language:$language){
+      seo{
+      title
+      fullHead
+      metaDesc
+      }
+       featuredImage{
+      node{
+        altText
+        sourceUrl
+      }
+    }
+    }
+  }
+}`
+const META_OTHERPRINT_QUERY = `
+query($language: LanguageCodeEnum!){
+  page(id: "cG9zdDo1NDQ=") {
+    translation(language:$language){
+      seo{
+      title
+      fullHead
+      metaDesc
+      }
+       featuredImage{
+      node{
+        altText
+        sourceUrl
+      }
+    }
+    }
+  }
+}`
 export {
   GET_DATA_TECHNOLOGY_DIGITAL,
   GET_DATA_TECHNOLOGY_GRAVURE,
@@ -329,5 +419,10 @@ export {
   GET_SLUG_GRAVURE,
   GET_SLUG_DIGITAL,
   GET_SLUG_OTHERPRINT,
-  SLUG_TECH_PAGE_QUERY
+  SLUG_TECH_PAGE_QUERY,
+  META_OFFSET_QUERY,
+  META_FLEXO_QUERY,
+  META_GRAVURE_QUERY,
+  META_DIGITAL_QUERY,
+  META_OTHERPRINT_QUERY
 }

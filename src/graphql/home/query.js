@@ -63,10 +63,6 @@ const GET_DATA_HOMEPAGE = `
             image{
                 sourceUrl
             }
-          listNews{
-            title
-            description
-          }
         }
         slideVideo{
           background{
@@ -199,7 +195,7 @@ const GET_DATA_MOBILE_VISION = `query ($language: LanguageCodeEnum!) {
 }`
 
 const GET_META_HOME = `query($language: LanguageCodeEnum!){
-  page(id: "cG9zdDoyMQ==") {
+  page(id: "cG9zdDoyNA==") {
     translation(language:$language){
       seo{
       title

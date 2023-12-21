@@ -47,7 +47,7 @@ const GET_DATA_CONTACT_PAGE = `query($language:LanguageCodeEnum!){
 }`
 const META_CONTACT_QUERY = `
 query($language: LanguageCodeEnum!){
-  page(id: "cG9zdDo2OTU=") {
+  page(id: "cG9zdDo2OTc=") {
     translation(language:$language){
       seo{
       title

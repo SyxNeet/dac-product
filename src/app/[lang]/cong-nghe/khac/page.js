@@ -2,7 +2,8 @@ import ScrollToTop from '@/components/common/ScrollToTop'
 import IndexOtherPrinting from '@/components/technology/technology-otherPrinting/IndexOtherPrinting'
 import { fetchData } from '@/data/fetchData'
 import getDataPage from '@/data/getDataPage'
-import { GET_DATA_TECHNOLOGY_OTHERPRINT, GET_SLUG_DIGITAL, GET_SLUG_FLEXO, GET_SLUG_GRAVURE, GET_SLUG_OFFSET, GET_SLUG_OTHERPRINT, SLUG_TECH_PAGE_QUERY} from '@/graphql/technology/query'
+import { getMeta } from '@/graphql/metaData/getMeta'
+import { GET_DATA_TECHNOLOGY_OTHERPRINT, GET_SLUG_DIGITAL, GET_SLUG_FLEXO, GET_SLUG_GRAVURE, GET_SLUG_OFFSET, GET_SLUG_OTHERPRINT, META_OTHERPRINT_QUERY, SLUG_TECH_PAGE_QUERY} from '@/graphql/technology/query'
 import React from 'react'
 
 const PARAM_ARR = [
@@ -12,6 +13,15 @@ const PARAM_ARR = [
   GET_SLUG_DIGITAL,
   GET_SLUG_OTHERPRINT
 ]
+
+export async function generateMetadata({ params: { lang } }) {
+  const res = await fetchData(META_OTHERPRINT_QUERY, { language: lang?.toUpperCase() })
+  const home = res?.data?.page?.translation?.seo
+  const featuredImage = res?.data?.page?.translation?.featuredImage
+  const title = home?.title
+  const excerpt = home?.metaDesc
+  return getMeta(title, excerpt, featuredImage)
+}
 export default async function page({params}) {
     let language = params?.lang?.toUpperCase()
     let data = await getDataPage(language, GET_DATA_TECHNOLOGY_OTHERPRINT)
