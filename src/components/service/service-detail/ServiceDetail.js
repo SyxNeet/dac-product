@@ -104,6 +104,7 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
                             autoplay={{
                                 delay: 5000,
                                 disableOnInteraction: false,
+                                pauseOnMouseEnter: true,
                             }}
                             modules={[Pagination,Autoplay]}
                             className="mySwiper slideFeatureImage md:w-[36.7rem] md:h-full h-[81.6rem] max-md:!rounded-br-[23rem]"
