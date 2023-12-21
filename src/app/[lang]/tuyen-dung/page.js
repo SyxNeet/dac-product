@@ -9,10 +9,8 @@ import { GET_ALL_SEARCH_BY_SERVER, GET_DATA_RECRUIMENT_PAGE, META_RECRUITMENT_QU
 export async function generateMetadata({ params: { lang } }) {
     const res = await fetchData(META_RECRUITMENT_QUERY, { language: lang?.toUpperCase() })
     const home = res?.data?.page?.translation?.seo
-    console.log(home);
     const featuredImage = res?.data?.page?.translation?.featuredImage
     const title = home?.title
-    console.log(title);
     const excerpt = home?.metaDesc
     return getMeta(title, excerpt, featuredImage)
 }
