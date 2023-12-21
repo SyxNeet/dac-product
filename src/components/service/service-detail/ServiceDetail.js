@@ -53,25 +53,25 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
     };
     
     useEffect(() => {
-        if(isMobile){
-            let startX 
-            document.addEventListener('touchstart',(e)=>{
-                if(e.target.closest('.overlay-box')){
-                    startX = e.pageX
-                }
-            })
+        // if(isMobile){
+        //     let startX 
+        //     document.addEventListener('touchstart',(e)=>{
+        //         if(e.target.closest('.overlay-box')){
+        //             startX = e.pageX
+        //         }
+        //     })
     
-            document.addEventListener('touchend',(e)=>{
-                if(e.target.closest('.overlay-box')){
-                    let deltaX = e.pageX - startX
-                    if(deltaX < 0) {
-                        handleNextSlide1()
-                    }else{
-                        handlePreSlide1()
-                    }
-                }
-            })  
-        }
+        //     document.addEventListener('touchend',(e)=>{
+        //         if(e.target.closest('.overlay-box')){
+        //             let deltaX = e.pageX - startX
+        //             if(deltaX < 0) {
+        //                 handleNextSlide1()
+        //             }else{
+        //                 handlePreSlide1()
+        //             }
+        //         }
+        //     })  
+        // }
     },[indexSlide])
         
     return (
@@ -131,7 +131,7 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
                             ))}
                         </Swiper>
                         {/* pre */}
-                        <div className='absolute overlay-box max-md:z-10 inset-0'>
+                        {/* <div className='absolute overlay-box max-md:z-10 inset-0'> */}
                         <button
                             className='absolute left-[1.6rem] top-[50%] z-[10]'
                             onClick={handlePreSlide1}
@@ -232,7 +232,7 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
                         </svg>
                     </button>
                 </div>
-            </div>
+            {/* </div> */}
         </section>
     )
 }
