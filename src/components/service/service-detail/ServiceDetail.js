@@ -150,7 +150,7 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
                                 <path d="M2 2L16 16L2 30" stroke="white" stroke-width="3" />
                             </svg>
                         </button>
-                        </div>
+                        {/* </div> */}
                     </div>
                     {/* info */}
                     <div className=''>
@@ -232,7 +232,7 @@ function ServiceDetail({ data, lang,otherProduct,subTitle,listSlug }) {
                         </svg>
                     </button>
                 </div>
-            {/* </div> */}
+            </div>
         </section>
     )
 }
