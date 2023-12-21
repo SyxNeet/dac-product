@@ -156,7 +156,7 @@ query getData($text: String!, $language: LanguageCodeFilterEnum!, $offset: Int!,
 `
 const GET_META_NEWS = `
 query($language: LanguageCodeEnum!){
-  page(id: "cG9zdDozNDI=") {
+  page(id: "cG9zdDozNDU=") {
     translation(language:$language){
       seo{
       title

@@ -124,7 +124,7 @@ const GET_DATA_NEW_JOBS = `query getdataJobNew($language: LanguageCodeEnum!) {
 }`
 const META_RECRUITMENT_QUERY = `
 query($language: LanguageCodeEnum!){
-  page(id: "cG9zdDo2NjM=") {
+  page(id: "cG9zdDo2NjU=") {
     translation(language:$language){
       seo{
       title

@@ -136,7 +136,7 @@ const GET_DATA_ABOUT_US_ORGANIZE = `query ($language: LanguageCodeEnum!) {
   }`
 
   const META_VISION_QUERY = `query($language: LanguageCodeEnum!){
-    page(id: "cG9zdDoxMzk=") {
+    page(id: "cG9zdDoxNDE=") {
       translation(language:$language){
         seo{
         title
@@ -153,7 +153,7 @@ const GET_DATA_ABOUT_US_ORGANIZE = `query ($language: LanguageCodeEnum!) {
     }
   }`
   const META_JOURNEY_QUERY = `query($language: LanguageCodeEnum!){
-    page(id: "cG9zdDoxNjg=") {
+    page(id: "cG9zdDoxNzA=") {
       translation(language:$language){
         seo{
         title
@@ -170,7 +170,7 @@ const GET_DATA_ABOUT_US_ORGANIZE = `query ($language: LanguageCodeEnum!) {
     }
   }`
   const META_PRIZE_QUERY = `query($language: LanguageCodeEnum!){
-    page(id: "cG9zdDoxNzI=") {
+    page(id: "cG9zdDoxNzQ=") {
       translation(language:$language){
         seo{
         title
