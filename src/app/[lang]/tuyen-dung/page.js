@@ -5,6 +5,7 @@ import getData from '@/data/getData'
 import getDataPage from '@/data/getDataPage'
 import { getMeta } from '@/graphql/metaData/getMeta'
 import { GET_ALL_SEARCH_BY_SERVER, GET_DATA_RECRUIMENT_PAGE, META_RECRUITMENT_QUERY, SLUG_RECRUITMENT_QUERY } from '@/graphql/recruitment/query'
+import { Suspense } from 'react'
 
 export const viewport = {
     width: 'device-width',
@@ -33,9 +34,9 @@ export default async function page({ params, searchParams }) {
         slugEn:'/en/' +(listSlugRecruitment?.data?.page?.translations[0]?.language?.code==='EN'?listSlugRecruitment?.data?.page?.translations[0]?.slug:listSlugRecruitment?.data?.page?.slug)
     }
     return (
-        <>
-            <ScrollToTop />
-            <Recruitment listSlug={listSlug} dataFirstIn={dataFirstIn?.data?.allJobOpportunity} lang={params?.lang} data={dataRecruitment} />
-        </>
+            <Suspense fallback={<div>...loading</div>}>
+                <ScrollToTop />
+                <Recruitment listSlug={listSlug} dataFirstIn={dataFirstIn?.data?.allJobOpportunity} lang={params?.lang} data={dataRecruitment} />
+            </Suspense>
     )
 }
