@@ -15,16 +15,13 @@ function SlidePartners({ data }) {
           }
         }}
         slidesPerView={2}
-        spaceBetween={50}
         loop={true}
         centeredSlides={true}
         allowTouchMove={false}
         autoplay={{
           delay: 1000,
           disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-          stopOnLastSlide: false,
-          waitForTransition: true
+          pauseOnMouseEnter: true
         }}
         speed={1000}
         freeMode={true}

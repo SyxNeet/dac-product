@@ -6,6 +6,13 @@ import getDataPage from '@/data/getDataPage'
 import { getMeta } from '@/graphql/metaData/getMeta'
 import { GET_ALL_SEARCH_BY_SERVER, GET_DATA_RECRUIMENT_PAGE, META_RECRUITMENT_QUERY, SLUG_RECRUITMENT_QUERY } from '@/graphql/recruitment/query'
 
+export const viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    // Also supported by less commonly used
+    // interactiveWidget: 'resizes-visual',
+  }
 export async function generateMetadata({ params: { lang } }) {
     const res = await fetchData(META_RECRUITMENT_QUERY, { language: lang?.toUpperCase() })
     const home = res?.data?.page?.translation?.seo

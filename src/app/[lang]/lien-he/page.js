@@ -5,7 +5,13 @@ import getDataPage from '@/data/getDataPage'
 import { GET_DATA_CONTACT_PAGE, META_CONTACT_QUERY, SLUG_CONTACT_QUERY } from '@/graphql/contact/query'
 import { getMeta } from '@/graphql/metaData/getMeta'
 import React from 'react'
-
+export const viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    // Also supported by less commonly used
+    // interactiveWidget: 'resizes-visual',
+  }
 
 export async function generateStaticParams() {
     return [{ lang: "vi" }];

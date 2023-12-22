@@ -6,7 +6,11 @@ import { GET_DATA_CONTACT_PAGE, META_CONTACT_QUERY, SLUG_CONTACT_QUERY } from '@
 import { getMeta } from '@/graphql/metaData/getMeta'
 import React from 'react'
 
-
+export const viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+  }
 export async function generateStaticParams() {
   return [{ lang: "en" }];
 }

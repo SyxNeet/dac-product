@@ -47,6 +47,7 @@ function Branch({data}) {
                 </div>
                 <div className='md:w-[50%]'>
                     <Swiper
+                        freeMode={true}
                         modules={[Autoplay]}
                         slidesPerView={1}
                         autoplay={{
@@ -68,7 +69,6 @@ function Branch({data}) {
                         {data?.packagingDesign?.image?.concat(data?.packagingDesign?.image)?.map((item,index)=>(
                             <SwiperSlide key={index}>
                                 <Image src={item?.sourceUrl} alt={item?.altText || 'img'} width={1000} height={1000} priority quality={100} className='md:w-full object-cover md:h-full h-[100rem]' />
-
                             </SwiperSlide>
                         ))}
                             <div
@@ -97,6 +97,7 @@ function Branch({data}) {
                 <div className='md:w-[50%]'>
                     <Swiper
                             modules={[Autoplay]}
+                            freeMode={true}
                             slidesPerView={1}
                             autoplay={{
                                 delay: 3000,
