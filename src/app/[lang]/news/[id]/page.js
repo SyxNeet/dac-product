@@ -23,6 +23,12 @@ const listSlugNews = [
   },
 ]
 
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+}
 export async function generateMetadata({ params: { lang } }) {
   const res = await fetchData(GET_META_NEWS, { language: lang?.toUpperCase() })
   const home = res?.data?.page?.translation?.seo
