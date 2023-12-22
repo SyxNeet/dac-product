@@ -147,6 +147,7 @@ function HistoryMobile({ data }) {
             </div>
             {number <= data?.journey?.length - 1 &&
                 <span ref={seeMoreRef} onClick={handleClick} className='text-[#00A84F] next-slide-custom text-justify text-[3.2rem] leading-[1.2] tracking-[-0.096rem] relative left-[5rem]'>Xem thêm</span>}
+            <p className={`text-[4.26667rem] px-[4.27rem] tracking-[-0.128rem] text-justify text-[#444] pt-[3.96rem] `} dangerouslySetInnerHTML={{ __html: `${data?.subdescription}` }}></p>
         </section>
     )
 }

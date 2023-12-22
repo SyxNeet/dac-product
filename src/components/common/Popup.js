@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 
 function Popup({lang,listJob}) {
     const [check, setCheck] = useState(false);
@@ -24,7 +24,7 @@ function Popup({lang,listJob}) {
                 setOpen(true)
            }
         })
-    },[])
+    },[pathName])
     useEffect(()=>{
         if(popUpRef.current){
             if(pathName.includes('tuyen-dung') || pathName.includes('recruitment')){
@@ -41,8 +41,7 @@ function Popup({lang,listJob}) {
                 return () => clearTimeout(timeoutId);
             }
         }
-    },[check,pathName])
-    
+    },[check,pathName, open])
     return (
             open && (<div ref={popUpRef} className={`md:fixed max-md:hidden bottom-[10%] right-[0] z-[9] min-w-[20rem] popUpJob rounded-tl-[1rem] rounded-bl-[1rem] pl-[1rem] pr-[3rem] py-[0.5rem] `}>
             <div className='absolute inset-0 overlay_popup'></div>

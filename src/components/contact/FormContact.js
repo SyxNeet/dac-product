@@ -27,9 +27,11 @@ const SUBMIT_FORM = gql`
     }
   }
 `
+
 function FormContact({ dataForm }) {
     const [mutate, { loading }] = useMutation(SUBMIT_FORM)
     const searchParams = useSearchParams();
+    const [valueTextArea, setValueTextArea] = useState("")
     const [checked,setChecked] = useState(false)
     const id = searchParams.get("id");
     const formRef = useRef()
@@ -84,7 +86,13 @@ function FormContact({ dataForm }) {
                 return
             } else {
                 // Successful
-                resetForm()
+                setValueTextArea("")
+                resetForm({fullName:'',
+                    email:'',
+                    telephone:'',
+                    message:'',
+                    address:'',
+                })
             }
         })
     }
@@ -97,6 +105,7 @@ function FormContact({ dataForm }) {
                     initialValues={{ ...INITAL_FORM_STATE }}
                     validationSchema={FORM_VALIDATION}
                     onSubmit={(values, { resetForm }) => {
+                        console.log(values);
                         handleForm(values, resetForm)
                     }}
                 >
@@ -140,10 +149,14 @@ function FormContact({ dataForm }) {
                                         <span className='md:text-[1.04167rem] max-md:mt-[2rem] text-[4.26667rem] leading-[140.662%] md:tracking-[-0.05208rem] tracking-[-0.21333rem]'>{dataForm?.formData?.content}</span>
                                         <div className='flex flex-col justify-between max-md:pt-[2rem] mb-[8rem] border-b border-solid  border-[#000] md:mb-[1rem]' >
                                             <TextareaAutosize
+                                                value={valueTextArea}
                                                 className='outline-none md:w-full'
                                                 minRows={4}
                                                 name='message'
-                                                onChange={(e) => setFieldValue("message", e.target.value)}
+                                                onChange={(e) => {
+                                                    setValueTextArea(e.target.value)
+                                                    setFieldValue("message",e.target.value)
+                                                }}
                                             />
                                         </div>
                                     </div>

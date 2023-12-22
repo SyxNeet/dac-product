@@ -10,7 +10,7 @@ function News({ dataNews,dataNewsHome,lang }) {
           {dataNews?.heading}
         </h3>
         <div className='flex gap-x-[2.71rem] max-md:flex-col md:mt-[3rem] mt-[6rem]'>
-          <Image src={dataNews?.image?.sourceUrl || newsImg} width={1000} height={1000} alt='news' className='md:w-[44.58rem] md:h-[37.89rem] h-[84.9328rem]' />
+          <Image src={dataNews?.image?.sourceUrl} width={1000} height={1000} alt='news' className='md:w-[44.58rem] md:h-[37.89rem] h-[84.9328rem]' />
           <ul className="grid md:grid-cols-2 gap-x-[1.82rem] gap-y-[2rem] max-md:px-[4.53rem]">
             {dataNewsHome?.map((item, index) => (
               <div key={index} className={`text-[1.35417rem] md:pt-[3.07rem] pt-[7.02rem] md:border-t border-solid border-[#444] ${(index !== 0 && index !== 1 ) ? 'max-md:hidden' : ''}`}>
