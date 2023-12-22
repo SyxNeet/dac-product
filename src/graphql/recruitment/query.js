@@ -230,6 +230,20 @@ const JOB_SEARCH_INPUT_QUERY = gql `query getDataSearchJob($language:LanguageCod
     }
   }
 }`
+const POPUP_JOB_QUERY = `query getJobPopUp($language: LanguageCodeFilterEnum!) {
+  allJobOpportunity(
+    first: 10
+    where: {orderby: {field: DATE, order: DESC}, language: $language}
+  ) {
+    nodes {
+      recruimentDetail{
+        infoJob{
+          expirationDate
+        }
+      }
+    }
+  }
+}`
 export {
   GET_DATA_RECRUIMENT_DETAIL,
   GET_DATA_NEW_JOBS,
@@ -240,5 +254,6 @@ export {
   SLUG_RECRUITMENT_QUERY,
   SLUG_RECRUITMENT_DETAIL_QUERY,
   SLUG_JOB_FEATURE,
-  JOB_SEARCH_INPUT_QUERY
+  JOB_SEARCH_INPUT_QUERY,
+  POPUP_JOB_QUERY
 }

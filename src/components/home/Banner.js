@@ -23,8 +23,8 @@ function Banner({ lang, dataBanner, dataDesign }) {
             scroll_word.style.opacity ='0'
             list.forEach((e, index) => {
               if (
-                self.progress >= index * 0.0103092783505155 &&
-                self.progress < (index + 1) * 0.0103092783505155
+                self.progress >= index * 0.0106382978723404 &&
+                self.progress < (index + 1) * 0.0106382978723404
               ) {
                 e.style.zIndex = `${10 + index}`;
                 e.style.opacity = 1;

@@ -1,7 +1,7 @@
 'use client'
 import { useRef, useState } from 'react'
 import SlideProduct from './SlideProduct'
-function Product({ lang, dataProduct, dataProductList }) {
+function Product({ lang, dataProduct,slugProducts, dataProductList }) {
   const [indexSlider, setIndexSlider] = useState(0)
   const swiperRef = useRef()
   const handleNextSlide = () => {
@@ -21,7 +21,7 @@ function Product({ lang, dataProduct, dataProductList }) {
         <h3 className='title text-[8.53333rem] leading-[116.662%] md:text-[3.4375rem] font-bold md:pr-[1.5rem] max-md:text-[#444]'>{dataProduct?.contentLeft?.title}</h3>
         <p className='desc md:pr-[5rem] max-md:mt-[4rem] md:text-[1.5rem] lg:text-[1.35417rem] tracking-[-0.09979rem] leading-[1.2] text-justify text-[4.26667rem] max-md:text-[#888]' dangerouslySetInnerHTML={{ __html: `${dataProduct?.contentLeft?.description}` }}></p>
       </div>
-      <div className='md:w-[76rem] h-full'><SlideProduct lang={lang} dataProductList={dataProductList} /></div>
+      <div className='md:w-[76rem] h-full'><SlideProduct slugProducts={slugProducts} lang={lang} dataProductList={dataProductList} /></div>
     </div>
   )
 }

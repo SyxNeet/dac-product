@@ -7,7 +7,7 @@ import News from './News'
 import VideoSlide from './VideoSlide'
 import Partners from './Partners'
 
-function HomePage({ lang, data, dataProductList,dataNewsHome }) {
+function HomePage({ lang, data, dataProductList,dataNewsHome ,slugProducts}) {
   const dataBanner = data?.data?.page?.translation?.homepage?.banner
   const dataDesign = data?.data?.page?.translation?.homepage?.designSuccess
   const dataProduct = data?.data?.page?.translation?.homepage?.productAndService
@@ -21,7 +21,7 @@ function HomePage({ lang, data, dataProductList,dataNewsHome }) {
           <Banner dataBanner={dataBanner} dataDesign={dataDesign} lang={lang} />
           <div className='containerWrapper'>
           <Design dataDesign={dataDesign} lang={lang} />
-          <Product dataProductList={dataProductList} dataProduct={dataProduct} lang={lang} />
+          <Product dataProductList={dataProductList} dataProduct={dataProduct} slugProducts={slugProducts} lang={lang} />
           <Technical dataTechnology={dataTechnology} lang={lang} />
           <Solution dataSolution={dataSolution} />
           <News dataNews={dataNews} dataNewsHome={dataNewsHome} lang={lang} />
