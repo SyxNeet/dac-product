@@ -17,7 +17,7 @@ function Service({ lang, data, dataCate,listSlug,slugProducts }) {
                     {dataCate?.map((item, index) => {
                         const slugProduct = slugProducts[index];
                         return(
-                            <Link href={`/${lang}/san-pham-dich-vu/${item?.product_category?.info?.featureProduct || slugProduct}`} key={index}>
+                            <Link href={`/${lang}/${lang === 'vi' ? 'san-pham-dich-vu' : 'products'}/${item?.product_category?.info?.featureProduct || slugProduct}`} key={index}>
                                 <ProductItem image={item?.product_category?.info?.image} text={item?.product_category?.info?.title} />
                             </Link>
                         )

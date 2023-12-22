@@ -19,6 +19,8 @@ import Popup from "@/components/common/Popup";
 import GsapSmoother from "@/components/common/GsapSmoother";
 import SocialData from "@/components/common/SocialData";
 import FooterData from "@/components/common/FooterData";
+import { fetchData } from "@/data/fetchData";
+import { POPUP_JOB_QUERY } from "@/graphql/recruitment/query";
 
 export function generateViewport() {
   return {
@@ -32,13 +34,14 @@ export function generateViewport() {
 
 export default async function RootLayout({ children, params }) {
   let lang = params.lang;
- 
+  const listJob = await fetchData(POPUP_JOB_QUERY,{language:lang?.toUpperCase()})
   return (
     <html lang={lang}>
       <body>
         <ApolloClientProvider>
           <NavbarData lang={lang} />
           <Popup
+            listJob={listJob}
             lang={lang}
           />
           <SocialAction lang={lang} />
