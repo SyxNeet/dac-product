@@ -1,4 +1,4 @@
-const revalidate = process.env.NEXT_PUBLIC_REVALIDATE || 60
+const revalidate = 60
 export default async function getData(query, variables = {}) {
     const res = await fetch(process.env.NEXT_PUBLIC_API, {
         method: 'POST',
