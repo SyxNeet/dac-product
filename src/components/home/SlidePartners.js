@@ -6,28 +6,37 @@ import { useEffect, useRef } from 'react'
 function SlidePartners({ data }) {
   const swiperRef = useRef()
   const dataSlide = data?.concat(data)
-  useEffect(()=>{
-    let startX 
-    document.addEventListener('touchstart',(e)=> {
-      if(e.target.closest('.overlay_slide')){
-        startX = e.pageX
-      }
-    })
+  // useEffect(()=>{
+  //   let startX 
+  //   document.addEventListener('touchstart',(e)=> {
+  //     if(e.target.closest('.overlay_slide')){
+  //       startX = e.pageX
+  //       swiperRef.current.pause()
+  //     }
+  //   })
 
-    document.addEventListener('touchend',(e) => {
-      if(e.target.closest('.overlay_slide')){
-        let deltaX = e.pageX - startX
-        if(deltaX > 0) {
-          swiperRef.current?.slideNext()
-        }else if(deltaX < 0){
-          swiperRef.current?.slidePrev()
-        }
-      }
-    })
-  },[])
+  //   document.addEventListener('touchend',(e) => {
+  //     if(e.target.closest('.overlay_slide')){
+  //       swiperRef.current.resume()
+  //       let deltaX = e.pageX - startX
+  //       if(deltaX > 0) {
+  //         swiperRef.current?.slideNext()
+  //       }else if(deltaX < 0){
+  //         swiperRef.current?.slidePrev()
+  //       }
+
+  //       if(deltaX === 0) {
+  //         swiperRef.current.pause()
+  //       }else{
+  //         swiperRef.current.resume()
+
+  //       }
+  //     }
+  //   })
+  // },[])
   return (
     <div className='mt-[6.93rem] slide-partners relative'>
-      <div className='overlay_slide absolute inset-0 max-md:z-10'></div>
+      {/* <div className='overlay_slide absolute inset-0 max-md:z-10'></div> */}
       <Swiper
         breakpoints={{
           768: {
@@ -38,7 +47,7 @@ function SlidePartners({ data }) {
         slidesPerView={2}
         loop={true}
         autoplay={{
-          delay: 500,
+          delay: 600,
           disableOnInteraction: false,
           pauseOnMouseEnter: true
         }}
