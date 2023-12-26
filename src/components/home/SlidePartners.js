@@ -70,6 +70,7 @@ function SlidePartners({ data }) {
                 height={500}
                 alt='partners'
                 className={`object-contain md:w-[15.625rem] md:h-[15.625rem] w-full h-[70.53333rem]`}
+                priority
               />
             </SwiperSlide>
            
