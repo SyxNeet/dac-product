@@ -48,7 +48,7 @@ function SelectLang({ lang, checkHome, color }) {
         <Link
           key={index}
           // href={redirectedPathName(locale.locale)}
-          href={locale.locale==='vi'?slug?.slugVi||'/':slug?.slugEn||'/en'}
+          href={locale.locale==='vi'? '/': '/en'}
           className={`flex link items-center w-full border-r border-solid  last:border-none px-[0.6rem] ${checkHome ? 'border-black' : ''} border-[${color}] ${lang==='vi'&&index===0?'active':''} ${lang==='en'&&index===1?'active':''}`}
         >
           <span className={`uppercase lg:text-[1rem] md:text-[1.2rem]  ${checkHome ? '!text-black' : 'text-white'} !text-[${color}]`}>{locale.locale}</span>
