@@ -27,7 +27,7 @@ export default async function page({ params, searchParams }) {
     const dataRecruitment = data?.data?.page?.translation?.recruiment
     const offset = (searchParams?.page - 1) * 4 || 0
     const text = searchParams?.text || ''
-    const dataFirstIn = await getData(GET_ALL_SEARCH_BY_SERVER(offset, params?.lang.toUpperCase(), text))
+    const dataFirstIn = await getData(GET_ALL_SEARCH_BY_SERVER(offset, params?.lang?.toUpperCase(), text))
     const listSlugRecruitment = await getDataPage( params?.lang.toUpperCase(),SLUG_RECRUITMENT_QUERY(data?.data?.page?.translation?.id))
     const listSlug = {
         slugVi:'/'+ (listSlugRecruitment?.data?.page?.translations[0]?.language?.code==='VI'?listSlugRecruitment?.data?.page?.translations[0]?.slug:listSlugRecruitment?.data?.page?.slug),
