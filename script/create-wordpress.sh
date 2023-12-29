@@ -83,15 +83,25 @@ sudo cp -r wordpress/* /var/www/html/cms.appjsc.com/
 sudo cp /var/www/html/cms.appjsc.com/wp-config-sample.php /var/www/html/cms.appjsc.com/wp-config.php
 sudo chown www-data:www-data /var/www/html/cms.appjsc.com/wp-config.php
 
+# Set permissions
+chmod -R 777 /var/www/html/cms.appjsc.com
+
 # Create MySQL database and user
 DB_NAME="cms_appjsc_com"
 DB_USER="cms_user"
 DB_PASSWORD=$(openssl rand -base64 12)
 
+# Modify wp-config.php
+WP_CONFIG="/var/www/html/cms.appjsc.com/wp-config.php"
+
+echo "" >> $WP_CONFIG
+echo "/* FS settings for WordPress updates */" >> $WP_CONFIG
+echo "define('FS_METHOD', 'direct');" >> $WP_CONFIG
+
 # Generate secret keys for WordPress
-sudo sed -i 's/database_name_here/$DB_NAME/g' /var/www/html/cms.appjsc.com/wp-config.php
-sudo sed -i 's/username_here/$DB_USER/g' /var/www/html/cms.appjsc.com/wp-config.php
-sudo sed -i 's/password_here/$DB_PASSWORD/g' /var/www/html/cms.appjsc.com/wp-config.php
+sudo sed -i "s/database_name_here/$DB_NAME/g" $WP_CONFIG
+sudo sed -i "s/username_here/$DB_USER/g" $WP_CONFIG
+sudo sed -i "s/password_here/$DB_PASSWORD/g" $WP_CONFIG
 
 # Create the database
 sudo mysql -e "CREATE DATABASE $DB_NAME;"

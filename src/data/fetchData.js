@@ -1,4 +1,4 @@
-const revalidate = 60
+const revalidate = 3600
 export const fetchData = async (query, variables = {}) => {
     const res = await fetch(process.env.NEXT_PUBLIC_API, {
         method: 'POST',
