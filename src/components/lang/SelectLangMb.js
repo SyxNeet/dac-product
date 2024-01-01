@@ -24,10 +24,7 @@ function SelectLangMb({ lang, handleCloseModal }) {
         <div className='flex flex-col items-center select-lang fixed top-[27.5rem] right-[6.27rem]'>
             {i18n?.lo?.map((locale, index) => (
                 <Link
-                    // onClick={() => {
-                    //     setLng(locale.locale)
-                    //     handleCloseModal
-                    // }}
+                    
                     key={index}
                     // href={redirectedPathName(locale.locale)}
                     // href={locale.locale==='vi'?slug?.slugVi||'/':slug?.slugEn||'/en'}

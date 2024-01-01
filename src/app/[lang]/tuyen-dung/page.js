@@ -10,9 +10,7 @@ import { Suspense } from 'react'
 export const viewport = {
     width: 'device-width',
     initialScale: 1,
-    maximumScale: 1,
-    // Also supported by less commonly used
-    // interactiveWidget: 'resizes-visual',
+    maximumScale: 1
   }
 export async function generateMetadata({ params: { lang } }) {
     const res = await fetchData(META_RECRUITMENT_QUERY, { language: lang?.toUpperCase() })

@@ -79,39 +79,49 @@ function Navbar({
 
   useEffect(() => {
     let prevScrollpos = window.scrollY;
+  
     window.onscroll = function () {
-      const banner_home = document.querySelector('.banner_home')
-      const arrow_up = document.querySelector('.arrow_up')
-      
+      const banner_home = document.querySelector('.banner_home');
+      const arrow_up = document.querySelector('.arrow_up');
+      const navHeader = document.getElementById('navheader');
+  
       let currentScrollPos = window.scrollY;
-      if (prevScrollpos >= currentScrollPos) {
-        document.getElementById("navheader").style.top = "0";
-        document.getElementById("navheader").style.backdropFilter = 'blur(4px)'
-        document.getElementById("navheader").style.webkitBackdropFilter = 'blur(4px)';
-      } else {
-        document.getElementById("navheader").style.top = "-100%";
-        document.getElementById("navheader").style.backdropFilter = 'none'
-        document.getElementById("navheader").style.webkitBackdropFilter = 'none';
+  
+      if (navHeader) {
+        if (prevScrollpos >= currentScrollPos) {
+          navHeader.style.top = '0';
+          navHeader.style.backdropFilter = 'blur(4px)';
+          navHeader.style.webkitBackdropFilter = 'blur(4px)';
+        } else {
+          navHeader.style.top = '-100%';
+          navHeader.style.backdropFilter = 'none';
+          navHeader.style.webkitBackdropFilter = 'none';
+        }
+  
+        if (currentScrollPos === 0) {
+          navHeader.style.backdropFilter = 'none';
+          navHeader.style.webkitBackdropFilter = 'none';
+        }
+  
+        if (prevScrollpos < 0) {
+          navHeader.style.top = '0';
+          navHeader.style.backdropFilter = 'none';
+          navHeader.style.webkitBackdropFilter = 'none';
+        }
       }
-      if (currentScrollPos === 0) {
-        document.getElementById("navheader").style.backdropFilter = 'none'
-        document.getElementById("navheader").style.webkitBackdropFilter = 'none';
+      
+      if(arrow_up){
+        if (banner_home && currentScrollPos > banner_home.offsetHeight) {
+          arrow_up.style.transform = 'translateY(0)';
+        } else {
+          arrow_up.style.transform = 'translateY(200%)';
+        }
       }
-
-      if(prevScrollpos < 0) {
-        document.getElementById("navheader").style.top = "0";
-        document.getElementById("navheader").style.backdropFilter = 'none'
-        document.getElementById("navheader").style.webkitBackdropFilter = 'none';
-      }
-
-      if(banner_home && (currentScrollPos > banner_home.offsetHeight)){
-          arrow_up.style.transform = 'translateY(0)'
-      }else{
-        arrow_up.style.transform = 'translateY(200%)'
-      }
+  
       prevScrollpos = currentScrollPos;
-    }
-  }, [])
+    };
+  }, []);
+  
   const navLinks = [
     {
       link: 'VỀ CHÚNG TÔI',
@@ -285,7 +295,7 @@ function Navbar({
 
   return (
     <>
-      <nav id='navheader'  className={`bg-[${bgColor}] ${shadow}  top-0 w-full fixed navbar md:pt-[2.6rem] md:pb-[1.3rem] pt-[6.27rem] z-[20] ${isMobile && 'bg-transparent'}`}>
+      <nav id='navheader' className={`bg-[${bgColor}] ${shadow}  top-0 w-full fixed navbar md:pt-[2.6rem] md:pb-[1.3rem] pt-[6.27rem] z-[20] ${isMobile && 'bg-transparent'}`}>
         <div className="md:pl-[4.11rem] md:pr-[4.37rem] containerWrapper max-md:px-[4.27rem]">
           <div className='flex items-center justify-between'>
             {checkHome ?
