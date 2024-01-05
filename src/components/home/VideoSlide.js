@@ -10,7 +10,7 @@ import ReactPlayer from 'react-player'
 function VideoSlide({ dataSlideVideo }) {
   const [indexSlider, setIndexSlider] = useState(0)
   // const [isPlay, setIsPlay] = useState(false)
-  const [isPlay, setIsPlay] = useState(Array(dataSlideVideo.length).fill(false));
+  const [isPlay, setIsPlay] = useState(Array(dataSlideVideo?.length).fill(false));
   const swiperRef = useRef()
   const handleNextSlide = () => {
     swiperRef.current?.slideNext()
@@ -21,7 +21,7 @@ function VideoSlide({ dataSlideVideo }) {
 
   const handleSlideChange = (swiper) => {
     setIndexSlider(swiper.activeIndex)
-    setIsPlay(Array(dataSlideVideo.length).fill(false));
+    setIsPlay(Array(dataSlideVideo?.length).fill(false));
   }
 
   return (
@@ -99,7 +99,7 @@ function VideoSlide({ dataSlideVideo }) {
         </svg>
       </button>
       {/* </div> */}
-      <span className='absolute max-md:hidden bottom-[5rem] right-[2.26rem] text-[3.64583rem] text-white font-bold z-10 leading-[1]'>{indexSlider + 1}/{dataSlideVideo.length}</span>
+      <span className='absolute max-md:hidden bottom-[5rem] right-[2.26rem] text-[3.64583rem] text-white font-bold z-10 leading-[1]'>{indexSlider + 1}/{dataSlideVideo?.length}</span>
     </div>
   )
 }
