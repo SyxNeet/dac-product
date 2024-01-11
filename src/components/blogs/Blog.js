@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Banner from './Banner'
 import { useQuery } from '@apollo/client'
-import { DATA_NEWS_WITH_SEARCH_AND_CATEGORY } from '@/graphql/news-blog/query'
+import { ALL_NEWS_SEARCH_V2 } from '@/graphql/news-blog/query'
 import BlogItem from './BlogItem'
 import { useMediaQuery } from 'react-responsive'
 import useDebounce from '@/hooks/useDebounce'
@@ -11,12 +11,11 @@ import Link from 'next/link'
 import HandleChangeSlug from '../common/HandleChangeSlug'
 import FireQuoteWidget from '../common/FireQuoteWidget'
 import Loading from '../common/Loading'
-function Blog({ lang, dataBlog,slug,listSlug }) {
+function Blog({ lang, dataBlog,slug,listSlug,dataNewsV2 }) {
     let language = lang?.toUpperCase()
     const searchParams = useSearchParams()
     const page = searchParams.get('page') || 1
-    const textParam = searchParams.get('text') || '';
-    const [activePage, setActivePage] = useState(page -1  || 0)
+    const textParam = searchParams.get('text') || null;
     const [text, setText] = useState(textParam)
     const [number, setNumber] = useState(0)
     const [dataNew, setDataNew] = useState([])
@@ -26,60 +25,59 @@ function Blog({ lang, dataBlog,slug,listSlug }) {
     const eleRef = useRef()
     const seeMoreRef = useRef()
     const isMobile = useMediaQuery({ query: '(max-width: 767.9px)' })
-    const { data, refetch, loading } = useQuery(DATA_NEWS_WITH_SEARCH_AND_CATEGORY, {
+    const [currentPage,setCurrentPage] = useState(page -1  || 0)
+    const [postsPerPage,setPostsPerPage] = useState(8)
+    const lastPostIndex = ( isMobile ? (number + 1)  : (currentPage + 1)) * postsPerPage
+    const firstPostIndex = lastPostIndex - postsPerPage
+    
+    const { data, refetch, loading } = useQuery(ALL_NEWS_SEARCH_V2, {
         variables: {
             language,
-            offset: (page - 1) * (isMobile ? 3 : 8),
-            size: isMobile ? 3 : 8,
             text: textSearch,
             term:slug
-        }
+        },
+        skip: textSearch === null || textSearch === undefined,
     })
-    ///////////////////////////////////////////// handle click PC//////////////////////////////////////////
+    const dataFinal = data ? data?.posts?.nodes : dataNewsV2?.data?.posts?.nodes
+    const currentPosts = dataFinal.slice(isMobile ? 0 : firstPostIndex,lastPostIndex)
 
     function handleInput(searchText) {
         setText(searchText)
         const paramNew = new URLSearchParams(searchParams)
-                paramNew.set('page', page)
-                paramNew.set('text', searchText)
-                router.push(pathName + '?' + paramNew.toString(), {
-                    scroll: false,
-                })
+            paramNew.set('page', page)
+            paramNew.set('text', searchText)
+            router.push(pathName + '?' + paramNew.toString(), {
+                scroll: false,
+            })
     }
     const handleChangePage = (index) => {
-        setActivePage(index)
-        refetch({
-            offset: index * 8,
-            size: 8,
-            text: textSearch,
-        })
+        setCurrentPage(index)
         router.push(`?page=${index + 1}&text=${textSearch}`,{
             scroll: false,
         });
     }
+    useEffect(() => {
+        refetch({
+            language,
+            text: textSearch,
+            term: slug,
+        });
+    },[textSearch])
 
-    useEffect(()=>{
-        if(activePage !== page ){
-            refetch({
-                offset: (page - 1) * (isMobile ? 3 : 8),
-                size: isMobile ? 3 : 8,
-                text: textSearch,
-              });
-        }
-    },[page,activePage])
-
+ 
     ///////////////////////////////////////////// handle click mobile//////////////////////////////////////////
     const handleClick = () => {
         setNumber(number + 1)
     }
 
+    
     useEffect(() => {
         isMobile && refetch({
-            offset: number * 3,
-            size: 3,
-            text: textSearch
+            language,
+            text: textSearch || "",
+            term: slug,
         }).then(response => {
-            if ( number === (Math.floor(response.data?.posts?.pageInfo?.offsetPagination?.total / 3) - 1) && seeMoreRef?.current) {
+            if ( (number === (Math.ceil(response.data?.posts?.nodes?.length / 8) - 1) || number === (Math.ceil(response.data?.posts?.nodes?.length / 8))) && seeMoreRef?.current) {
                 seeMoreRef.current.style.display = 'none'
             } else {
                 seeMoreRef.current.style.display = 'block'
@@ -89,17 +87,13 @@ function Blog({ lang, dataBlog,slug,listSlug }) {
             } else {
                 setDataNew([...response.data?.posts?.nodes])
             }
-
-            if (number > 0 && (textSearch === '' || textSearch)) {
-                setDataNew([...dataNew, ...response.data?.posts?.nodes])
-            }
         })
     }, [number, textSearch])
 
-    const allNews = isMobile ? dataNew : data?.posts?.nodes
-    const pageInfo = data?.posts?.pageInfo?.offsetPagination?.total
+   
+    const pageInfo = data ? dataFinal?.length : dataNewsV2?.data?.posts?.nodes?.length
     const totalPage = Math.ceil(pageInfo / 8)
-
+    const allNews = (isMobile && !textSearch) ? currentPosts : (isMobile && textSearch) ? dataNew : currentPosts
     // list category
     const listCategoryNews = [
         {
@@ -135,20 +129,17 @@ function Blog({ lang, dataBlog,slug,listSlug }) {
             <HandleChangeSlug listSlug={listSlug}/>
             <section ref={eleRef} className='md:px-[4.17rem] containerWrapper max-md:mt-[4rem] blog_news md:pt-[3.13rem] md:pb-[2.97rem] max-md:flex flex-col-reverse'>
                 <span ref={seeMoreRef} onClick={handleClick} className='md:hidden text-[4.26667rem] text-[#00A84F] leading-[116.662%] underline text-center mb-[8.1rem] mt-[2rem]'>{lang === 'vi' ? 'Xem thêm' : 'See more'}</span>
-                    <div className='flex md:mb-[5.21rem] max-md:order-1 max-md:flex-col max-md:justify-center max-md:items-center max-md:mt-[8.27rem]'>
-                        {
-                            listCategoryNews?.map((item,index)=>{
-                                return (
-                                    <Link className='max-md:mb-[4.8rem]' key={index} href={`/${lang}/${lang === 'vi' ? 'tin-tuc-su-kien' : 'news'}/${lang === 'vi' ? item?.slug :item?.slugEn || item?.slug}`}>
-                                        <h2 className={`uppercase lg:text-[1.04167rem] md:text-[1.2rem] text-[4.26667rem] mr-[3.91rem] cursor-pointer ${(pathName?.endsWith(item?.slug) || pathName?.endsWith(item?.slugEn)) ? 'text-[#00A84F]' : 'text-[#444]'}`}>{lang === 'vi' ? item?.nameVi : item?.nameEn}</h2>
-                                    </Link>
-                                )
-                            })
-                        }
-                    </div>
-                        
-                        
-                
+                <div className='flex md:mb-[5.21rem] max-md:order-1 max-md:flex-col max-md:justify-center max-md:items-center max-md:mt-[8.27rem]'>
+                    {
+                        listCategoryNews?.map((item,index)=>{
+                            return (
+                                <Link className='max-md:mb-[4.8rem]' key={index} href={`/${lang}/${lang === 'vi' ? 'tin-tuc-su-kien' : 'news'}/${lang === 'vi' ? item?.slug :item?.slugEn || item?.slug}`}>
+                                    <h2 className={`uppercase lg:text-[1.04167rem] md:text-[1.2rem] text-[4.26667rem] mr-[3.91rem] cursor-pointer ${(pathName?.endsWith(item?.slug) || pathName?.endsWith(item?.slugEn)) ? 'text-[#00A84F]' : 'text-[#444]'}`}>{lang === 'vi' ? item?.nameVi : item?.nameEn}</h2>
+                                </Link>
+                            )
+                        })
+                    }
+                </div>
                 {
                     loading ? (<div className='grid md:grid-cols-4 md:gap-x-[2.6rem] md:gap-y-[4.43rem] max-md:px-[4.27rem] md:mt-[2rem]'>
                         {arrSke?.map((item,index)=>{
@@ -157,14 +148,14 @@ function Blog({ lang, dataBlog,slug,listSlug }) {
                             )
                         })}
                     </div>) :
-                (<div className='grid md:grid-cols-4 md:gap-x-[2.6rem] md:gap-y-[4.43rem] max-md:px-[4.27rem] md:mt-[2rem]'>
-                    {
-                        allNews?.map((item, index) => (
-                            <BlogItem slug={slug} lang={lang} key={index} data={item} />
+                    (<div className='grid md:grid-cols-4 md:gap-x-[2.6rem] md:gap-y-[4.43rem] max-md:px-[4.27rem] md:mt-[2rem]'>
+                        {
+                            allNews?.map((item, index) => (
+                                    <BlogItem slug={slug} lang={lang} key={index} data={item} />
+                                )
                             )
-                        )
-                    }
-                </div>)
+                        }
+                    </div>)
                 } 
                 {/* input search */}
                 <div className='searchTextBlog flex justify-center md:mt-[2.97rem] md:mb-[1rem] max-md:pt-[3.73rem] max-md:pb-[4.8rem]'>
@@ -180,7 +171,7 @@ function Blog({ lang, dataBlog,slug,listSlug }) {
                             onClick={() => handleChangePage(index)}
                             className={`${totalPage > 1 ? 'cursor-pointer md:w-[1.125rem] md:h-[2.125rem]' : 'hidden'}`}
                         >
-                            <span className={`${activePage === index ? 'text-[#00A84F]' : 'text-[#444]'}`}>{index + 1}</span>
+                            <span className={`${currentPage === index ? 'text-[#00A84F]' : 'text-[#444]'}`}>{index + 1}</span>
                         </div>
                     ))}
                 </div>
