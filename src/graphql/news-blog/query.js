@@ -260,6 +260,56 @@ query getData($text: String!, $language: LanguageCodeFilterEnum!, $offset: Int!,
   }
 }
 `
+
+const ALL_NEW_V2_QUERY = `
+query getAllNewsV2($language: LanguageCodeFilterEnum!, $term: [String!]) {
+  posts(
+    where: {language: $language, orderby: {field: DATE, order: DESC}, taxQuery: {taxArray: {operator: IN, taxonomy: CATEGORY, terms: $term, field: SLUG}}}
+    first: 100
+  ) {
+    nodes {
+      slug
+      featuredImage {
+        node {
+          sourceUrl
+          altText
+        }
+      }
+      news {
+        time
+        name
+      }
+    }
+  }
+}`
+
+const ALL_NEWS_SEARCH_V2 = gql`
+query getData($text: String!, $language: LanguageCodeFilterEnum!, $term: [String!]) {
+  posts(
+    where: {language: $language, search: $text, orderby: {field: DATE, order: DESC}, taxQuery: {taxArray: {field: SLUG, taxonomy: CATEGORY, operator: IN, terms: $term}}}
+    first: 100
+  ) {
+    nodes {
+      featuredImage {
+        node {
+          altText
+          sourceUrl
+        }
+      }
+      news{
+        time
+        name
+      }
+      slug
+      title
+      categories {
+        nodes {
+          slug
+        }
+      }
+    }
+  }
+}`
 export {
   NEWS_QUERY,
   GET_DATA_NEWS_DETAIL,
@@ -271,5 +321,7 @@ export {
   DATA_NEWS_WITH_SEARCH_AND_CATEGORY,
   SLUG_BLOG_QUERY,
   SLUG_BLOG_DETAIL_QUERY,
-  NEWS_SEARCH_INPUT_QUERY
+  NEWS_SEARCH_INPUT_QUERY,
+  ALL_NEW_V2_QUERY,
+  ALL_NEWS_SEARCH_V2
 }
