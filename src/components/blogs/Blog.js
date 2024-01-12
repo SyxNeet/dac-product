@@ -1,8 +1,6 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
 import Banner from './Banner'
-import { useQuery } from '@apollo/client'
-import { ALL_NEWS_SEARCH_V2 } from '@/graphql/news-blog/query'
 import BlogItem from './BlogItem'
 import { useMediaQuery } from 'react-responsive'
 import useDebounce from '@/hooks/useDebounce'
@@ -12,10 +10,9 @@ import HandleChangeSlug from '../common/HandleChangeSlug'
 import FireQuoteWidget from '../common/FireQuoteWidget'
 import Loading from '../common/Loading'
 function Blog({ lang, dataBlog,slug,listSlug,dataNewsV2 }) {
-    let language = lang?.toUpperCase()
     const searchParams = useSearchParams()
-    const page = searchParams.get('page') || 1
-    const textParam = searchParams.get('text') || null;
+    const page = searchParams?.get('page') || 1
+    const textParam = searchParams?.get('text') || '';
     const [text, setText] = useState(textParam)
     const [number, setNumber] = useState(0)
     const [dataNew, setDataNew] = useState([])
@@ -26,21 +23,12 @@ function Blog({ lang, dataBlog,slug,listSlug,dataNewsV2 }) {
     const seeMoreRef = useRef()
     const isMobile = useMediaQuery({ query: '(max-width: 767.9px)' })
     const [currentPage,setCurrentPage] = useState(page -1  || 0)
-    const [postsPerPage,setPostsPerPage] = useState(8)
+    const [postsPerPage,setPostsPerPage] = useState(isMobile ? 3 : 8)
     const lastPostIndex = ( isMobile ? (number + 1)  : (currentPage + 1)) * postsPerPage
     const firstPostIndex = lastPostIndex - postsPerPage
-    
-    const { data, refetch, loading } = useQuery(ALL_NEWS_SEARCH_V2, {
-        variables: {
-            language,
-            text: textSearch,
-            term:slug
-        },
-        skip: textSearch === null || textSearch === undefined,
-    })
-    const dataFinal = data ? data?.posts?.nodes : dataNewsV2?.data?.posts?.nodes
-    const currentPosts = dataFinal.slice(isMobile ? 0 : firstPostIndex,lastPostIndex)
-
+    const dataSearch = dataNewsV2?.data?.posts?.nodes?.filter(item => item?.news?.name?.toLowerCase()?.includes(textSearch))
+    const dataFinal = dataSearch ? dataSearch : dataNewsV2?.data?.posts?.nodes
+    const currentPosts = dataFinal?.slice(isMobile ? 0 : firstPostIndex,lastPostIndex)
     function handleInput(searchText) {
         setText(searchText)
         const paramNew = new URLSearchParams(searchParams)
@@ -56,44 +44,21 @@ function Blog({ lang, dataBlog,slug,listSlug,dataNewsV2 }) {
             scroll: false,
         });
     }
-    useEffect(() => {
-        refetch({
-            language,
-            text: textSearch,
-            term: slug,
-        });
-    },[textSearch])
-
- 
     ///////////////////////////////////////////// handle click mobile//////////////////////////////////////////
     const handleClick = () => {
         setNumber(number + 1)
     }
-
-    
+    const pageInfo = dataSearch ? dataFinal?.length : dataNewsV2?.data?.posts?.nodes?.length
+    const totalPage = Math?.ceil(pageInfo / 8)
+    const allNews = currentPosts?.length === 0 ? dataNewsV2?.data?.posts?.nodes : currentPosts 
     useEffect(() => {
-        isMobile && refetch({
-            language,
-            text: textSearch || "",
-            term: slug,
-        }).then(response => {
-            if ( (number === (Math.ceil(response.data?.posts?.nodes?.length / 8) - 1) || number === (Math.ceil(response.data?.posts?.nodes?.length / 8))) && seeMoreRef?.current) {
-                seeMoreRef.current.style.display = 'none'
-            } else {
-                seeMoreRef.current.style.display = 'block'
-            }
-            if (textSearch) {
-                setDataNew(response.data?.posts?.nodes)
-            } else {
-                setDataNew([...response.data?.posts?.nodes])
-            }
-        })
-    }, [number, textSearch])
-
-   
-    const pageInfo = data ? dataFinal?.length : dataNewsV2?.data?.posts?.nodes?.length
-    const totalPage = Math.ceil(pageInfo / 8)
-    const allNews = (isMobile && !textSearch) ? currentPosts : (isMobile && textSearch) ? dataNew : currentPosts
+        if(number === (Math?.ceil(dataSearch?.length / 3) - 1) && seeMoreRef?.current){
+            seeMoreRef.current.style.display = 'none'
+        } else {
+            seeMoreRef.current.style.display = 'block'
+        }
+    },[number,textSearch])
+    
     // list category
     const listCategoryNews = [
         {
@@ -128,7 +93,7 @@ function Blog({ lang, dataBlog,slug,listSlug,dataNewsV2 }) {
             <Banner dataBanner={dataBlog} />
             <HandleChangeSlug listSlug={listSlug}/>
             <section ref={eleRef} className='md:px-[4.17rem] containerWrapper max-md:mt-[4rem] blog_news md:pt-[3.13rem] md:pb-[2.97rem] max-md:flex flex-col-reverse'>
-                <span ref={seeMoreRef} onClick={handleClick} className='md:hidden text-[4.26667rem] text-[#00A84F] leading-[116.662%] underline text-center mb-[8.1rem] mt-[2rem]'>{lang === 'vi' ? 'Xem thêm' : 'See more'}</span>
+                <span ref={seeMoreRef} onClick={handleClick} className='md:!hidden text-[4.26667rem] text-[#00A84F] leading-[116.662%] underline text-center mb-[8.1rem] mt-[2rem]'>{lang === 'vi' ? 'Xem thêm' : 'See more'}</span>
                 <div className='flex md:mb-[5.21rem] max-md:order-1 max-md:flex-col max-md:justify-center max-md:items-center max-md:mt-[8.27rem]'>
                     {
                         listCategoryNews?.map((item,index)=>{
@@ -141,7 +106,7 @@ function Blog({ lang, dataBlog,slug,listSlug,dataNewsV2 }) {
                     }
                 </div>
                 {
-                    loading ? (<div className='grid md:grid-cols-4 md:gap-x-[2.6rem] md:gap-y-[4.43rem] max-md:px-[4.27rem] md:mt-[2rem]'>
+                    !allNews ? (<div className='grid md:grid-cols-4 md:gap-x-[2.6rem] md:gap-y-[4.43rem] max-md:px-[4.27rem] md:mt-[2rem]'>
                         {arrSke?.map((item,index)=>{
                             return (
                                 <Loading className={'md:h-[28.02083rem] h-[91.46667rem]'} key={index} />
