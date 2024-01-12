@@ -105,7 +105,6 @@ function FormContact({ dataForm }) {
                     initialValues={{ ...INITAL_FORM_STATE }}
                     validationSchema={FORM_VALIDATION}
                     onSubmit={(values, { resetForm }) => {
-                        console.log(values);
                         handleForm(values, resetForm)
                     }}
                 >
