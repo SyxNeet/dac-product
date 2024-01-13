@@ -41,7 +41,7 @@ export async function generateMetadata({ params: { lang } }) {
 
 async function page({ params: { lang,id } }) {
   let dataNews = await fetchData(NEWS_QUERY, { language: lang?.toUpperCase()})
-  const item = listSlugNews.find((e)=>{
+  const item = listSlugNews?.find((e)=>{
       if(lang==='vi' && e?.slugVi?.includes(id)) return e
       if(lang==='en' && e?.slugEn?.includes(id)) return e
   })
@@ -58,7 +58,7 @@ async function page({ params: { lang,id } }) {
         slug={id} 
         dataBlog={dataNews?.data?.page?.translation} 
         lang={lang} 
-        dataNewsV2 = {dataNewsV2}
+        dataNewsV2 = {dataNewsV2 || []}
       />
     </>
   )
