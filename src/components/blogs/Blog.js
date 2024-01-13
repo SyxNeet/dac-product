@@ -15,7 +15,7 @@ function Blog({ lang, dataBlog,slug,listSlug,dataNewsV2 }) {
     const textParam = searchParams?.get('text') || '';
     const [text, setText] = useState(textParam)
     const [number, setNumber] = useState(0)
-    const [dataNew, setDataNew] = useState([])
+    // const [dataNew, setDataNew] = useState([])
     const textSearch = useDebounce(text, 500)
     const pathName = usePathname()
     const router = useRouter();
@@ -48,9 +48,10 @@ function Blog({ lang, dataBlog,slug,listSlug,dataNewsV2 }) {
     const handleClick = () => {
         setNumber(number + 1)
     }
-    const pageInfo = dataSearch ? dataFinal?.length : dataNewsV2?.data?.posts?.nodes?.length
+    const pageInfo = (dataSearch && dataSearch?.length > 0) ? dataFinal?.length : dataNewsV2?.data?.posts?.nodes?.length
+    console.log(pageInfo);
     const totalPage = Math?.ceil(pageInfo / 8)
-    const allNews = currentPosts?.length === 0 ? dataNewsV2?.data?.posts?.nodes : currentPosts 
+    const allNews = currentPosts?.length === 0 ? dataNewsV2?.data?.posts?.nodes?.slice(isMobile ? 0 : firstPostIndex,lastPostIndex) : currentPosts 
     useEffect(() => {
         if(number === (Math?.ceil(dataSearch?.length / 3) - 1) && seeMoreRef?.current){
             seeMoreRef.current.style.display = 'none'
