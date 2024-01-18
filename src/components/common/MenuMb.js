@@ -46,10 +46,11 @@ function MenuMb({ data, handleCloseModal, lang,slugProducts }) {
                                 (item?.listContent && index !== 2) ?
                                     (
                                         <div className='flex gap-[2rem] items-center'>
-                                            <span
-                                            className='text-[#444] text-[5.33333rem]  font-bold'
-                                            key={index}>{lang === 'vi' ? item?.link : item?.linkEn}
-                                            </span>
+                                            <Link
+                                                href={`/${lang}/${lang === 'vi' ? item?.slug : item?.slugEn}`}
+                                                className='text-[#444] text-[5.33333rem]  font-bold'
+                                                key={index}>{lang === 'vi' ? item?.link : item?.linkEn}
+                                            </Link>
                                             <span 
                                                 onClick={()=>{
                                                     setActive(index)
