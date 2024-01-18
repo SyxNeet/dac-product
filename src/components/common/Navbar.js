@@ -239,7 +239,8 @@ function Navbar({
     {
       link: 'TIN TỨC',
       linkEn: 'NEWS',
-      slug: 'tin-tuc-su-kien',
+      slug:"tin-tuc-su-kien/con-nguoi-app",
+      slugEn:"news/app-people",
       slug2: 'tin-tuc-su-kien',
       slug2En:'news',
       listContent: [
@@ -298,10 +299,11 @@ function Navbar({
                   {
                     (item?.listContent  && index !== 2 ) ?
                     (
-                        <span
+                        <Link
+                            href={`/${lang}/${lang === 'vi' ? item?.slug : item?.slugEn}`}
                             className={`text-[#000] md:text-[1.2rem] lg:text-[1.04167rem] cursor-pointer ${checkHome ? '!text-[#000]' : 'text-[#fff]'} link ${(checkScroll && !checkHome) && '!text-[#000]'} `}
                             key={index}>{lang === 'vi' ? item?.link : item?.linkEn}
-                        </span>
+                        </Link>
                     )
                     :
                     (
